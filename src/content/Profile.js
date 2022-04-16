@@ -1,6 +1,47 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 function Profile() {
+    // const TOKEN = {
+    //     token: ,
+    //   };
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setlastName] = useState("");
+    const [numberName, setnumberName] = useState("");
+    
+      function getProfile() {
+        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxveW9uZyIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY1MDA5MTI1NSwiZXhwIjoxNjUwMDk0ODU1fQ.rXK_qQKSkpRtfQ12C_dpawRMHj2rX6k9iqLpbWTM-2w"
+        fetch("http://5215-2403-6200-88a2-303e-9516-d0fe-3377-c8d.ngrok.io/getCustomerAccount/"+token, {
+          method: "GET", // or 'PUT','GET'
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: fullToken,
+          },
+        //   body: JSON.stringify(TOKEN),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "200OK") {
+            //   window.location = "/login";
+            //   localStorage.removeItem("token");
+              // setUsername(data.decoded.username);
+              console.log("Success:", data);
+              setFirstName(data.customerAccount.Firstname)
+              console.log(firstName)
+            } else {
+              // localStorage.removeItem("token");
+              // window.location = "/login";
+              console.log("Failed:", data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      useEffect(()=>{
+            getProfile();      
+    },[])
+
   return (
       <>
     <div className='grid grid-cols-3 gap-9   '>
@@ -16,10 +57,10 @@ function Profile() {
                 <h5>ชื่อ</h5>
             </div>
             <div className=''>
-                <h5>สมศรี</h5>
+                <h5>{firstName}</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 ทะ-2'>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
             <div className='font-semibold text-[#E54E3D]'>
                 <h5>นามสกุล</h5>
             </div>
@@ -27,6 +68,63 @@ function Profile() {
                 <h5>แสงสว่าง</h5>
             </div>
         </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>เบอร์โทรศัพท์</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>วัน/เดือน/ปีเกิด</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>Email</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>ที่อยู่</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>เลขบัญชีธนาคาร</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>ธนาคาร</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>ชื่อบัญชี</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        {/* <button onClick={()=>{getProfile()}}>TEXT</button> */}
         
     </>
   )

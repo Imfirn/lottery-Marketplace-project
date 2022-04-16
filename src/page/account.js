@@ -9,7 +9,7 @@ function Account() {
   const changeTofalse =() =>{
         setEditMode(false);
   }
-
+  console.log(editMode);
   const toggleTab = (index) => {
     console.log(index);
     setToggleState(index);
@@ -33,19 +33,20 @@ function Account() {
               </div>
               <li
                 className="mt-2 cursor-pointer hover:bg-yellow-500"
-                onClick={() => toggleTab(2)}
+                onClick={() => {toggleTab(2);changeTofalse();}}
               >
+               
                 ตรวจสอบการสั่งซื้อ
               </li>
               <li
                 className="mt-2 cursor-pointer hover:bg-yellow-500"
-                onClick={() => toggleTab(3)}
+                onClick={() => {toggleTab(3);changeTofalse();}}
               >
                 เพิ่มสินค้า
               </li>
               <li
                 className="mt-2 cursor-pointer hover:bg-yellow-500"
-                onClick={() => toggleTab(4)}
+                onClick={() => {toggleTab(4);changeTofalse();}}
               >
                 สินค้าภายในร้าน
               </li>
@@ -76,6 +77,7 @@ function Account() {
              
             </div>
             <div className={toggleState === 2 ? "text-amber-500" : "hidden"}>
+             
               <h1>table2</h1>
              
               <Checkorder />
