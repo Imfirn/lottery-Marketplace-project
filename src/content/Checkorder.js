@@ -7,7 +7,7 @@ function Checkorder() {
      
     <div className=" flex justify-center items-center bg-white  font-prompt">
   
-  <div class='overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[300px]'>
+  <div class='overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[400px]'>
     <table class="w-full ">
 
   <thead class=" border-b border-t border-[#E54E3D]">

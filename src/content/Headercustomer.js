@@ -4,7 +4,7 @@ import pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg"
 function Headercustomer() {
   return (
     <>
-      <div class="flex font-prompt ">
+      <div class="flex font-prompt border-b border-[#E54E3D]">
           <div >
           {/* <p>Headercustomer</p> */}
           <img src={pic} class="w-[110px] h-[110px] rounded-full m-5 " alt=""/>
@@ -16,7 +16,7 @@ function Headercustomer() {
           </div>
 
     </div>
-    <span class="bg-[#E54E3D] h-[0.5px]  "/>
+    
        
     </>
   );
