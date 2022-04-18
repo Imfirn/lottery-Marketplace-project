@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Checkorder from "../content/Checkorder";
 import Editprofile from "../content/Editprofile";
+import Headercustomer from "../content/Headercustomer";
 import Profile from "../content/Profile";
 function Account() {
   const [toggleState, setToggleState] = useState(1);
@@ -15,47 +16,44 @@ function Account() {
     setToggleState(index);
   };
   return (
+    <>
     <div className="h-screen flex justify-center  bg-[#FFE5A3] font-prompt">
       <div
-        className="flex flex-col p-8 m-8 bg-white  md:min-w-[800px] 
-     sm:min-w-[600px] min-w-[400px]  rounded-xl shadow-xl "
+        className="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
+     md:w-[700px] min-w-[650px] h-[800px]    shadow-xl "
       >
-        <h1 className="text-9xs uppercase font-black">Account</h1>
+        <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
+        <Headercustomer/>
         <div className="flex">
-          <div className={" w-52 bg-yellow-300"}>
-            content bar
-            <ul>
+          <div className=" min-w-[160px] h-[600px] border-r">
+            
+         
+             
               <div
-                className="mt-2 cursor-pointer hover:bg-yellow-500 "
+                className={`mt-4  cursor-pointer ${toggleState === 1 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => toggleTab(1)}
-              >
-                <a>ข้อมูลส่วนตัว</a>
+              >               
+                <p class='pt-2 pl-4'>ข้อมูลส่วนตัว</p>
               </div>
-              <li
-                className="mt-2 cursor-pointer hover:bg-yellow-500"
+
+              <div
+                className={`cursor-pointer ${toggleState === 2 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => {toggleTab(2);changeTofalse();}}
-              >
-               
-                ตรวจสอบการสั่งซื้อ
-              </li>
-              <li
-                className="mt-2 cursor-pointer hover:bg-yellow-500"
-                onClick={() => {toggleTab(3);changeTofalse();}}
-              >
-                เพิ่มสินค้า
-              </li>
-              <li
-                className="mt-2 cursor-pointer hover:bg-yellow-500"
-                onClick={() => {toggleTab(4);changeTofalse();}}
-              >
-                สินค้าภายในร้าน
-              </li>
-            </ul>
+              >               
+                <p class="pt-2 pl-4">ประวัติการสั่งซื้อ</p>
+              </div>
+            
+           
+             
+           
           </div>
-          <div className="p-7">
-            <div className={toggleState === 1 ? "" : "hidden"}>
-              <h1>table1</h1>
-              <div className={editMode === false ? " " : "hidden"} style={{cursor:"pointer"}} onClick={()=>setEditMode(true)}>
+          <div className="p-7 ">
+            <div className={toggleState === 1 ? "flex" : "hidden"}>
+            <div>
+               {editMode?<Editprofile changeTofalse={changeTofalse}/>:<Profile />}
+              </div>
+             
+              <div className={editMode === false ? "" : "hidden"} style={{cursor:"pointer"}} onClick={()=>setEditMode(true)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -71,27 +69,20 @@ function Account() {
                   />
                 </svg>
               </div>
-              <div>
-               {editMode?<Editprofile changeTofalse={changeTofalse}/>:<Profile />}
-              </div>
-             
+              
             </div>
-            <div className={toggleState === 2 ? "text-amber-500" : "hidden"}>
+            <div className={toggleState === 2 ? "" : "hidden"}>
              
-              <h1>table2</h1>
-             
+                         
               <Checkorder />
             </div>
-            <div className={toggleState === 3 ? "text-amber-500" : "hidden"}>
-              <h1>table3</h1>
-            </div>
-            <div className={toggleState === 4 ? "text-amber-500" : "hidden"}>
-              <h1>table4</h1>
-            </div>
+           
           </div>
         </div>
       </div>
+      
     </div>
+    </>
   );
 }
 
