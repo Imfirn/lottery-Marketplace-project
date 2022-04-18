@@ -5,6 +5,8 @@ import Navbar from "./content/Navbar";
 import {Routes,Route}from"react-router-dom";
 import Account from "./page/account";
 import Home from "./page/home";
+import Register from "./content/Register";
+import Account_merchant from "./page/account_merchant";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +31,9 @@ function App() {
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/account"  element={<Account/>}/>
+      {/* <Route path="/account"  element={<Account/>}/> */}
+      <Route path="/account"  element={<Account_merchant/>}/>
+      <Route path="/register"  element={<Register/>}/>
      
       
     </Routes>

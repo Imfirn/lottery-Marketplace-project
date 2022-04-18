@@ -12,12 +12,12 @@ function Editprofile({ changeTofalse }) {
   const onsubmit = () => {};
 
   return (
-    <div >
-      <div class="grid grid-cols-2 mb-5 ">
+    <div class=" h-[530px] overflow-x-auto">
+      <div class="grid grid-cols-2 mb-5">
       <h1 className="mb-5  text-2xl font-semibold ">
         แก้ไขข้อมูลส่วนตัว
       </h1>
-      <div class="grid justify-self-end ">
+      <div class="grid justify-self-end">
       <div class="flex ">
         <button
           style={{ cursor: "pointer" }}
@@ -107,6 +107,31 @@ function Editprofile({ changeTofalse }) {
           />
         </div>
       </div>
+      <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>เลขบัญชีธนาคาร</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>ธนาคาร</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+        <div className='grid grid-cols-2 gap-7 mt-2'>
+            <div className='font-semibold text-[#E54E3D]'>
+                <h5>ชื่อบัญชี</h5>
+            </div>
+            <div className=''>
+                <h5>f</h5>
+            </div>
+        </div>
+       
 
       
      
