@@ -10,9 +10,9 @@ function Dropdown({isOpen,toggle}) {
         <Link className="p-4 hover:bg-[#E54E3D] hover:text-white " to="/cart">
           ตะกร้าสินค้า
         </Link>
-        <Link className="p-4 hover:bg-[#E54E3D] hover:text-white" to="/orders">
+        {/* <Link className="p-4 hover:bg-[#E54E3D] hover:text-white" to="/orders">
           สินค้าที่จะได้รับ
-        </Link>
+        </Link> */}
         <Link className="p-4 hover:bg-[#E54E3D] hover:text-white" to="/notification">
           การแจ้งเตือน
         </Link>

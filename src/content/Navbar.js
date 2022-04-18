@@ -33,9 +33,9 @@ const Navbar = ({toggle}) => {
         <Link className="p-4 hover:text-[#E54E3D] " to="/cart">
           ตะกร้าสินค้า
         </Link>
-        <Link className="p-4 hover:text-[#E54E3D]" to="/orders">
+        {/* <Link className="p-4 hover:text-[#E54E3D]" to="/orders">
           สินค้าที่จะได้รับ
-        </Link>
+        </Link> */}
         <Link className="p-4 hover:text-[#E54E3D]" to="/notification">
           การแจ้งเตือน
         </Link>
