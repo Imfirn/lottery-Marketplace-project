@@ -10,7 +10,7 @@ function Editprofile({ changeTofalse }) {
 
   console.log(lastName);
   const onsubmit = () => {};
-
+  
   return (
     <div >
       <div class="grid grid-cols-2 mb-5 ">

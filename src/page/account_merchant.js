@@ -4,13 +4,20 @@ import Checkorder_m from "../content/Checkorder_m";
 import Editprofilemerchant from "../content/Editprofilemerchant";
 import Headercustomer from "../content/Headercustomer";
 import Profile_m from "../content/Profile_m";
+import Tabadd from "../content/Tabadd";
 
 function Account_merchant() {
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(3);
   const [editMode,setEditMode]=useState(false);
+  const [tabState, setTabState] = useState(true);
+  const Tab =false;
   const changeTofalse =() =>{
         setEditMode(false);
   }
+ 
+
+ 
+
   console.log(editMode);
   const toggleTab = (index) => {
     console.log(index);
@@ -27,7 +34,7 @@ function Account_merchant() {
         <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
         <Headercustomer/>
         <div className="flex">
-          <div className=" min-w-[160px] h-[600px] border-r">
+          <div className=" min-w-[160px] h-[590px] border-r">
             
          
              
@@ -47,7 +54,7 @@ function Account_merchant() {
 
               <div
                 className={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => {toggleTab(3);changeTofalse();}}
+                onClick={() => {toggleTab(3);changeTofalse();Tab=true}}
               >               
                 <p class="pt-2 pl-4">เพิ่มสินค้า</p>
               </div>
@@ -93,10 +100,10 @@ function Account_merchant() {
               
             </div>
 
-            <div className={toggleState === 3 ? "" : "hidden"}>
+            <div className={toggleState === 3 ? "flex-initial	" : "hidden"}>
             add product
-                         
-              
+              {/* <Addproduct/>          */}
+              <Tabadd />
             </div>
 
             <div className={toggleState === 4 ? "" : "hidden"}>

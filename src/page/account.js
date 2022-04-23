@@ -25,7 +25,7 @@ function Account() {
         <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
         <Headercustomer/>
         <div className="flex">
-          <div className=" min-w-[160px] h-[600px] border-r">
+          <div className=" min-w-[160px] h-[590px] border-r">
             
          
              
