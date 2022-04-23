@@ -29,7 +29,7 @@ const Register = () => {
             <option value="Miss">นางสาว</option>
           </select>
 
-          <div className="flex flex-col grid grid-cols-2 gap-9">
+          <div className=" grid grid-cols-2 gap-9">
             <div className="flex flex-col">
               <label
                 className="block text-gray-darker text-md font-bold mt-4 mb-2"
