@@ -1,5 +1,7 @@
 import React, { useState} from "react";
+import Pack from "./Pack";
 import Single from "./Single";
+
 
 function Tabadd() {
   const [tabState, setTabState] = useState(1);
@@ -38,6 +40,12 @@ function Tabadd() {
             tabState === 1 ? "" : "hidden"
           }>
               <Single />
+          </div>
+          <div className={
+            tabState === 2 ? "" : "hidden"
+          }>
+              <Pack/>
+              
           </div>
         
 

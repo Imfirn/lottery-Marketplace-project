@@ -17,11 +17,12 @@ function Single() {
     "พฤศจิกายน",
     "ธันวาคม",
   ];
-  const m = month[d.getMonth()];
+  var m = month[d.getMonth()];
   const y = d.getFullYear() + 543;
   var day;
   if (d.getDate() > 16) {
     day = 1;
+    m = month[d.getMonth()+1];
   } else {
     day = 16;
   }
@@ -40,7 +41,7 @@ function Single() {
   const [draw, setDraw] = useState("");
   const [pack, setPack] = useState("");
   const [drawDate, setDrawDate] = useState("");
-  const [validate,setValid]=useState(true);
+  const [validate, setValid] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("lottery", JSON.stringify(lottery));
@@ -52,9 +53,9 @@ function Single() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    
-    if ((number !== "" )&&( draw !== "") &&( pack !== "") && (drawDate!=="")) {
-      setValid(true)
+
+    if (number !== "" && draw !== "" && pack !== "" && drawDate !== "") {
+      setValid(true);
       setLottery([
         ...lottery,
         {
@@ -62,11 +63,11 @@ function Single() {
           number: number.trim(),
           pack: pack.trim(),
           draw: draw.trim(),
-          drawDate:drawDate
+          drawDate: drawDate,
         },
       ]);
-    }else{
-      setValid(false)
+    } else {
+      setValid(false);
     }
 
     setNumber("");
@@ -88,34 +89,34 @@ function Single() {
     <div>
       {/* <h1>{drawDate}</h1> */}
       <div class="grid justify-items-center ">
-        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
+        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
           <form onSubmit={handleFormSubmit}>
             <div class="flex justify-between space-x-2 text-xs xl:flex-row  sm:flex-col ">
               <div class="flex justify-between space-x-2 ">
-                <div >
-                <div class="flex justify-between">
-                  <h5 class="pl-2 p-2">เลขสลาก</h5>
-                  <input
-                    maxLength={6}
-                    placeholder="123456"
-                    value={number}
-                    type="text"
-                    pattern="[0-9]{6}"
-                    onChange={handleInput}                    
-                    class="pl-2 p-2 rounded-md w-[60px] text-center"
-                    required
-                  />
-                  </div>                
+                <div>
+                  <div class="flex justify-between">
+                    <h5 class="pl-2 p-2">เลขสลาก</h5>
+                    <input
+                      maxLength={6}
+                      placeholder="123456"
+                      value={number}
+                      type="text"
+                      pattern="[0-9]{6}"
+                      onChange={handleInput}
+                      class="pl-2 p-2 rounded-md w-[60px] text-center"
+                      required
+                    />
+                  </div>
                 </div>
                 <div class="flex justify-between">
                   <h5 class="pl-2 p-2">วันที่</h5>
                   <select
-                    class="pl-2 p-2 bg-white w-[130px]  text-center"
+                    class="pl-2 p-2 bg-white w-[135px]  text-center"
                     value={drawDate}
                     onChange={(event) => setDrawDate(event.target.value)}
                     required
                   >
-                    <option class=" " >--เลือกงวดวันที--</option>
+                    <option  hidden>--เลือกงวดวันที--</option>
                     <option value={`${dDate}`}>{dDate}</option>
                   </select>
                 </div>
@@ -128,8 +129,8 @@ function Single() {
                     placeholder="12"
                     maxLength={2}
                     type="text"
-                    pattern="[0-9]{2}"                    
-                    value={draw}                    
+                    pattern="[0-9]{2}"
+                    value={draw}
                     onChange={(event) => setDraw(event.target.value)}
                     class="pl-2 p-2 rounded-md w-[30px] text-center"
                     required
@@ -142,7 +143,7 @@ function Single() {
                     maxLength={2}
                     type="text"
                     pattern="[0-9]{2}"
-                    value={pack}                    
+                    value={pack}
                     onChange={(event) => setPack(event.target.value)}
                     class="pl-2 p-2 rounded-md w-[30px] text-center"
                     required
@@ -159,9 +160,11 @@ function Single() {
             </div>
           </form>
         </div>
-         {validate ? "": <span class="text-xs text-red-500">*กรุณากรอกข้อมูลให้ครบถ้วน</span>}
-        
-         
+        {validate ? (
+          ""
+        ) : (
+          <span class="text-xs text-red-500">*กรุณากรอกข้อมูลให้ครบถ้วน</span>
+        )}
 
         <div class="overflow-x-auto xl:h-[380px] sm:h-[300px]">
           {lottery.map((lotto) => (
@@ -182,8 +185,8 @@ function Single() {
                     <div class="flex justify-between">
                       <h5 class="pl-2 p-2">วันที่</h5>
                       <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[130px] rounded-md text-center ">
-                        1 เมษายน 2565
-                      </h5>
+                       {lotto.drawDate}
+                        </h5>
                     </div>
                   </div>
 
