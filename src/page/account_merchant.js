@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Addproduct from "../content/Addproduct";
 import Checkorder_m from "../content/Checkorder_m";
 import Editprofilemerchant from "../content/Editprofilemerchant";
 import Headercustomer from "../content/Headercustomer";
@@ -101,9 +102,9 @@ function Account_merchant() {
             </div>
 
             <div className={toggleState === 3 ? "flex-initial	" : "hidden"}>
-            add product
-              {/* <Addproduct/>          */}
-              <Tabadd />
+            
+              <Addproduct/>       
+             
             </div>
 
             <div className={toggleState === 4 ? "" : "hidden"}>
