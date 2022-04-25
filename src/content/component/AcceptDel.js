@@ -1,23 +1,25 @@
 import React from 'react'
 
-function AcceptDel({isShow,text}) {
+function AcceptDel({onShowing,text}) {
     const handleOKClick = () => {
-        isShow(true);
+        // isShow(true);
+        onShowing(true);
         
       };
       const handleCancelClick = () => {
-        isShow(false);
+        // isShow(false);
+        onShowing(false);
        
       };
   return (
     <div>
         <div className="    fixed inset-0 z-50   ">
       <div className="flex h-screen justify-center items-center ">
-        <div class="relative rounded-lg shadow bg-white w-[500px] border">
+        <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[500px] border">
           {/* Modal header */}
           <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
             <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-              รายละเอียด
+              ยืนยันการลบ
               
             </h3>
             <button
@@ -42,8 +44,8 @@ function AcceptDel({isShow,text}) {
             </button>
           </div>
           {/* table */}
-          <div class="p-6 space-y-6  h-[218px] overflow-x-auto">
-            {text}
+          <div class="p-6 space-y-6  h-[70px] flex justify-center">
+           <p>{text}</p> 
              
           </div>
           {/* <!-- Modal footer --> */}

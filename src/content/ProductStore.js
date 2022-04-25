@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
+import AcceptDel from './component/AcceptDel';
 
 function ProductStore() {
     const [dataProduct,setDataProduct] = useState([]);
-    // const[editProduct,seteditProduct] = useState(null);
+    const[dialog,setDialog]=useState({
+        msg:"",
+        isShow:false,
+    });
+   
     var randomArray = [
         'สลากเดี่ยว','สลากชุด'
      ];
-    //  var randomElement = (randomArray)
+
+    const numProduct =useRef();
+    
     function get_random (list) {
         return list[Math.floor((Math.random()*list.length))];
       }
@@ -26,13 +33,37 @@ function ProductStore() {
 
     },[])
 
-    const handleDelete =(num)=>{
-        const removeItem = dataProduct.filter((data) => {
-            return data.num !== num;
-          });
-      
-          setDataProduct(removeItem);
+   
+    const handleDelete =(num)=>{      
+        setDialog({
+            msg:"คุณยืนยันจะลบหรือไม่?",
+            isShow:true,
+        });
+
+        numProduct.current = num;
+
+       
     }
+
+    const conFirmtodel =(c)=>{
+        if(c==true){
+            setDataProduct(dataProduct.filter((p)=>p.num !== numProduct.current));
+            setDialog({
+                msg:"คุณยืนยันจะลบหรือไม่?",
+                isShow:false,
+            });
+            console.log("del it!!!")
+
+        }else{
+            setDialog({
+                msg:"คุณยืนยันจะลบหรือไม่?",
+                isShow:false,
+            });
+
+        }
+
+    }
+    
 
     console.log(dataProduct)
   return (
@@ -80,7 +111,7 @@ function ProductStore() {
        
      </tbody>
    ))}
-   
+   {dialog.isShow && <AcceptDel onShowing={conFirmtodel} text={dialog.msg} />  } 
  </table>
  </div>
  </div>

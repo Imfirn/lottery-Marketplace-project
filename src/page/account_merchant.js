@@ -109,7 +109,7 @@ function Account_merchant() {
             </div>
 
             <div className={toggleState === 4 ? "" : "hidden"}>
-             product store
+             
              <ProductStore/>
                          
               
