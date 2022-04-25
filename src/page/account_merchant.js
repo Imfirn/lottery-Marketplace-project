@@ -4,14 +4,15 @@ import Addproduct from "../content/Addproduct";
 import Checkorder_m from "../content/Checkorder_m";
 import Editprofilemerchant from "../content/Editprofilemerchant";
 import Headercustomer from "../content/Headercustomer";
+import ProductStore from "../content/ProductStore";
 import Profile_m from "../content/Profile_m";
-import Tabadd from "../content/Tabadd";
+// import Tabadd from "../content/Tabadd";
 
 function Account_merchant() {
   const [toggleState, setToggleState] = useState(3);
   const [editMode,setEditMode]=useState(false);
-  const [tabState, setTabState] = useState(true);
-  const Tab =false;
+  // const [tabState, setTabState] = useState(true);
+  // const Tab =false;
   const changeTofalse =() =>{
         setEditMode(false);
   }
@@ -27,10 +28,10 @@ function Account_merchant() {
 
   return (
     <>
-    <div className="h-screen flex justify-center  bg-[#FFE5A3] font-prompt">
+    <div className="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
       <div
         className="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
-     md:w-[700px] min-w-[650px] h-[800px]    shadow-xl "
+     md:w-[700px] min-w-[650px] h-[800px] shadow-xl "
       >
         <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
         <Headercustomer/>
@@ -55,7 +56,7 @@ function Account_merchant() {
 
               <div
                 className={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => {toggleTab(3);changeTofalse();Tab=true}}
+                onClick={() => {toggleTab(3);changeTofalse()}}
               >               
                 <p class="pt-2 pl-4">เพิ่มสินค้า</p>
               </div>
@@ -71,7 +72,7 @@ function Account_merchant() {
              
            
           </div>
-          <div className="p-7 overflow-y-auto">
+          <div className="p-7 ">
             <div className={toggleState === 1 ? "flex" : "hidden"}>
             <div>
                {editMode?<Editprofilemerchant changeTofalse={changeTofalse}/>:<Profile_m />}
@@ -109,6 +110,7 @@ function Account_merchant() {
 
             <div className={toggleState === 4 ? "" : "hidden"}>
              product store
+             <ProductStore/>
                          
               
             </div>

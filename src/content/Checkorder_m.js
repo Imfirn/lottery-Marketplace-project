@@ -16,25 +16,7 @@ export default function Checkorder_m() {
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>
-                {/* <th class="w-30 text-sm tracking-wider font-medium text-center">
-                  คำสั่งซื้อที่
-                </th>
-                <th class="  text-sm tracking-wider font-medium text-center">
-                  เลขสลาก
-                </th>
-                <th class="  text-sm tracking-wider font-medium text-center">
-                  ประเภท
-                </th>
-                <th class="  text-sm tracking-wider font-medium text-center">
-                  เพิ่มเติม
-                </th>
-                <th class=" text-sm tracking-wider font-medium text-center">
-                  จำนวน
-                </th>
-                <th class="text-sm tracking-wider font-medium text-center">
-                  ยืนยัน
-                </th> */}
-                 <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">
+                <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">
                   คำสั่งซื้อที่
                 </th>
                 <th class=" p-2 text-sm tracking-wider font-medium text-center">
@@ -96,12 +78,12 @@ export default function Checkorder_m() {
                    <a href="#" class="font-bold text-blue-500 hover:underline"  onClick={clickDetail}>ดูรายละเอียด</a>
                 </td>
                 
-                <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                  <input
+                <td class="p-3 text-sm font-light whitespace-nowrap text-center text-green-600">
+                  {/* <input
                     id="checkbox-table-1"
                     type="checkbox"
                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
-                  />
+                  /> */} ยืนยันแล้ว
                 </td>
               </tr>
               

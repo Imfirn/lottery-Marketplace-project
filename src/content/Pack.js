@@ -191,6 +191,7 @@ function Pack() {
       d4: "",
       d5: "",
     });
+    setAmount("");
   }
 
   function handleDelete(id) {
@@ -208,9 +209,9 @@ function Pack() {
     <div>
       {/* <h1>{drawDate}</h1> */}
       <div class="grid justify-items-center">
-        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
+        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[400px]">
           <form onSubmit={handleFormSubmit}>
-            <div class="flex justify-between space-x-2 text-xs  sm:flex-col ">
+            <div class="flex justify-between space-x-2 text-xs  flex-col ">
               <div class="flex justify-between space-x-2 ">
                 <div>
                   <div class="flex justify-between">
@@ -230,7 +231,7 @@ function Pack() {
                 <div class="flex justify-between">
                   <h5 class="pl-2 p-2">วันที่</h5>
                   <select
-                    class="pl-2 p-2 bg-white w-[135px]  text-center"
+                    class="pl-2 p-2 bg-white xl:w-[135px] w-[60px]   text-center"
                     value={drawDate}
                     onChange={(event) => setDrawDate(event.target.value)}
                     required
@@ -243,7 +244,7 @@ function Pack() {
                 <div class="flex justify-between">
                   <h5 class="pl-2 p-2">จำนวนใบ</h5>
                   <select
-                    class="pl-2 p-2 bg-white w-[135px]  text-center"
+                    class="pl-2 p-2 bg-white xl:w-[135px] w-[60px]  text-center"
                     value={amount}
                     onChange={(event) => setAmount(event.target.value)}
                     required
@@ -324,7 +325,7 @@ function Pack() {
           <span class="text-xs text-red-500">*กรุณากรอกข้อมูลให้ครบถ้วน</span>
         )}
 
-        <div class="overflow-x-auto xl:h-[200px] sm:h-[170px]">
+        <div class={`overflow-x-auto ${a==5 ? "xl:h-[85px] ":"xl:h-[195px] "} sm:h-[170px] `}>
           {lottery.map((lotto) => (
             <div
               class="bg-white flex justify-center  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"
