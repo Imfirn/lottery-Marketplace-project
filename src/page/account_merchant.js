@@ -71,7 +71,7 @@ function Account_merchant() {
              
            
           </div>
-          <div className="p-7 ">
+          <div className="p-7 overflow-y-auto">
             <div className={toggleState === 1 ? "flex" : "hidden"}>
             <div>
                {editMode?<Editprofilemerchant changeTofalse={changeTofalse}/>:<Profile_m />}
