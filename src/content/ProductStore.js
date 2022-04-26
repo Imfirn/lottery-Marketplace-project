@@ -69,9 +69,9 @@ function ProductStore() {
   return (
     <>
      {/* bg-[#D4FAAF]  */}
-    <h1 className='mb-5  text-2xl font-semibold	 '>สินค้าภายในร้าน</h1> 
+    <h1 class='mb-5  text-2xl font-semibold	 '>สินค้าภายในร้าน</h1> 
      
-     <div className=" flex justify-center items-center bg-white  font-prompt">
+     <div class=" flex justify-center items-center bg-white  font-prompt">
    
    <div class='overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[400px] h-[420px]'>
      <table class="w-full ">

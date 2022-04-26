@@ -14,7 +14,7 @@ function Editprofile({ changeTofalse }) {
   return (
     <div class=" h-[530px] overflow-x-auto">
       <div class="grid grid-cols-2 mb-5">
-      <h1 className="mb-5  text-2xl font-semibold ">
+      <h1 class="mb-5  text-2xl font-semibold ">
         แก้ไขข้อมูลส่วนตัว
       </h1>
       <div class="grid justify-self-end">
@@ -41,93 +41,93 @@ function Editprofile({ changeTofalse }) {
       
       </div>
 
-      <div className="grid grid-cols-2 gap-7">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>ชื่อ</h5>
         </div>
         <input
-          className="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+          class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
         />
       </div>
-      <div className="grid grid-cols-2 gap-7 mt-2">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7 mt-2">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>นามสกุล</h5>
         </div>
         <input
-          className="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+          class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
           value={lastName}
           onChange={(event) => setlastName(event.target.value)}
         />
       </div>
-      <div className="grid grid-cols-2 gap-7 mt-2">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7 mt-2">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>เบอร์โทรศัพท์</h5>
         </div>
-        <div className="">
+        <div class="">
           <input
-            className="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
             value={number}
             onChange={(event) => setnumber(event.target.value)}
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-7 mt-2">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7 mt-2">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>วัน/เดือน/ปีเกิด</h5>
         </div>
-        <div className="">
+        <div class="">
          f
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-7 mt-2">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7 mt-2">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>Email</h5>
         </div>
-        <div className="">
+        <div class="">
         <input
-            className="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
             value={mail}
             onChange={(event) => setmail(event.target.value)}
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-7 mt-2">
-        <div className="font-semibold text-[#E54E3D]">
+      <div class="grid grid-cols-2 gap-7 mt-2">
+        <div class="font-semibold text-[#E54E3D]">
           <h5>ที่อยู่</h5>
         </div>
-        <div className="">
+        <div class="">
         <input
-            className="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
             value={address}
             onChange={(event) => setAddress(event.target.value)}
           />
         </div>
       </div>
-      <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+      <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>เลขบัญชีธนาคาร</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>ธนาคาร</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>ชื่อบัญชี</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>

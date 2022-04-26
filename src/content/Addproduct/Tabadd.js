@@ -15,33 +15,33 @@ function Tabadd() {
 
   return (
       
-    <div className="m-4 xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[300px]">        
-      <div className="grid grid-cols-2 gap-4">
+    <div class="m-4 xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[300px]">        
+      <div class="grid grid-cols-2 gap-4">
         <div
-          className={`text-center ${
+          class={`text-center ${
             tabState === 1 ? "border-b-4 border-[#E54E3D]" : " border-0"
           }`}
         >
-          <a className=" cursor-pointer" role="tab" onClick={() => clickTab(1)}>
+          <a class=" cursor-pointer" role="tab" onClick={() => clickTab(1)}>
             สลากเดี่ยว
           </a>
         </div>
         <div
-          className={`text-center ${
+          class={`text-center ${
             tabState === 2 ? "border-b-4 border-[#E54E3D]" : " border-0"
           }`}
         >
-          <a className="cursor-pointer" role="tab" onClick={() => clickTab(2)}>
+          <a class="cursor-pointer" role="tab" onClick={() => clickTab(2)}>
             สลากชุด
           </a>
         </div>
       </div>
-          <div className={
+          <div class={
             tabState === 1 ? "" : "hidden"
           }>
               <Single />
           </div>
-          <div className={
+          <div class={
             tabState === 2 ? "" : "hidden"
           }>
               <Pack/>

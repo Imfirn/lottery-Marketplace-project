@@ -2,15 +2,15 @@ import React from "react";
 import { useState } from "react";
 import Addproduct from "../content/Addproduct";
 import Checkorder_m from "../content/Checkorder_m";
-import Editprofilemerchant from "../content/Editpage/Editprofilemerchant";
 import Header from "../content/component/Header";
 import ProductStore from "../content/ProductStore";
-import Profile_m from "../content/Profile_m";
 import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
+import Checkrigister from "../content/Addmin/Checkrigister";
 
 
 function Account_admin() {
-  const [toggleState, setToggleState] = useState(3);
+  const [toggleState, setToggleState] = useState(1);
+  
   const [editMode,setEditMode]=useState(false);
   const changeTofalse =() =>{
         setEditMode(false);
@@ -27,87 +27,54 @@ function Account_admin() {
 
   return (
     <>
-    <div className="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
+    <div class="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
       <div
-        className="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
+        class="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
      md:w-[700px] min-w-[650px] h-[800px] shadow-xl "
       >
-        <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
-        <Header name={"ร้านสำรีขายหวย"} undername={"กรุงเทพมหานคร"} picture={Pic}/>
-        <div className="flex">
-          <div className=" min-w-[160px] h-[590px] border-r">
-            
-         
+        <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
+        <Header name={"แอดมิน123"} undername={"แอดมิน"} picture={Pic}/>
+        <div class="flex">
+          <div class=" min-w-[160px] h-[590px] border-r">
+                  
              
+              
               <div
-                className={`mt-4  cursor-pointer ${toggleState === 1 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => toggleTab(1)}
+                class={`mt-4 cursor-pointer ${toggleState === 1 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                onClick={() => {toggleTab(1);}}
               >               
-                <p class='pt-2 pl-4'>ข้อมูลส่วนตัว</p>
+                <p class="pt-2 pl-4">การลงทะเบียน</p>
               </div>
 
               <div
-                className={`cursor-pointer ${toggleState === 2 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => {toggleTab(2);changeTofalse();}}
+                class={`cursor-pointer ${toggleState === 2 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                onClick={() => {toggleTab(2);}}
               >               
-                <p class="pt-2 pl-4">ตรวจสอบคำสั่งซื้อ</p>
+                <p class="pt-2 pl-4">ตรวจสอบการชำระ</p>
               </div>
 
               <div
-                className={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => {toggleTab(3);changeTofalse()}}
+                class={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                onClick={() => {toggleTab(3);}}
               >               
-                <p class="pt-2 pl-4">เพิ่มสินค้า</p>
+                <p class="pt-2 pl-4">แจ้งเลขพัสดุ</p>
               </div>
-
-              <div
-                className={`cursor-pointer ${toggleState === 4 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
-                onClick={() => {toggleTab(4);changeTofalse();}}
-              >               
-                <p class="pt-2 pl-4">สินค้าภายในร้าน</p>
-              </div>
-            
-           
-             
            
           </div>
-          <div className="p-7 ">
-            <div className={toggleState === 1 ? "flex" : "hidden"}>
-            <div>
-               {editMode?<Editprofilemerchant changeTofalse={changeTofalse}/>:<Profile_m />}
-              </div>
-             
-              <div className={editMode === false ? "" : "hidden"} style={{cursor:"pointer"}} onClick={()=>setEditMode(true)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
-              </div>
-              
-            </div>
-            <div className={toggleState === 2 ? "" : "hidden"}>
-            Checkorder
-                <Checkorder_m/>        
+          <div class="p-7 ">
+           
+            <div class={toggleState === 1 ? "" : "hidden"}>
+              <Checkrigister/>      
               
             </div>
 
-            <div className={toggleState === 3 ? "flex-initial	" : "hidden"}>
+            <div class={toggleState === 2 ? "flex-initial	" : "hidden"}>
             
               <Addproduct/>       
              
             </div>
 
-            <div className={toggleState === 4 ? "" : "hidden"}>
+            <div class={toggleState === 3 ? "" : "hidden"}>
              
              <ProductStore/>
                          

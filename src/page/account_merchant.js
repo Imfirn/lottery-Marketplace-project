@@ -29,41 +29,41 @@ function Account_merchant() {
 
   return (
     <>
-    <div className="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
+    <div class="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
       <div
-        className="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
+        class="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
      md:w-[700px] min-w-[650px] h-[800px] shadow-xl "
       >
-        <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
+        <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
         <Header name={"ร้านสำรีขายหวย"} undername={"กรุงเทพมหานคร"} picture={Pic}/>
-        <div className="flex">
-          <div className=" min-w-[160px] h-[590px] border-r">
+        <div class="flex">
+          <div class=" min-w-[160px] h-[590px] border-r">
             
          
              
               <div
-                className={`mt-4  cursor-pointer ${toggleState === 1 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                class={`mt-4  cursor-pointer ${toggleState === 1 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => toggleTab(1)}
               >               
                 <p class='pt-2 pl-4'>ข้อมูลส่วนตัว</p>
               </div>
 
               <div
-                className={`cursor-pointer ${toggleState === 2 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                class={`cursor-pointer ${toggleState === 2 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => {toggleTab(2);changeTofalse();}}
               >               
                 <p class="pt-2 pl-4">ตรวจสอบคำสั่งซื้อ</p>
               </div>
 
               <div
-                className={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                class={`cursor-pointer ${toggleState === 3 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => {toggleTab(3);changeTofalse()}}
               >               
                 <p class="pt-2 pl-4">เพิ่มสินค้า</p>
               </div>
 
               <div
-                className={`cursor-pointer ${toggleState === 4 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
+                class={`cursor-pointer ${toggleState === 4 ? "bg-red-100 border-l-4 border-[#E54E3D]" : ""} hover:bg-red-100 h-[40px]`}
                 onClick={() => {toggleTab(4);changeTofalse();}}
               >               
                 <p class="pt-2 pl-4">สินค้าภายในร้าน</p>
@@ -73,13 +73,13 @@ function Account_merchant() {
              
            
           </div>
-          <div className="p-7 ">
-            <div className={toggleState === 1 ? "flex" : "hidden"}>
+          <div class="p-7 ">
+            <div class={toggleState === 1 ? "flex" : "hidden"}>
             <div>
                {editMode?<Editprofilemerchant changeTofalse={changeTofalse}/>:<Profile_m />}
               </div>
              
-              <div className={editMode === false ? "" : "hidden"} style={{cursor:"pointer"}} onClick={()=>setEditMode(true)}>
+              <div class={editMode === false ? "" : "hidden"} style={{cursor:"pointer"}} onClick={()=>setEditMode(true)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -97,19 +97,19 @@ function Account_merchant() {
               </div>
               
             </div>
-            <div className={toggleState === 2 ? "" : "hidden"}>
+            <div class={toggleState === 2 ? "" : "hidden"}>
             Checkorder
                 <Checkorder_m/>        
               
             </div>
 
-            <div className={toggleState === 3 ? "flex-initial	" : "hidden"}>
+            <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
             
               <Addproduct/>       
              
             </div>
 
-            <div className={toggleState === 4 ? "" : "hidden"}>
+            <div class={toggleState === 4 ? "" : "hidden"}>
              
              <ProductStore/>
                          

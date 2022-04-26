@@ -3,9 +3,9 @@ import React from 'react'
 function Checkorder() {
   return (
     <>   
-      <h1 className='mb-5  text-2xl font-semibold	 '>ประวัติการสั่งซื้อ</h1> 
+      <h1 class='mb-5  text-2xl font-semibold	 '>ประวัติการสั่งซื้อ</h1> 
      
-    <div className=" flex justify-center items-center bg-white  font-prompt">
+    <div class=" flex justify-center items-center bg-white  font-prompt">
   
   <div class='overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[400px]'>
     <table class="w-full ">

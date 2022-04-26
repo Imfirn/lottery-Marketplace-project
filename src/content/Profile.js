@@ -44,59 +44,59 @@ function Profile() {
 
   return (
       <>
-    <div className='grid grid-cols-3 gap-9    '>
-        <h1 className='mb-5  xl:text-2xl font-semibold	md:text-xl '>ข้อมูลส่วนตัว</h1>
-        <div className='col-span-2  text-right m-2'>
+    <div class='grid grid-cols-3 gap-9    '>
+        <h1 class='mb-5  xl:text-2xl font-semibold	md:text-xl '>ข้อมูลส่วนตัว</h1>
+        <div class='col-span-2  text-right m-2'>
         
         
         </div>
         
     </div>
-        <div className='grid grid-cols-2 gap-7'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>ชื่อ</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>{firstName}</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>นามสกุล</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>แสงสว่าง</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>เบอร์โทรศัพท์</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>วัน/เดือน/ปีเกิด</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>Email</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
+        <div class='grid grid-cols-2 gap-7 mt-2'>
+            <div class='font-semibold text-[#E54E3D]'>
                 <h5>ที่อยู่</h5>
             </div>
-            <div className=''>
+            <div class=''>
                 <h5>f</h5>
             </div>
         </div>

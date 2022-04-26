@@ -13,8 +13,8 @@ function AcceptDel({onShowing,text}) {
       };
   return (
     <div>
-        <div className="    fixed inset-0 z-50   ">
-      <div className="flex h-screen justify-center items-center ">
+        <div class="    fixed inset-0 z-50   ">
+      <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[500px] border">
           {/* Modal header */}
           <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
