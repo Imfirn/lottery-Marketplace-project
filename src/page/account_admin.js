@@ -5,7 +5,8 @@ import Checkorder_m from "../content/Checkorder_m";
 import Header from "../content/component/Header";
 import ProductStore from "../content/ProductStore";
 import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
-import Checkrigister from "../content/Addmin/Checkrigister";
+import Checkrigis from "../content/Addmin/Checkregis";
+// import Checkrigister from "../content/Addmin/Checkrigister";
 
 
 function Account_admin() {
@@ -64,7 +65,8 @@ function Account_admin() {
           <div class="p-7 ">
            
             <div class={toggleState === 1 ? "" : "hidden"}>
-              <Checkrigister/>      
+              {/* <Checkrigister/>       */}
+              <Checkrigis/>
               
             </div>
 
