@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import Addproduct from "../content/Addproduct";
 import Checkorder_m from "../content/Checkorder_m";
-import Editprofilemerchant from "../content/Editprofilemerchant";
-import Headercustomer from "../content/Headercustomer";
+import Editprofilemerchant from "../content/Editpage/Editprofilemerchant";
+import Header from "../content/component/Header";
+import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
 import ProductStore from "../content/ProductStore";
 import Profile_m from "../content/Profile_m";
 // import Tabadd from "../content/Tabadd";
@@ -34,7 +35,7 @@ function Account_merchant() {
      md:w-[700px] min-w-[650px] h-[800px] shadow-xl "
       >
         <h1 className="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
-        <Headercustomer/>
+        <Header name={"ร้านสำรีขายหวย"} undername={"กรุงเทพมหานคร"} picture={Pic}/>
         <div className="flex">
           <div className=" min-w-[160px] h-[590px] border-r">
             

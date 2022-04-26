@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Inputpack from "./component/Inputpack";
+import Inputpack from "../component/Inputpack";
 
 function Pack() {
   const d = new Date();

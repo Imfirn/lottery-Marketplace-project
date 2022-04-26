@@ -1,5 +1,5 @@
 import React from 'react'
-import Tabadd from './Tabadd'
+import Tabadd from './Addproduct/Tabadd'
 
 function Addproduct() {
   return (
