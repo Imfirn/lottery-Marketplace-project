@@ -3,8 +3,7 @@ import DetailSeller from "./DetailSeller";
 
 
 function Checkrigis() {
-  const [modalOn, setModalOn] = useState(false);
-  var t1 = 0;
+  const [modalOn, setModalOn] = useState(false);  
   const [test, setTest] = useState(null);
   const[approve,setApprove] = useState(
     () => {
@@ -139,6 +138,25 @@ function Checkrigis() {
         Storename: "ดิว",
         URLImage: "",
       },
+      {
+        SellerID: 9,
+        Firstname: "จอมใจ",
+        Lastname: "ร่าน",
+        Tel: "0625555522",
+        Birthday: "25600203",
+        Email: "dewza1@gmail.com",
+        Address: {
+          HomeNo: "20/1",
+          Soi: "พัฒนาการ58",
+          Road: "พัฒนาการ",
+          Subdistrict: "สวนหลวง",
+          District: "สวนหลวง",
+          Province: "กรุงเทพมหานคร",
+          ZipCode: "10250",
+        },
+        Storename: "ดิว",
+        URLImage: "",
+      },
   ]);
 
 
@@ -147,20 +165,36 @@ function Checkrigis() {
    let tus =[]
             for(let i=0;i<approve.length;i++){
                 if(approve[i].sellerID ===a){
-                    tus.push(a)
-                }else{
-                    tus.push("-")
+                    if(approve[i].approve==="yes")
+                    {tus.push(1)}else{tus.push(0) }
                 }
             }
             return tus;
 
   };
-//   console.log("a =" + approve[1].sellerID);
+  const setComment= (a) => {
+    let text =[]
+             for(let i=0;i<approve.length;i++){
+                 if(approve[i].sellerID ===a){
+                    text.push(approve[i].comment)
+                 }
+             }
+             return text;
+ 
+   };
+   function handleDelete(id) {
+    const removeItem = approve.filter((a) => {
+      return a.sellerID !== id;
+    });
+
+    setApprove(removeItem);
+  }
+//   console.log("a =" + approve[3].comment);
 //   console.log("t =" + t1);
   return (
     <>
       <h1 class="mb-5  text-2xl font-semibold	 ">คำของลงทะเบียนผู้ขาย</h1>
-     {setState(3)}
+       {/* {setComment(3)} */}
       <div class=" flex justify-center items-center bg-white  font-prompt">
         <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">
           <table class="w-full ">
@@ -204,11 +238,14 @@ function Checkrigis() {
                         </button>
                       </td>
                       
-                      <td class="p-3 text-sm font-light whitespace-nowrap text-center text-green-600">
-                        {/* {approve?"yes":"no"}- */} {setState(data.SellerID)}
+                      <td class={`p-3 text-sm font-light whitespace-nowrap text-center ${setState(data.SellerID)[0]=== 1?"text-green-500":setState(data.SellerID)[0]=== 0?"text-red-500":"text-gray-500"}`}>
+                        {setState(data.SellerID)[0]=== 1?"อนุมัติ":setState(data.SellerID)[0]=== 0?"ไม่อนุมัติ":"ยังไม่ตรวจสอบ"}
                       </td>
-                      <td class="p-3 text-sm font-light whitespace-nowrap text-center text-green-600">
-                        -
+                      <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
+                        {setComment(data.SellerID)!=""? setComment(data.SellerID):"-"}
+                      </td>
+                      <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
+                        <button onClick={()=>handleDelete(data.SellerID)}>X</button>
                       </td>
                      
       
@@ -243,7 +280,7 @@ function Checkrigis() {
             
           </table>
           
-          {modalOn && <DetailSeller setModalOn={setModalOn} data={detail} id={id} setApprove={setApprove} approve={approve} />}
+          {modalOn && <DetailSeller setModalOn={setModalOn} data={detail} id={id} setApprove={setApprove} approve={approve} setState={setState}/>}
          
         </div>
       </div>

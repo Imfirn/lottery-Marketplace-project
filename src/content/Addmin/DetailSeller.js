@@ -1,11 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-function DetailSeller({ setModalOn, data, setApprove,approve, id }) {
+function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
   const [text, setText] = useState(null);
+  const [disable, setDisable] = useState(false);
   // const[status,setStatus] = useState(
   //   () => {
   //     const saveStatus = localStorage.getItem("SellerStatus");
-  
+
   //     if (saveStatus) {
   //       return JSON.parse(saveStatus);
   //     } else {
@@ -19,27 +20,30 @@ function DetailSeller({ setModalOn, data, setApprove,approve, id }) {
 
   const handleOKClick = () => {
     // e.preventDefault();
+
     setModalOn(false);
-    setApprove([      
-    ...approve,{
-      approve: "yes",
-      coment: `${text}`,
-      sellerID: id,
-    }]);
+    setApprove([
+      ...approve,
+      {
+        approve: "yes",
+        comment: `${text}`,
+        sellerID: id,
+      },
+    ]);
   };
   const handleCancelClick = () => {
     // e.preventDefault();
+
     setModalOn(false);
     setApprove([
-       ...approve,{
-      approve: "no",
-      coment: `${text}`,
-      sellerID: id,
-    }]);
+      ...approve,
+      {
+        approve: "no",
+        comment: `${text}`,
+        sellerID: id,
+      },
+    ]);
   };
-  
-
-  
 
   return (
     <div class="    fixed inset-0 z-50   ">
@@ -53,7 +57,7 @@ function DetailSeller({ setModalOn, data, setApprove,approve, id }) {
             <button
               type="button"
               class="text-gray-400 bg-transparent  hover:text-[#E54E3D] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-              onClick={()=> setModalOn(false)}
+              onClick={() => setModalOn(false)}
             >
               <svg
                 class="w-5 h-5"
@@ -160,37 +164,43 @@ function DetailSeller({ setModalOn, data, setApprove,approve, id }) {
                   </div>
                 </div>
               </div>
-              {/* <!-- Modal footer --> */}
-              <div class=" p-6 space-x-2 rounded-b border-t border-[#E54E3D] ">
-              <div class="flex p-2">
-                <div class="font-semibold text-[#E54E3D]">
-                  <h5>หมายเหตุ</h5>
-                </div>
-                <div class=" pl-2">
-                  <input onChange={(event) => setText(event.target.value)} required/>
-                </div>
-              </div>
-
-                <button
-                  type="submit"
-                  class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                  onClick={() => handleOKClick()}
-                >
-                  ยืนยัน
-                </button>
-
-                <button
-                  type="submit"
-                  class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 "
-                  onClick={() => handleCancelClick()}
-                >
-                  ยกเลิก
-                </button>
-                
-              </div>
-             
             </>
           ))}
+          {/* <!-- Modal footer --> */}
+          {/* ${setState(data.SellerID)[0]=== 1?"text-green-500"  */}
+          <div class={` ${setState(id)[0] == "1"? "hidden":setState(id)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
+            <div class="flex p-2">
+              <div class="font-semibold text-[#E54E3D]">
+                <h5>หมายเหตุ</h5>
+              </div>
+              <div class=" pl-2">
+                <input
+                  onChange={(event) => setText(event.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <button
+              
+              type="submit"
+              class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+              onClick={() => handleOKClick()}
+            >
+              อนุมัติ
+            </button>
+
+            <button
+              
+              type="submit"
+              class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
+              onClick={() => {
+                handleCancelClick();
+              }}
+            >
+              ไม่อนุมัติ
+            </button>
+          </div>
         </div>
       </div>
     </div>
