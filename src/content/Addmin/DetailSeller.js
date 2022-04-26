@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 
 function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
   const [text, setText] = useState(null);
-  const [disable, setDisable] = useState(false);
-  // const[status,setStatus] = useState(
-  //   () => {
-  //     const saveStatus = localStorage.getItem("SellerStatus");
-
-  //     if (saveStatus) {
-  //       return JSON.parse(saveStatus);
-  //     } else {
-  //       return [];
-  //     }
-  //   }
-  // )
-  // useEffect(() => {
-  //   localStorage.setItem("SellerStatus", JSON.stringify(status));
-  // }, [status]);
-
+ 
+  
   const handleOKClick = () => {
     // e.preventDefault();
 
@@ -167,7 +153,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
             </>
           ))}
           {/* <!-- Modal footer --> */}
-          {/* ${setState(data.SellerID)[0]=== 1?"text-green-500"  */}
+          
           <div class={` ${setState(id)[0] == "1"? "hidden":setState(id)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
             <div class="flex p-2">
               <div class="font-semibold text-[#E54E3D]">

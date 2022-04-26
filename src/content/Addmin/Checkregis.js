@@ -1,10 +1,11 @@
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState } from "react";
 import DetailSeller from "./DetailSeller";
 
 
 function Checkrigis() {
-  const [modalOn, setModalOn] = useState(false);  
-  const [test, setTest] = useState(null);
+  const [modalOn, setModalOn] = useState(false);
+  
+
   const[approve,setApprove] = useState(
     () => {
     const saveStatus = localStorage.getItem("Sellertus");
@@ -36,9 +37,6 @@ function Checkrigis() {
   };
 
  
-
- 
-  
  
 
   const [seller, setSeller] = useState([
@@ -193,7 +191,7 @@ function Checkrigis() {
 //   console.log("t =" + t1);
   return (
     <>
-      <h1 class="mb-5  text-2xl font-semibold	 ">คำของลงทะเบียนผู้ขาย</h1>
+      <h1 class="mb-5  text-2xl font-semibold	 ">แจ้งเลขพัสดุ</h1>
        {/* {setComment(3)} */}
       <div class=" flex justify-center items-center bg-white  font-prompt">
         <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">
@@ -254,26 +252,7 @@ function Checkrigis() {
                 
                    
                 )}
-                {/* {approve.map((data)=>
-               
-               <tr class=" border-b  border-[#E54E3D]">
-               
-               
-               <td class="p-3 text-sm font-light whitespace-nowrap text-center text-green-600">
-                 {data.approve}
-               </td>
-               <td class="p-3 text-sm font-light whitespace-nowrap text-center text-green-600">
-                 {data.sellerID}
-               </td>
               
-
-               
-             </tr>
-         
-            
-         )}
-          */}
-        
             
             </tbody>
 

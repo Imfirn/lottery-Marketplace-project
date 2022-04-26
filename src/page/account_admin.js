@@ -1,13 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import Addproduct from "../content/Addproduct";
-import Checkorder_m from "../content/Checkorder_m";
 import Header from "../content/component/Header";
-import ProductStore from "../content/ProductStore";
 import Pic from "../Assets/5fb952383d4b9b0cc0fd7d2e_800x0xcover_3aaaqsST.jpg";
 import Checkrigis from "../content/Addmin/Checkregis";
-// import Checkrigister from "../content/Addmin/Checkrigister";
-
+import CheckPayment from "../content/Addmin/CheckPayment";
+import Tracking from "../content/Addmin/Tracking";
 
 function Account_admin() {
   const [toggleState, setToggleState] = useState(1);
@@ -65,20 +62,20 @@ function Account_admin() {
           <div class="p-7 ">
            
             <div class={toggleState === 1 ? "" : "hidden"}>
-              {/* <Checkrigister/>       */}
+              
               <Checkrigis/>
               
             </div>
 
             <div class={toggleState === 2 ? "flex-initial	" : "hidden"}>
             
-              <Addproduct/>       
+              <CheckPayment/>     
              
             </div>
 
             <div class={toggleState === 3 ? "" : "hidden"}>
              
-             <ProductStore/>
+             <Tracking/>
                          
               
             </div>
