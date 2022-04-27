@@ -96,36 +96,38 @@ function Profile() {
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>ที่อยู่</h5>
             </div>
-            <div class=''>
-                <h5>f</h5>
-            </div>
+            <div class="grid grid-flow-row ">
+                    <div class="grid grid-cols-2 gap-2 ">
+                      <p class="font-semibold">บ้านเลขที่</p>
+                      <p>  </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">ซอย</p>
+                      <p> </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">ถนน</p>
+                      <p> </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">แขวง/ตำบล</p>
+                      <p> </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">เขต/อำเภอ</p>
+                      <p> </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">จังหวัด</p>
+                      <p> </p>{" "}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <p class="font-semibold">รหัสไปรษณีย์</p>
+                      <p> </p>{" "}
+                    </div>
+                  </div>
         </div>
-        {/* seller detail */}
-        {/* <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
-                <h5>เลขบัญชีธนาคาร</h5>
-            </div>
-            <div className=''>
-                <h5>f</h5>
-            </div>
-        </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
-                <h5>ธนาคาร</h5>
-            </div>
-            <div className=''>
-                <h5>f</h5>
-            </div>
-        </div>
-        <div className='grid grid-cols-2 gap-7 mt-2'>
-            <div className='font-semibold text-[#E54E3D]'>
-                <h5>ชื่อบัญชี</h5>
-            </div>
-            <div className=''>
-                <h5>f</h5>
-            </div>
-        </div> */}
-        {/* <button onClick={()=>{getProfile()}}>TEXT</button> */}
+        
         
     </>
   )

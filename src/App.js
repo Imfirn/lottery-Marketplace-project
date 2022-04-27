@@ -32,9 +32,9 @@ function App() {
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Routes>
       <Route path="/" element={<Home/>}/>
-      {/* <Route path="/account"  element={<Account/>}/> */}
+      <Route path="/account"  element={<Account/>}/>
       {/* <Route path="/account"  element={<Account_merchant/>}/> */}
-      <Route path="/account"  element={<Account_admin/>}/>
+      {/* <Route path="/account"  element={<Account_admin/>}/> */}
       <Route path="/register"  element={<Register/>}/>
      
       
