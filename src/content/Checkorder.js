@@ -12,7 +12,7 @@ function Checkorder() {
 
   <thead class=" border-b border-t border-[#E54E3D]">
     <tr>
-      <th class="w-32 p-2 text-sm tracking-wider font-medium text-center">ชื่อร้านค้า</th>
+      <th class="w-32 p-2 text-sm tracking-wider font-medium text-center">เลขคำสั่งซื้อ</th>
       <th class=" p-2 text-sm tracking-wider font-medium text-center">เลขสลาก</th>
       <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">ประเภท</th>
       <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">เพิ่มเติม</th>

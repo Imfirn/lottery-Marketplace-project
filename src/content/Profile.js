@@ -1,47 +1,15 @@
 import React,{useState,useEffect} from 'react'
+;
 
-function Profile() {
-    // const TOKEN = {
-    //     token: ,
-    //   };
+function Profile(props) {
+  
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
-    const [numberName, setnumberName] = useState("");
     
-      function getProfile() {
-        var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxveW9uZyIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY1MDA5MTI1NSwiZXhwIjoxNjUwMDk0ODU1fQ.rXK_qQKSkpRtfQ12C_dpawRMHj2rX6k9iqLpbWTM-2w"
-        fetch("http://5215-2403-6200-88a2-303e-9516-d0fe-3377-c8d.ngrok.io/getCustomerAccount/"+token, {
-          method: "GET", // or 'PUT','GET'
-          headers: {
-            "Content-Type": "application/json",
-            // Authorization: fullToken,
-          },
-        //   body: JSON.stringify(TOKEN),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status === "200OK") {
-            //   window.location = "/login";
-            //   localStorage.removeItem("token");
-              // setUsername(data.decoded.username);
-              console.log("Success:", data);
-              setFirstName(data.customerAccount.Firstname)
-              console.log(firstName)
-            } else {
-              // localStorage.removeItem("token");
-              // window.location = "/login";
-              console.log("Failed:", data);
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
 
-      useEffect(()=>{
-            getProfile();      
-    },[])
-
+    // console.log(dataProfile)
+    // console.log(response);
   return (
       <>
     <div class='grid grid-cols-3 gap-9    '>
@@ -57,7 +25,7 @@ function Profile() {
                 <h5>ชื่อ</h5>
             </div>
             <div class=''>
-                <h5>{firstName}</h5>
+                <h5>{props.firstName}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -65,7 +33,7 @@ function Profile() {
                 <h5>นามสกุล</h5>
             </div>
             <div class=''>
-                <h5>แสงสว่าง</h5>
+                <h5>{props.lastName}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -73,7 +41,7 @@ function Profile() {
                 <h5>เบอร์โทรศัพท์</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.number}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -81,7 +49,7 @@ function Profile() {
                 <h5>วัน/เดือน/ปีเกิด</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.birthday}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -89,7 +57,7 @@ function Profile() {
                 <h5>Email</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.mail}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -99,31 +67,31 @@ function Profile() {
             <div class="grid grid-flow-row ">
                     <div class="grid grid-cols-2 gap-2 ">
                       <p class="font-semibold">บ้านเลขที่</p>
-                      <p>  </p>{" "}
+                      <p>{props.homeno}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">ซอย</p>
-                      <p> </p>{" "}
+                      <p>{props.soi}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">ถนน</p>
-                      <p> </p>{" "}
+                      <p>{props.road}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">แขวง/ตำบล</p>
-                      <p> </p>{" "}
+                      <p>{props.subdistrict}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">เขต/อำเภอ</p>
-                      <p> </p>{" "}
+                      <p>{props.district}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">จังหวัด</p>
-                      <p> </p>{" "}
+                      <p>{props.province}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2">
                       <p class="font-semibold">รหัสไปรษณีย์</p>
-                      <p> </p>{" "}
+                      <p>{props.zipcode}</p>{" "}
                     </div>
                   </div>
         </div>
