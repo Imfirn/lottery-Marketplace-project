@@ -62,7 +62,7 @@ const Payment = (card_props)=>{
                         <img style={{maxWidth:"70%",justifySelf:"center"}} src={Logo} />
                     </div>
                 </div>
-                <div className="" style={{display:"flex",justifyContent:"center", width:"50อไ"}}>
+                <div className="" style={{display:"flex",justifyContent:"center"}}>
                     <input className="custom-file-input" type="file" access="image/*" style={{justifyItems:"center"}} onChange={onImageChange}/>
                 </div>
                 <div className="" style={{display:"flex",justifyContent:"center", width:"100%"}}>
