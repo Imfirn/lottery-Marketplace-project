@@ -121,7 +121,7 @@ const Cart = (card_props)=>{
     }
 
     return (
-        <div className="font-prompt flex justify-center bg-[#FFE5A3]" style={{}}>
+        <div className="h-screen font-prompt flex justify-center bg-[#FFE5A3]" style={{}}>
             <div class="flex flex-col p-8 m-8 bg-white rounded-xl shadow-xl min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%]" style={{}}>
                 <h1 class="text-lg font-semibold mb-2" style={{color:"#E54E3D"}}>ตะกร้าของคุณ</h1>
                 <div className="justify-left" style={{marginTop:"1vw"}}>

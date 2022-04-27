@@ -15,7 +15,7 @@ function Editprofile(props) {
   const [soiE, setSoiE] = useState(props.soi);
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDQ0NzU3LCJleHAiOjE2NTEwNTU1NTd9.mJS7Hk7UCCpq2RIXv3-sdZPOdvLd8KiQp3pqyoSChmQ";
-  const [editprofile, setEditprofile] = useState();
+  // const [editprofile, setEditprofile] = useState();
 
   function putEdit() {
     axios
@@ -63,7 +63,7 @@ function Editprofile(props) {
         <div class="grid grid-cols-2 mb-5 ">
           <h1 class="mb-5  text-2xl font-semibold ">แก้ไขข้อมูลส่วนตัว</h1>
           <div class="grid justify-self-end ">
-            <div class="flex ">
+            <div class="flex">
               <button
                 style={{ cursor: "pointer" }}
                 onClick={() => 
@@ -149,7 +149,7 @@ function Editprofile(props) {
             <h5>ที่อยู่</h5>
           </div>
 
-          <div class="grid grid-flow-row  overflow-x-auto h-[150px]">
+          <div class="grid grid-flow-row  overflow-x-auto h-[150px] bg-slate-200 p-2 rounded-md">
             <div class="grid grid-cols-2 gap-2 mt-2  ">
               <p class="font-semibold">บ้านเลขที่</p>
               <input

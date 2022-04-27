@@ -98,7 +98,7 @@ function Account_merchant() {
               
             </div>
             <div class={toggleState === 2 ? "" : "hidden"}>
-            Checkorder
+            
                 <Checkorder_m/>        
               
             </div>

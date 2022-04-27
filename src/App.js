@@ -77,7 +77,10 @@ function App() {
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Routes>
         <Route path="/" element={<Home li_dataToshow={data_toShow} searchNumApp={sendSearchNumberToBase}/>}/>
-        <Route path="/account" element={<Account />} />
+        {/* <Route path="/account" element={<Account />} /> */}
+        <Route path="/account" element={<Account_merchant/>} />
+
+
         <Route path="/register" element={<Register />} />
         <Route
           path="/"
