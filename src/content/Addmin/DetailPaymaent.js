@@ -1,8 +1,7 @@
 import React,{useState} from 'react'
 
-function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money}) {
-    const [text, setText] = useState(null);
-   
+function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,idCustomer}) {
+    
     
     const handleOKClick = () => {
       // e.preventDefault();
@@ -11,9 +10,9 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
       setApprove([
         ...approve,
         {
+          orderID: id,
           approve: "yes",         
-          oderID: id,
-          customerID:50,
+          customerID:idCustomer,
           money:money,
         //   oderID:data.orderID
         },
@@ -27,9 +26,9 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
       setApprove([
         ...approve,
         {
+            orderID: id,
             approve: "No",         
-            oderID: id,
-            customerID:50,
+            customerID:idCustomer,
             money:money,
         },
       ]);
@@ -42,7 +41,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
             {/* Modal header */}
             <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
               <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-                รายละเอียด {id}
+                หลักฐานการชำระ {id}
               </h3>
               <button
                 type="button"
@@ -67,101 +66,35 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
             </div>
             {/* table */}
 
-            {money}
-  
-            {/* {data.map((p) => (
+            {/* {money} */}
+              
+            {data.map((p) => (
               <>
                 <div class="p-6 space-y-6  h-[308px] overflow-x-auto">
                   <div class="grid grid-cols-2 gap-3 ">
                     <div class="font-semibold text-[#E54E3D]">
-                      <h5>ชื่อ</h5>
+                      <h5>จำนวนเงิน</h5>
                     </div>
                     <div class="">
-                      <h5>{p.Firstname}</h5>
+                      <h5>{p.Money}</h5>
                     </div>
                   </div>
                   <div class="grid grid-cols-2 gap-3  mt-2">
                     <div class="font-semibold text-[#E54E3D]">
-                      <h5>นามสกุล</h5>
+                      <h5>ไฟล์แนบ</h5>
                     </div>
                     <div class="">
-                      <h5>{p.Lastname}</h5>
+                      <h5>{p.URLSlip}</h5>
                     </div>
                   </div>
-                  <div class="grid grid-cols-2 gap-3  mt-2">
-                    <div class="font-semibold text-[#E54E3D]">
-                      <h5>เบอร์โทรศัพท์</h5>
-                    </div>
-                    <div class="">
-                      <h5>{p.Tel}</h5>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3  mt-2">
-                    <div class="font-semibold text-[#E54E3D]">
-                      <h5>วัน/เดือน/ปีเกิด</h5>
-                    </div>
-                    <div class="">
-                      <h5>{p.Birthday}</h5>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3  mt-2">
-                    <div class="font-semibold text-[#E54E3D]">
-                      <h5>Email</h5>
-                    </div>
-                    <div class="">
-                      <h5>{p.Email}</h5>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3  mt-2">
-                    <div class="font-semibold text-[#E54E3D]">
-                      <h5>ที่อยู่</h5>
-                    </div>
-                    <div class="grid grid-flow-row ">
-                      <div class="grid grid-cols-2 gap-2 ">
-                        <p class="font-semibold">บ้านเลขที่</p>
-                        <p>{p.Address.HomeNo}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">ซอย</p>
-                        <p>{p.Address.Soi}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">ถนน</p>
-                        <p>{p.Address.Road}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">แขวง/ตำบล</p>
-                        <p>{p.Address.Subdistrict}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">เขต/อำเภอ</p>
-                        <p>{p.Address.District}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">จังหวัด</p>
-                        <p>{p.Address.Province}</p>{" "}
-                      </div>
-                      <div class="grid grid-cols-2 gap-2">
-                        <p class="font-semibold">รหัสไปรษณีย์</p>
-                        <p>{p.Address.ZipCode}</p>{" "}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-2 gap-3  mt-2">
-                    <div class="font-semibold text-[#E54E3D]">
-                      <h5>ชื่อร้าน</h5>
-                    </div>
-                    <div class="">
-                      <h5>{p.Storename}</h5>
-                    </div>
-                  </div>
+                 
                 </div>
               </>
-            ))} */}
+            ))}
             {/* <!-- Modal footer --> */}
             
-            {/* <div class={` ${setState(id)[0] == "1"? "hidden":setState(id)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette> */}
-            <div>              
+            <div class={` ${setState(id)[0] == "1"? "hidden":setState(id)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
+                   
   
               <button
                 
@@ -169,7 +102,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
                 class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 onClick={() => handleOKClick()}
               >
-                อนุมัติ
+                ยืนยันสำเร็จ
               </button>
   
               <button
@@ -180,7 +113,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
                   handleCancelClick();
                 }}
               >
-                ไม่อนุมัติ
+                ไม่สำเร็จ
               </button>
             </div>
           </div>
