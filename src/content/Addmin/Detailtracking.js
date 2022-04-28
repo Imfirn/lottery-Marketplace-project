@@ -24,7 +24,7 @@ function Detailtracking({ setModalOn, data, id}) {
           {/* Modal header */}
           <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
             <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-              รายละเอียด {id}
+              รายละเอียด 
             </h3>
             <button
               type="button"
@@ -51,24 +51,46 @@ function Detailtracking({ setModalOn, data, id}) {
 
           {data.map((p) => (
             <>
+              
               <div class="p-6 space-y-6  h-[308px] overflow-x-auto">
+                
+              <div class="grid grid-cols-2 gap-3 ">
+                  <div class="font-semibold text-[#E54E3D]">
+                    <h5>ข้อมูลสินค้า</h5>
+                  </div>
+                  <div class=" bg-slate-200 rounded-md p-2">
+                    {p.lotteryList.map((d)=>(
+                      <>
+                      <div class="flex">
+                      <h5 class="pr-4">เลขสลาก</h5>
+                      {d.Number_lottery}
+                      </div>
+                      <div class="flex">
+                      <h5 class="pr-4">ชุดที่ {d.Lot}</h5>
+                      <h5 class="pr-4">งวดที่ {d.Draw}</h5>
+                      </div>
+                      <div class="flex">
+                      <h5 class="pr-4">งวดวันที่ {d.DrawDate}</h5>                     
+                      </div>
+                      </>
+                    ))}
+                    
+                  </div>
+                </div>
+                
+                
+                
+                
                 <div class="grid grid-cols-2 gap-3 ">
                   <div class="font-semibold text-[#E54E3D]">
                     <h5>ชื่อ</h5>
                   </div>
                   <div class="">
-                    <h5>{p.Fullname}</h5>
+                    <h5>{p.FullName}</h5>
                   </div>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-3  mt-2">
-                  <div class="font-semibold text-[#E54E3D]">
-                    <h5>เบอร์โทรศัพท์</h5>
-                  </div>
-                  <div class="">
-                    <h5>{p.Tel}</h5>
-                  </div>
-                </div>
+                
             
                 <div class="grid grid-cols-2 gap-3  mt-2">
                   <div class="font-semibold text-[#E54E3D]">

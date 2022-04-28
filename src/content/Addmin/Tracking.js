@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Detailtracking from "./Detailtracking";
+import axios from "axios";
 
-function Tracking() {
+function Tracking({data}) {
   // const [isPopup, setPopup] = useState(false);
   const [show, setShow] = useState(null);
   const [modalOn, setModalOn] = useState(false);
@@ -19,12 +20,41 @@ function Tracking() {
     }
   });
 
+  function putTracking() {
+    axios
+      .put(
+        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateCustomerAccount/customer/ChangeAccountInfo/",
+        {
+          // data: {
+          token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          orderID: orderID,
+          customerID:customerID,
+          tracking: tracking,
+         
+          // },
+        }
+      )
+
+      .then(function (response) {
+        console.log("order",response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
+
+
+
   useEffect(() => {
     localStorage.setItem("Trackingtus", JSON.stringify(order));
   }, [order]);
 
   const handleFormSubmit = (e) => {
     if (tracking !== "") {
+      
       setOrder([
         ...order,
         {
@@ -138,10 +168,10 @@ function Tracking() {
             </thead>
 
             <tbody class="divide-y border-b border-t border-[#E54E3D]">
-              {orderData.map((data) => (
+              {data.map((data) => (
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="w-30 p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">{data.Fullname}</p>
+                    <p class="">{data.FullName}</p>
                   </td>
 
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
@@ -176,10 +206,11 @@ function Tracking() {
                         <button
                           class=" bg-[#E54E3D] text-white font-light p-2 text-center"
                           onClick={() => {
-                            
+                            putTracking();
                             handleFormSubmit();
                             setOrderID(data.orderID);
-                            setCustomerID(data.customerID);
+                            setCustomerID(data.CID);
+                            
                           }}
                         >
                           บันทึก

@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 
+
 function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,idCustomer}) {
     
     
@@ -84,7 +85,8 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
                       <h5>ไฟล์แนบ</h5>
                     </div>
                     <div class="">
-                      <h5>{p.URLSlip}</h5>
+                      {/* <h5>{p.URLSlip}</h5> */}
+                      <img src={`${p.URLSlip}`}/>
                     </div>
                   </div>
                  

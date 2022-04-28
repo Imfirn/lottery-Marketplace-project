@@ -149,6 +149,15 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
                     <h5>{p.Storename}</h5>
                   </div>
                 </div>
+                <div class="grid grid-cols-2 gap-3  mt-2">
+                  <div class="font-semibold text-[#E54E3D]">
+                    <h5>ใบอนุญาต</h5>
+                  </div>
+                  <div class="">
+                  {/* <h1>{p.URLImage}</h1> */}
+                    <img src={`${p.URLImage}`}/>
+                  </div>
+                </div>
               </div>
             </>
           ))}

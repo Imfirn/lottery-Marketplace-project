@@ -1,12 +1,46 @@
 import React from "react";
 
-function DetailProduct({ setModalOn }) {
+function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setState}) {
+  // const [lot, setText] = useState(null);
+  // const [text, setText] = useState(null);
+  // const [text, setText] = useState(null);
+  
+  const checkPipe=(a)=>{
+    const myArray = a.split("|");
+    return myArray
+
+  }
+
+
+  
+
   const handleOKClick = () => {
     setModalOn(false);
+    
+    setApprove([
+      ...approve,
+      { "orderID":Id,
+        "Number": num,
+        "Lot": lot,
+        "Draw": "20",
+        "approve": "Yes"
+      },
+    ]);
   };
   const handleCancelClick = () => {
     setModalOn(false);
+    setApprove([
+      ...approve,
+      { "orderID":Id,
+        "Number": num,
+        "Lot": lot,
+        "Draw": "20",
+        "approve": "No"
+      },
+    ]);
   };
+
+  
 
   return (
     <div class="    fixed inset-0 z-50   ">
@@ -15,12 +49,12 @@ function DetailProduct({ setModalOn }) {
           {/* Modal header */}
           <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
             <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-              รายละเอียด
+              รายละเอียด {lot}
             </h3>
             <button
               type="button"
               class="text-gray-400 bg-transparent  hover:text-[#E54E3D] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-              onClick={handleCancelClick}
+              onClick={()=>setModalOn(false)}
             >
               <svg
                 class="w-5 h-5"
@@ -55,127 +89,58 @@ function DetailProduct({ setModalOn }) {
                   <th class=" text-sm tracking-wider font-medium text-center">
                     จำนวน
                   </th>
-                  <th class="text-sm tracking-wider font-medium text-center">
-                    ยืนยัน
-                  </th>
+                 
                 </tr>
               </thead>
+              {data.map((p)=>(
 
               <tbody class="divide-y border-b border-t border-[#E54E3D]">
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    123456
+                    {p.Number}
                   </td>
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <span class="p-1.5 text-xs bg-[#D3FAFA] rounded-full">
-                      ฉลากเดี่ยว
+                    <span class={`p-1.5 text-xs ${checkPipe(lot).length>1 ?"bg-[#D4FAAF]":"bg-[#D3FAFA]"} rounded-full`}>
+                      {checkPipe(lot).length>1 ?"สลากชุด":"สลากเดียว"}
                     </span>
                   </td>
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">งวดที่ 12</p>
+                    <p class="">งวดที่ {p.Draw}</p>
                   </td>
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
                     <p class="">1</p>
                   </td>
 
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <input
-                      id="checkbox-table-1"
-                      type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
-                    />
-                  </td>
-                </tr>
-                <tr class=" border-b  border-[#E54E3D]">
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    123456
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <span class="p-1.5 text-xs bg-[#D3FAFA] rounded-full">
-                      ฉลากเดี่ยว
-                    </span>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">งวดที่ 12</p>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">1</p>
-                  </td>
-
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <input
-                      id="checkbox-table-1"
-                      type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
-                    />
-                  </td>
-                </tr>
-                <tr class=" border-b  border-[#E54E3D]">
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    123456
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <span class="p-1.5 text-xs bg-[#D3FAFA] rounded-full">
-                      ฉลากเดี่ยว
-                    </span>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">งวดที่ 12</p>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">1</p>
-                  </td>
-
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <input
-                      id="checkbox-table-1"
-                      type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
-                    />
-                  </td>
-                </tr>
-                <tr class=" border-b  border-[#E54E3D]">
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    123456
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <span class="p-1.5 text-xs bg-[#D3FAFA] rounded-full">
-                      ฉลากเดี่ยว
-                    </span>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">งวดที่ 12</p>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">1</p>
-                  </td>
-
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <input
-                      id="checkbox-table-1"
-                      type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 "
-                    />
-                  </td>
-                </tr>
+                 
+                </tr>                          
+                
               </tbody>
+              ))}
+
+
             </table>
           </div>
           {/* <!-- Modal footer --> */}
-          <div class="flex items-center p-6 space-x-2 rounded-b border-t border-[#E54E3D] ">
+          <div class={` ${setState(Id,num)[0] == "1"? "hidden":setState(Id,num)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
+           
             <button
-              type="button"
+              
+              type="submit"
               class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-              onClick={handleOKClick}
+              onClick={() => handleOKClick()}
             >
-              ยืนยัน
+              อนุมัติ
             </button>
+
             <button
-              type="button"
-              class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 "
-              onClick={handleCancelClick}
+              
+              type="submit"
+              class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
+              onClick={() => {
+                handleCancelClick();
+              }}
             >
-              ยกเลิก
+              ไม่อนุมัติ
             </button>
           </div>
         </div>

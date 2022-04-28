@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import DetailSeller from "./DetailSeller";
+import axios from "axios";
 
 
-function Checkrigis() {
+function Checkrigis({data}) {
   const [modalOn, setModalOn] = useState(false);
   
+
+
 
   const[approve,setApprove] = useState(
     () => {
@@ -16,6 +19,8 @@ function Checkrigis() {
       return [];
     }
   })
+
+
 
   useEffect(() => {
     localStorage.setItem("Sellertus", JSON.stringify(approve));
@@ -217,7 +222,7 @@ function Checkrigis() {
             </thead>
 
             <tbody class="divide-y border-b border-t border-[#E54E3D]">
-                {seller.map((data)=>
+                {data.map((data)=>
                
                       <tr class=" border-b  border-[#E54E3D]">
                       <td class="w-30 p-3 text-sm font-light whitespace-nowrap text-center">

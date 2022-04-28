@@ -2,7 +2,9 @@ import React,{useEffect, useState} from 'react'
 import DetailPaymaent from './DetailPaymaent';
 // import Editcheckpay from './Editcheckpay';
 
-function CheckPayment() {
+
+
+function CheckPayment({data}) {
   // const[approvePay,setApprove]
   const [modalOn, setModalOn] = useState(false);
   
@@ -118,7 +120,7 @@ const changeMoney=(d)=>{
             </thead>
 
             <tbody class="divide-y border-b border-t border-[#E54E3D]">
-                {paymentdata.map((data)=>
+                {data.map((data)=>
                
                       <tr class=" border-b  border-[#E54E3D]">
                       <td class="w-30 p-3 text-sm font-light whitespace-nowrap text-center">
