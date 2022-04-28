@@ -2,23 +2,22 @@ import React,{useState} from 'react'
 import axios from 'axios';
 
 
-function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,idCustomer}) {
+function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,customerID}) {
     
-  function putPayment(oid,cid,app,money) {
+  function putPayment(oid,app,money) {
     axios
       .put(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateOrderPayment",
+        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateOrderPayment/",
         {
-           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
-          orderID: oid,
-          customerID: cid,
+          token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          orderID: id,
+          customerID: customerID,
           approve: app,
           money: money,
-          // },
+        
         }
       )
-
       .then(function (response) {
         console.log(response);
         // console.log(data)
@@ -32,33 +31,33 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
     const handleOKClick = (e) => {
       // e.preventDefault();
       // e.preventDefault();
-      putPayment(id,idCustomer,"yes",money)
+      putPayment(id,"yes",money)
       setModalOn(false);
-      // setApprove([
-      //   ...approve,
-      //   {
-      //     orderID: id,
-      //     approve: "yes",         
-      //     customerID:idCustomer,
-      //     money:money,
-      //   //   oderID:data.orderID
-      //   },
-      // ]);
+      setApprove([
+        ...approve,
+        {
+          orderID: id,
+          approve: "yes",         
+          customerID:customerID,
+          money:money,
+        //   oderID:data.orderID
+        },
+      ]);
     };
 
     const handleCancelClick = (e) => {
       // e.preventDefault();
-      putPayment(id,idCustomer,"No",money)
+      putPayment(id,"No",money)
       setModalOn(false);
-      // setApprove([
-      //   ...approve,
-      //   {
-      //       orderID: id,
-      //       approve: "No",         
-      //       customerID:idCustomer,
-      //       money:money,
-      //   },
-      // ]);
+      setApprove([
+        ...approve,
+        {
+            orderID: id,
+            approve: "No",         
+            customerID:customerID,
+            money:money,
+        },
+      ]);
     };
   
     return (
@@ -68,7 +67,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
             {/* Modal header */}
             <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
               <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-                หลักฐานการชำระ {id}
+                หลักฐานการชำระ {customerID}
               </h3>
               <button
                 type="button"
@@ -111,7 +110,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
                       <h5>ไฟล์แนบ</h5>
                     </div>
                     <div class="">
-                      {/* <h5>{p.URLSlip}</h5> */}
+                      <h5>{p.URLSlip}</h5>
                       <img src={`${p.URLSlip}`}/>
                     </div>
                   </div>

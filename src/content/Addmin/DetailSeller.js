@@ -1,12 +1,33 @@
-import React, { useState} from "react";
-
-function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
+import React, { useState } from "react";
+import axios from "axios";
+function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
- 
   
+  function putSeller(e) {
+    axios
+      .put(
+        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateSellerIdentity/",
+        {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          approve: e,
+          sellerID: id,
+          
+        }
+      )
+
+      .then(function (response) {
+        console.log(response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   const handleOKClick = () => {
     // e.preventDefault();
-
+    putSeller("yes")
     setModalOn(false);
     setApprove([
       ...approve,
@@ -19,7 +40,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
   };
   const handleCancelClick = () => {
     // e.preventDefault();
-
+    putSeller("No")
     setModalOn(false);
     setApprove([
       ...approve,
@@ -154,16 +175,25 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
                     <h5>ใบอนุญาต</h5>
                   </div>
                   <div class="">
-                  {/* <h1>{p.URLImage}</h1> */}
-                    <img src={`${p.URLImage}`}/>
+                    {/* <h1>{p.URLImage}</h1> */}
+                    <img src={`${p.URLImage}`} />
                   </div>
                 </div>
               </div>
             </>
           ))}
           {/* <!-- Modal footer --> */}
-          
-          <div class={` ${setState(id)[0] == "1"? "hidden":setState(id)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
+
+          <div
+            class={` ${
+              setState(id)[0] == "1"
+                ? "hidden"
+                : setState(id)[0] == "0"
+                ? "hidden"
+                : "p-6 space-x-2 rounded-b border-t border-[#E54E3D]"
+            }`}
+            first-lette
+          >
             <div class="flex p-2">
               <div class="font-semibold text-[#E54E3D]">
                 <h5>หมายเหตุ</h5>
@@ -177,7 +207,6 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
             </div>
 
             <button
-              
               type="submit"
               class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               onClick={() => handleOKClick()}
@@ -186,7 +215,6 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id,setState }) {
             </button>
 
             <button
-              
               type="submit"
               class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
               onClick={() => {

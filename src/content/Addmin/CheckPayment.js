@@ -149,11 +149,11 @@ function CheckPayment({ data }) {
                       : "ยังไม่ตรวจสอบ"}
                   </td>
 
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
+                  {/* <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
                     <button onClick={() => handleDelete(data.orderID)}>
                       X
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

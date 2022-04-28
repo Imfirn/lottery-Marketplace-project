@@ -3,7 +3,7 @@ import Detailtracking from "./Detailtracking";
 import axios from "axios";
 
 function Tracking({ data }) {
-  // const [isPopup, setPopup] = useState(false);
+  
   const [show, setShow] = useState(null);
   const [modalOn, setModalOn] = useState(false);
   const [trackStatus, setTrackStatus] = useState("");
@@ -84,7 +84,7 @@ function Tracking({ data }) {
   const putTracking=()=> {
     axios   
       .put(
-        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateTracking",
+        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateTracking/",
         {
           token:
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
