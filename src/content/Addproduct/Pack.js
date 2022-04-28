@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Inputpack from "../component/Inputpack";
+import axios from "axios";
 
 function Pack() {
   const d = new Date();
@@ -133,8 +134,6 @@ function Pack() {
     },
   ];
 
-  
-
   useEffect(() => {
     localStorage.setItem("lotteryPacK", JSON.stringify(lottery));
   }, [lottery]);
@@ -154,10 +153,33 @@ function Pack() {
   console.log(draw);
 
   console.log(lot);
+  function putPayment() {
+    axios
+      .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/addPackLottery", {
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTEyMzY5NywiZXhwIjoxNjUxMTU5Njk3fQ.47Oqwjc1D9K8fjp3e5bTBVUj5N_xnykvUkAcqf7x97I",
+        lotteryList: [
+          {
+            Number: number.trim(),
+            Lot: setPipe(lot, a),
+            Amount: amount,
+            Draw: setPipe(draw, a),
+            DrawDate: drawDate,
+          },
+        ],
+      })
+      .then(function (response) {
+        console.log(response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   function handleFormSubmit(e) {
     e.preventDefault();
-
+    putPayment()
     if (number !== "" && drawDate !== "") {
       setValid(true);
       setLottery([
@@ -166,9 +188,9 @@ function Pack() {
           id: lottery.length + 1,
           number: number.trim(),
           lot: setPipe(lot, a),
-          draw:setPipe(draw, a),
+          draw: setPipe(draw, a),
           drawDate: drawDate,
-          amount:amount
+          amount: amount,
         },
       ]);
     } else {
@@ -203,8 +225,7 @@ function Pack() {
   }
 
   console.log(lottery);
-  
-  
+
   return (
     <div>
       {/* <h1>{drawDate}</h1> */}
@@ -258,7 +279,7 @@ function Pack() {
               </div>
 
               <div class="grid grid-cols-2 gap-4 p-2  xl:my-0  sm:my-2 ">
-                <div >
+                <div>
                   {inpack_Set.slice(0, a).map((input) => (
                     <Inputpack
                       key={input.name}
@@ -270,12 +291,12 @@ function Pack() {
                 </div>
                 <div>
                   {inpack_Draw.slice(0, a).map((input) => (
-                     <Inputpack
-                     key={input.name}
-                     {...input}
-                     value={draw[input.name]}
-                     onChange={onChangeD}
-                   />
+                    <Inputpack
+                      key={input.name}
+                      {...input}
+                      value={draw[input.name]}
+                      onChange={onChangeD}
+                    />
                   ))}
                 </div>
 
@@ -325,7 +346,11 @@ function Pack() {
           <span class="text-xs text-red-500">*กรุณากรอกข้อมูลให้ครบถ้วน</span>
         )}
 
-        <div class={`overflow-x-auto ${a==5 ? "xl:h-[85px] ":"xl:h-[195px] "} sm:h-[170px] `}>
+        <div
+          class={`overflow-x-auto ${
+            a == 5 ? "xl:h-[85px] " : "xl:h-[195px] "
+          } sm:h-[170px] `}
+        >
           {lottery.map((lotto) => (
             <div
               class="bg-white flex justify-center  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"
@@ -349,29 +374,23 @@ function Pack() {
                     </div>
                   </div>
 
-                
-                {  [...Array(Number(lotto.amount))].map((_, i) =>
-                <div class="flex justify-between space-x-2 xl:my-0  sm:my-2">
-                    
-                    
-                    <div class="flex justify-between my-2">
-                      <h5 class="pl-2 p-2">ชุดที่</h5>
-                      <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                        {lotto.lot.split("|")[0]}
-                      </h5>
+                  {[...Array(Number(lotto.amount))].map((_, i) => (
+                    <div class="flex justify-between space-x-2 xl:my-0  sm:my-2">
+                      <div class="flex justify-between my-2">
+                        <h5 class="pl-2 p-2">ชุดที่</h5>
+                        <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
+                          {lotto.lot.split("|")[0]}
+                        </h5>
+                      </div>
+
+                      <div class="flex  justify-between my-2">
+                        <h5 class="pl-2 p-2">งวดที่</h5>
+                        <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
+                          {lotto.draw.split("|")[0]}
+                        </h5>
+                      </div>
                     </div>
-
-                    <div class="flex  justify-between my-2">
-                      <h5 class="pl-2 p-2">งวดที่</h5>
-                      <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                        {lotto.draw.split("|")[0]}
-                      </h5>
-                    </div>
-
-                  </div>)
-}
-
-                  
+                  ))}
                 </div>
 
                 <button

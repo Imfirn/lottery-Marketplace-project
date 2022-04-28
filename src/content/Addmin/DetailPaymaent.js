@@ -67,7 +67,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
             {/* Modal header */}
             <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
               <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-                หลักฐานการชำระ {customerID}
+                หลักฐานการชำระ {customerID} {id}
               </h3>
               <button
                 type="button"

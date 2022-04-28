@@ -163,7 +163,7 @@ const setState= (a,d) => {
                 </td>
 
                 <td class={`p-3 text-sm font-light whitespace-nowrap text-center ${setState(p.orderID,p.Number)[0]=== 1 ?"text-green-600":"text-gray-500"}`}>
-                <button onClick={()=>handleDelete(p.Number)}>X</button>
+                {/* <button onClick={()=>handleDelete(p.Number)}>X</button> */}
                 {setState(p.orderID,p.Number)[0]=== 1 ?"ตรวจสอบแล้ว":"ยังไม่ตรวจสอบ"}
                 </td>
               </tr>

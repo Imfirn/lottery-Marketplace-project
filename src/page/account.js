@@ -79,10 +79,10 @@ function Account() {
   return (
     <>
     
-      <div class="h-screen flex justify-center  bg-[#FFE5A3] font-prompt">
+      <div class=" flex justify-center  bg-[#FFE5A3] font-prompt">
         <div
-          class="flex flex-col p-8 m-8 bg-white  xl:w-[820px] 
-     md:w-[700px] min-w-[650px] h-[800px]    shadow-xl "
+          class="flex flex-col p-8 m-8 bg-white  w-5/12
+     h-5/12   shadow-xl "
         >
          
           <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>

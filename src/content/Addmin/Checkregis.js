@@ -40,7 +40,7 @@ function Checkrigis({data}) {
     setModalOn(true);
    
   };
-
+  
   const setState= (a) => {
    let tus =[]
             for(let i=0;i<approve.length;i++){
@@ -124,9 +124,9 @@ function Checkrigis({data}) {
                       <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
                         {setComment(data.SellerID)!=""? setComment(data.SellerID):"-"}
                       </td>
-                      <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
+                      {/* <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
                         <button onClick={()=>handleDelete(data.SellerID)}>X</button>
-                      </td>
+                      </td> */}
                      
       
                       

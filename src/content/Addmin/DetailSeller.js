@@ -4,19 +4,14 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
   
   function putSeller(e) {
-    axios
-      .put(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateSellerIdentity/",
+    axios.put("http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateSellerIdentity",
         {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTI4MTIyLCJleHAiOjE2NTExNjQxMjJ9.ulslsq63kACm7Ke3BMnG9q4YWcta-brSkl_7uCdDcdw",
           approve: e,
-          sellerID: id,
-          
+          sellerID: id
         }
-      )
-
-      .then(function (response) {
+      ).then(function (response) {
         console.log(response);
         // console.log(data)
       })
