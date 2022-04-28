@@ -67,9 +67,6 @@ function Account() {
       });
   }
 
-  
-
-
  
 
   useEffect(() => {

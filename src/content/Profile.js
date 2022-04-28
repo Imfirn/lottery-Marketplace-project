@@ -13,13 +13,14 @@ function Profile(props) {
   return (
       <>
     <div class='grid grid-cols-3 gap-9    '>
-        <h1 class='mb-5  xl:text-2xl font-semibold	md:text-xl '>ข้อมูลส่วนตัว</h1>
+        <h1 class='mb-5  xl:text-2xl font-semibold	md:text-md '>ข้อมูลส่วนตัว</h1>
         <div class='col-span-2  text-right m-2'>
         
         
         </div>
         
     </div>
+    
         <div class='grid grid-cols-2 gap-7'>
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>ชื่อ</h5>
@@ -60,11 +61,11 @@ function Profile(props) {
                 <h5>{props.mail}</h5>
             </div>
         </div>
-        <div class='mt-2'>
+        <div class='mt-2 '>
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>ที่อยู่</h5>
             </div>
-            <div class="grid grid-flow-row ">
+            <div class="grid grid-flow-row bg-slate-200 p-2 rounded-md mt-2 ">
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">บ้านเลขที่</p>
                       <p>{props.homeno}</p>{" "}

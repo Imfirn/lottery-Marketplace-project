@@ -86,7 +86,7 @@ function Editprofile(props) {
           </div>
         </div>
 
-       <div class="grid grid-cols-2 gap-7">
+       <div class="grid grid-cols-2 gap-7 ">
           <div class="font-semibold text-[#E54E3D]">
             <h5>ชื่อ</h5>
           </div>
@@ -102,7 +102,7 @@ function Editprofile(props) {
             <h5>นามสกุล</h5>
           </div>
           <input
-            class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+            class="shadow appearance-none border rounded py-2 px-2 text-grey-darker"
             value={lastNameE}
             onChange={(event) => setlastNameE(event.target.value)}
             required="required"
@@ -114,7 +114,7 @@ function Editprofile(props) {
           </div>
           <div class="">
             <input
-              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker "
+              class="shadow appearance-none border rounded py-2 px-2 text-grey-darker "
               value={numberE}
               pattern="[0-9]{10}"
               onChange={(event) => setnumberE(event.target.value)}
@@ -135,7 +135,7 @@ function Editprofile(props) {
           </div>
           <div class="">
             <input
-              class="shadow appearance-none border rounded py-2 px-3 text-grey-darker"
+              class="shadow appearance-none border rounded py-2 px-2 text-grey-darker"
               value={mailE}
               type="email"
               onChange={(event) => setmailE(event.target.value)}

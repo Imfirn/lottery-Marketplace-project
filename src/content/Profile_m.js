@@ -43,7 +43,7 @@ function Profile() {
     },[])
 
   return (
-      <>
+      <div>
     <div class='grid grid-cols-3 gap-9    '>
         <h1 class='mb-5  xl:text-2xl font-semibold	md:text-xl '>ข้อมูลส่วนตัว</h1>
         <div class='col-span-2  text-right m-2'>
@@ -52,6 +52,7 @@ function Profile() {
         </div>
         
     </div>
+    <div class=' overflow-y-auto h-[400px] p-3'>
         <div class='grid grid-cols-2 gap-7'>
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>ชื่อ</h5>
@@ -92,13 +93,40 @@ function Profile() {
                 <h5>f</h5>
             </div>
         </div>
-        <div class='grid grid-cols-2 gap-7 mt-2'>
+        <div class='mt-2 '>
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>ที่อยู่</h5>
             </div>
-            <div class=''>
-                <h5>f</h5>
-            </div>
+            <div class="grid grid-flow-row bg-slate-200 p-2 rounded-md mt-2 ">
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">บ้านเลขที่</p>
+                      {/* <p>{props.homeno}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">ซอย</p>
+                      {/* <p>{props.soi}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">ถนน</p>
+                      {/* <p>{props.road}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">แขวง/ตำบล</p>
+                      {/* <p>{props.subdistrict}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">เขต/อำเภอ</p>
+                      {/* <p>{props.district}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">จังหวัด</p>
+                      {/* <p>{props.province}</p>{" "} */}
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                      <p class="font-semibold">รหัสไปรษณีย์</p>
+                      {/* <p>{props.zipcode}</p>{" "} */}
+                    </div>
+                  </div>
         </div>
         {/* seller detail */}
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -126,8 +154,8 @@ function Profile() {
             </div>
         </div>
         {/* <button onClick={()=>{getProfile()}}>TEXT</button> */}
-        
-    </>
+        </div>
+    </div>
   )
 }
 
