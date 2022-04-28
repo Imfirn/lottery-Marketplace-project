@@ -13,8 +13,8 @@ function Editprofile(props) {
   const [zipcodeE, setZipcodeE] = useState(props.zipcode);
   const [provinceE, setProvinceE] = useState(props.province);
   const [soiE, setSoiE] = useState(props.soi);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDQ0NzU3LCJleHAiOjE2NTEwNTU1NTd9.mJS7Hk7UCCpq2RIXv3-sdZPOdvLd8KiQp3pqyoSChmQ";
+  // const token =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDQ0NzU3LCJleHAiOjE2NTEwNTU1NTd9.mJS7Hk7UCCpq2RIXv3-sdZPOdvLd8KiQp3pqyoSChmQ";
   // const [editprofile, setEditprofile] = useState();
 
   function putEdit() {

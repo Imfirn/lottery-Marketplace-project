@@ -1,38 +1,64 @@
 import React,{useState} from 'react'
+import axios from 'axios';
 
 
 function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,money,idCustomer}) {
     
-    
-    const handleOKClick = () => {
-      // e.preventDefault();
-  
-      setModalOn(false);
-      setApprove([
-        ...approve,
+  function putPayment(oid,cid,app,money) {
+    axios
+      .put(
+        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateOrderPayment",
         {
-          orderID: id,
-          approve: "yes",         
-          customerID:idCustomer,
-          money:money,
-        //   oderID:data.orderID
-        },
-      ]);
+           token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          orderID: oid,
+          customerID: cid,
+          approve: app,
+          money: money,
+          // },
+        }
+      )
+
+      .then(function (response) {
+        console.log(response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+    
+    const handleOKClick = (e) => {
+      // e.preventDefault();
+      // e.preventDefault();
+      putPayment(id,idCustomer,"yes",money)
+      setModalOn(false);
+      // setApprove([
+      //   ...approve,
+      //   {
+      //     orderID: id,
+      //     approve: "yes",         
+      //     customerID:idCustomer,
+      //     money:money,
+      //   //   oderID:data.orderID
+      //   },
+      // ]);
     };
 
-    const handleCancelClick = () => {
+    const handleCancelClick = (e) => {
       // e.preventDefault();
-  
+      putPayment(id,idCustomer,"No",money)
       setModalOn(false);
-      setApprove([
-        ...approve,
-        {
-            orderID: id,
-            approve: "No",         
-            customerID:idCustomer,
-            money:money,
-        },
-      ]);
+      // setApprove([
+      //   ...approve,
+      //   {
+      //       orderID: id,
+      //       approve: "No",         
+      //       customerID:idCustomer,
+      //       money:money,
+      //   },
+      // ]);
     };
   
     return (

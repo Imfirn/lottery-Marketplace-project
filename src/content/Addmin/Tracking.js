@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Detailtracking from "./Detailtracking";
 import axios from "axios";
 
-function Tracking({data}) {
+function Tracking({ data }) {
   // const [isPopup, setPopup] = useState(false);
   const [show, setShow] = useState(null);
   const [modalOn, setModalOn] = useState(false);
@@ -19,32 +19,6 @@ function Tracking({data}) {
       return [];
     }
   });
-
-  function putTracking() {
-    axios
-      .put(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateCustomerAccount/customer/ChangeAccountInfo/",
-        {
-          // data: {
-          token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
-          orderID: orderID,
-          customerID:customerID,
-          tracking: tracking,
-         
-          // },
-        }
-      )
-
-      .then(function (response) {
-        console.log("order",response);
-        // console.log(data)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-
 
 
 
@@ -65,50 +39,11 @@ function Tracking({data}) {
       ]);
       setShow(null);
     }
-
+   
     setTracking("");
   };
 
-  const [orderData, setOrderdata] = useState([
-    {
-      orderID: 88,
-      customerID: 1,
-      Fullname: "มหาสมุทร สุทสาคร",
-      Tel: "0625555522",
-      Address: {
-        HomeNo: "20/1",
-        Soi: "พัฒนาการ58",
-        Road: "พัฒนาการ",
-        Subdistrict: "สวนหลวง",
-        District: "สวนหลวง",
-        Province: "กรุงเทพมหานคร",
-        ZipCode: "10250",
-      },
-    },
-    {
-      orderID: 89,
-      customerID: 1,
-      Fullname: "สุนทรภู่ เป่าขลุ่ย",
-      Tel: "0625555522",
-      Address: {
-        HomeNo: "20/1",
-        Soi: "พัฒนาการ58",
-        Road: "พัฒนาการ",
-        Subdistrict: "สวนหลวง",
-        District: "สวนหลวง",
-        Province: "กรุงเทพมหานคร",
-        ZipCode: "10250",
-      },
-    },
-  ]);
-
-  function handleDelete(id) {
-    const removeItem = order.filter((lotto) => {
-      return lotto.id === id;
-    });
-
-    setOrder(removeItem);
-  }
+ 
   const setState = (a) => {
     let tus = [];
     for (let i = 0; i < order.length; i++) {
@@ -129,15 +64,44 @@ function Tracking({data}) {
   };
   const clickDetail = () => {
     setModalOn(true);
-   
   };
-  const [detail,setDetail] = useState([]);
-   
-  const changeContent=(d)=>{
-        setDetail([d])
+  const [detail, setDetail] = useState([]);
+
+  const changeContent = (d) => {
+    setDetail([d]);
+  };
+
+  function handleDelete(id) {
+    const removeItem = order.filter((a) => {
+      return a.orderID === id;
+    });
+
+    setOrder(removeItem);
   }
 
   // console.log(isPopup)
+
+  const putTracking=()=> {
+    axios   
+      .put(
+        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateTracking",
+        {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+          orderID: orderID,
+          customerID: customerID,
+          tracking: tracking,
+        }
+      )
+
+      .then(function (response) {
+        console.log( response);
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -177,19 +141,20 @@ function Tracking({data}) {
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">
                     <button
                       class="font-bold text-[#E54E3D] hover:underline"
-                      onClick={()=>{changeContent(data);clickDetail(); }}
+                      onClick={() => {
+                        changeContent(data);
+                        clickDetail();
+                      }}
                     >
                       ดูรายละเอียด
                     </button>
                   </td>
 
-                
-
                   {/* <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
                <button onClick={()=>handleDelete(0)}>X</button>
              </td> */}
-                
-                  {show == data.orderID ? (
+
+                  {show == data.OID ? (
                     <>
                       <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
                         <input
@@ -206,11 +171,10 @@ function Tracking({data}) {
                         <button
                           class=" bg-[#E54E3D] text-white font-light p-2 text-center"
                           onClick={() => {
-                            putTracking();
                             handleFormSubmit();
-                            setOrderID(data.orderID);
+                            setOrderID(data.OID);
                             setCustomerID(data.CID);
-                            
+                            putTracking();
                           }}
                         >
                           บันทึก
@@ -221,27 +185,35 @@ function Tracking({data}) {
                     <>
                       {/* {setCode(data.orderID)} */}
                       <td class="p-3 text-sm font-light whitespace-nowrap text-center ">
-                        {setState(data.orderID)[0] === 1
-                          ? setCode(data.orderID)
+                        {setState(data.OID)[0] === 1
+                          ? setCode(data.OID)
                           : "ยังไม่ตรวจสอบ"}
                       </td>
-                      <td class={`p-3 text-sm font-light whitespace-nowrap text-center ${setState(data.orderID)[0]=== 1?"text-green-500":"text-gray-500"}`}>
-                        {setState(data.orderID)[0] === 1
+                      <td
+                        class={`p-3 text-sm font-light whitespace-nowrap text-center ${
+                          setState(data.OID)[0] === 1
+                            ? "text-green-500"
+                            : "text-gray-500"
+                        }`}
+                      >
+                        {setState(data.OID)[0] === 1
                           ? "สำเร็จ"
                           : "ยังไม่ตรวจสอบ"}
                       </td>
-                      <td class={`${setState(data.orderID)[0] === 1
-                          ? "hidden"
-                          : "p-3 text-sm font-light whitespace-nowrap text-center"}`}>
+                      <td
+                        class={`${
+                          setState(data.OID)[0] === 1
+                            ? "hidden"
+                            : "p-3 text-sm font-light whitespace-nowrap text-center"
+                        }`}
+                      >
                         <button
                           class=" bg-[#E54E3D] text-white font-light p-2 text-center"
                           onClick={() => {
-                           
-                            setShow(data.orderID);
+                            setShow(data.OID);
                           }}
                         >
-                          {" "}
-                          เพิ่ม{" "}
+                          เพิ่ม
                         </button>
                       </td>
                     </>
@@ -252,10 +224,8 @@ function Tracking({data}) {
           </table>
 
           {modalOn && <Detailtracking data={detail} setModalOn={setModalOn} />}
-                            
         </div>
       </div>
-     
     </>
   );
 }
