@@ -17,7 +17,7 @@ function Account_admin() {
   const changeTofalse = () => {
     setEditMode(false);
   };
-  const token =
+  const admin_token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTI4MTIyLCJleHAiOjE2NTExNjQxMjJ9.ulslsq63kACm7Ke3BMnG9q4YWcta-brSkl_7uCdDcdw";
 
   // console.log(editMode);
@@ -26,7 +26,7 @@ function Account_admin() {
     axios
       .get(
         "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getOrderPayment/" +
-          token
+          admin_token
       )
       .then(function (response) {
         // handle success
@@ -49,7 +49,7 @@ function Account_admin() {
     axios
       .get(
         "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getSellerIdentity/" +
-          token
+          admin_token
       )
       .then(function (response) {
         // handle success
@@ -70,7 +70,7 @@ function Account_admin() {
 
   function getTrackinginfo() {
     axios
-      .get("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getCommon/" + token)
+      .get("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/getCommon/" + admin_token)
       .then(function (response) {
         // handle success
         if (response.data.status == "200OK") {

@@ -5,7 +5,7 @@ import DetailPaymaent from "./DetailPaymaent";
 function CheckPayment({ data }) {
   // const[approvePay,setApprove]
   const [modalOn, setModalOn] = useState(false);
-
+  
   const [approve, setApprove] = useState(() => {
     const saveStatus = localStorage.getItem("Paymenttus");
 

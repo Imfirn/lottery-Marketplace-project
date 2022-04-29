@@ -1,7 +1,8 @@
 import React, { useEffect, useState,useRef } from 'react'
 import AcceptDel from './component/AcceptDel';
+import axios from 'axios';
 
-function ProductStore() {
+function ProductStore({token}) {
     const [dataProduct,setDataProduct] = useState([]);
     const[dialog,setDialog]=useState({
         msg:"",
@@ -9,7 +10,7 @@ function ProductStore() {
     });
    
     var randomArray = [
-        'สลากเดี่ยว','สลากชุด'
+        'N','Y'
      ];
 
     const numProduct =useRef();
@@ -18,18 +19,47 @@ function ProductStore() {
         return list[Math.floor((Math.random()*list.length))];
       }
 
-    useEffect(()=>{
-            const data =[];
-            for(let index=0;index<7;index++){
-                data.push({
-                    id:`${index}`,
-                    num:`11111${index}`,
-                    type:`${get_random(randomArray)}`,
-                    other:{d:`${index}`,l:`ชุด${index}`},
-                })
+      function getlottery_m() {
+        axios
+          .get(
+            "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/getLotteryForSeller/" +token
+          )
+    
+          .then(function (response) {
 
-            }
-            setDataProduct(data);
+            setDataProduct(response.data.lottery)
+            // console.log(response.data.customerAccount.Address.Road);
+            // setFirstName(response.data.customerAccount.Firstname);
+            // setlastName(response.data.customerAccount.Lastname);
+            // setnumber(response.data.customerAccount.Tel);
+            // setBirthday(response.data.customerAccount.Birthday);
+            // setmail(response.data.customerAccount.Email);
+            // setHomeno(response.data.customerAccount.Address.HomeNo);
+            // setSoi(response.data.customerAccount.Address.Soi);
+            // setRoad(response.data.customerAccount.Address.Road);
+            // setsubDistrict(response.data.customerAccount.Address.Subdistrict);
+            // setDistrict(response.data.customerAccount.Address.District);
+            // setProvince(response.data.customerAccount.Address.Province);
+            // setZipcode(response.data.customerAccount.Address.ZipCode);
+            // setStorename(response.data.customerAccount.Storename);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
+    useEffect(()=>{
+            // const data =[];
+            // for(let index=0;index<7;index++){
+            //     data.push({
+            //         id:`${index}`,
+            //         num:`11111${index}`,
+            //         type:`${get_random(randomArray)}`,
+            //         other:{d:`${index}`,l:`ชุด${index}`},
+            //     })
+
+            // }
+            // setDataProduct(data);
 
     },[])
 
@@ -83,7 +113,7 @@ function ProductStore() {
        <th class=" p-2 text-sm tracking-wider font-medium text-center">เลขสลาก</th>
        <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">ประเภท</th>
        <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">เพิ่มเติม</th>
-       <th class="w-30  p-2 text-sm tracking-wider font-medium text-center">สถานะ</th>
+       <th class="w-30  p-2 text-sm tracking-wider font-medium text-center"></th>
      
      </tr>
    </thead>
@@ -93,7 +123,7 @@ function ProductStore() {
        <tr class=' border-b  border-[#E54E3D]'>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center'>{data.num} </td>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center' >
-           <span class={`p-1.5 text-xs ${data.type =="สลากชุด" ?"bg-[#D4FAAF] ":"bg-[#D3FAFA]"} rounded-full`}>{data.type}</span>
+           <span class={`p-1.5 text-xs ${data.type =="Y" ?"bg-[#D4FAAF] ":"bg-[#D3FAFA]"} rounded-full`}>{data.type =="Y" ?"สลากชุด":"สลากเดี่ยว"}</span>
            </td>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center'>
            <p>งวดที่ : {data.other.d}</p>

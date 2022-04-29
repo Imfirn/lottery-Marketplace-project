@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import validationadd from "./Validationadd";
 import axios from "axios";
 
-function Single() {
+function Single({tab}) {
   const d = new Date();
   const month = [
     "มกราคม",
@@ -48,12 +48,13 @@ function Single() {
   useEffect(() => {
     localStorage.setItem("lottery", JSON.stringify(lottery));
   }, [lottery]);
+  
 
   function handleInput(e) {
     setNumber(e.target.value);
   }
 
-  function putPayment() {
+  function putSinglelottory() {
     axios
       .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/addSingleLottery", {
         token:
@@ -78,7 +79,7 @@ function Single() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    putPayment() 
+    putSinglelottory() ;
     if (number !== "" && draw !== "" && pack !== "" && drawDate !== "") {
       setValid(true);
       setLottery([
@@ -114,6 +115,7 @@ function Single() {
     <div>
       {/* <h1>{drawDate}</h1> */}
       <div class="grid justify-items-center ">
+       
         <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
           <form onSubmit={handleFormSubmit}>
             <div class="flex justify-between space-x-2 text-xs xl:flex-row  sm:flex-col ">

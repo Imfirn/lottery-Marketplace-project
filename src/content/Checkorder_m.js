@@ -155,7 +155,7 @@ const setState= (a,d) => {
                 <td class="p-3 text-sm font-light whitespace-nowrap text-center">
                   <a
                     href="#"
-                    class="font-bold text-blue-500 hover:underline"
+                    class="font-bold text-[#E54E3D] hover:underline"
                     onClick={()=>{clickDetail();changeContent(p);changeLot(p.Lot);changeOrder(p.orderID);changeNum(p.Number)}}
                   >
                     ดูรายละเอียด

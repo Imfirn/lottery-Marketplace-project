@@ -13,18 +13,16 @@ function Editprofile(props) {
   const [zipcodeE, setZipcodeE] = useState(props.zipcode);
   const [provinceE, setProvinceE] = useState(props.province);
   const [soiE, setSoiE] = useState(props.soi);
-  // const token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDQ0NzU3LCJleHAiOjE2NTEwNTU1NTd9.mJS7Hk7UCCpq2RIXv3-sdZPOdvLd8KiQp3pqyoSChmQ";
-  // const [editprofile, setEditprofile] = useState();
+ 
 
   function putEdit() {
     axios
       .put(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateCustomerAccount/customer/ChangeAccountInfo/",
+        "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/updateCustomerAccount/customer/ChangeAccountInfo/",
         {
           // data: {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDU3MTUyLCJleHAiOjE2NTEwNjc5NTJ9.yh8l-YbdGp2gThPSkVBtzhQpKgCZIBVyVkgNdq0YX0A",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
           Firstname: firstNameE,
           Lastname: lastNameE,
           Email: mailE,

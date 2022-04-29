@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 
-function Profile() {
+function Profile(props) {
     // const TOKEN = {
     //     token: ,
     //   };
@@ -58,7 +58,7 @@ function Profile() {
                 <h5>ชื่อ</h5>
             </div>
             <div class=''>
-                <h5>{firstName}</h5>
+                <h5>{props.firstName}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -66,7 +66,7 @@ function Profile() {
                 <h5>นามสกุล</h5>
             </div>
             <div class=''>
-                <h5>แสงสว่าง</h5>
+                <h5>{props.lastName}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -74,7 +74,7 @@ function Profile() {
                 <h5>เบอร์โทรศัพท์</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.number}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -82,7 +82,7 @@ function Profile() {
                 <h5>วัน/เดือน/ปีเกิด</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.birthday}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -90,7 +90,7 @@ function Profile() {
                 <h5>Email</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.mail}</h5>
             </div>
         </div>
         <div class='mt-2 '>
@@ -100,41 +100,43 @@ function Profile() {
             <div class="grid grid-flow-row bg-slate-200 p-2 rounded-md mt-2 ">
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">บ้านเลขที่</p>
-                      {/* <p>{props.homeno}</p>{" "} */}
+                      <p>{props.homeno}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">ซอย</p>
-                      {/* <p>{props.soi}</p>{" "} */}
+                      <p>{props.soi}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">ถนน</p>
-                      {/* <p>{props.road}</p>{" "} */}
+                      <p>{props.road}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">แขวง/ตำบล</p>
-                      {/* <p>{props.subdistrict}</p>{" "} */}
+                      <p>{props.subdistrict}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">เขต/อำเภอ</p>
-                      {/* <p>{props.district}</p>{" "} */}
+                      <p>{props.district}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">จังหวัด</p>
-                      {/* <p>{props.province}</p>{" "} */}
+                      <p>{props.province}</p>{" "}
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-2">
                       <p class="font-semibold">รหัสไปรษณีย์</p>
-                      {/* <p>{props.zipcode}</p>{" "} */}
+                      <p>{props.zipcode}</p>{" "}
                     </div>
                   </div>
         </div>
         {/* seller detail */}
+        {/* {bank.map((bank)=>( */}
+          <>
         <div class='grid grid-cols-2 gap-7 mt-2'>
             <div class='font-semibold text-[#E54E3D]'>
                 <h5>เลขบัญชีธนาคาร</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.bank.Bank_Account_Number}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -142,7 +144,7 @@ function Profile() {
                 <h5>ธนาคาร</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.bank.Bank_Account}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
@@ -150,10 +152,11 @@ function Profile() {
                 <h5>ชื่อบัญชี</h5>
             </div>
             <div class=''>
-                <h5>f</h5>
+                <h5>{props.bank.Bank_Account_Name}</h5>
             </div>
         </div>
-        {/* <button onClick={()=>{getProfile()}}>TEXT</button> */}
+        </>
+       
         </div>
     </div>
   )

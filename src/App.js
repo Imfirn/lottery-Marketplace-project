@@ -79,7 +79,8 @@ function App() {
         <Route path="/" element={<Home li_dataToshow={data_toShow} searchNumApp={sendSearchNumberToBase}/>}/>
         {/* <Route path="/account" element={<Account />} /> */}
         {/* <Route path="/account" element={<Account_admin/>} /> */}
-        <Route path="/account" element={<Account_merchant/>} />
+        <Route path="/account" element={<Account_merchant />} />
+        {/* <Route path="/account/checkorder" element={<Account_merchant toggles={2}/>} /> */}
         {/* <Account_admin/> */}
 
 
