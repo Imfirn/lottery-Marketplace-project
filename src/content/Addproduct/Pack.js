@@ -155,9 +155,9 @@ function Pack() {
   console.log(lot);
   function putPayment() {
     axios
-      .post("http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/addPackLottery", {
+      .post("http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/addPackLottery", {
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTEyMzY5NywiZXhwIjoxNjUxMTU5Njk3fQ.47Oqwjc1D9K8fjp3e5bTBVUj5N_xnykvUkAcqf7x97I",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
         lotteryList: [
           {
             Number: number.trim(),
@@ -379,20 +379,20 @@ function Pack() {
                       <div class="flex justify-between my-2">
                         <h5 class="pl-2 p-2">ชุดที่</h5>
                         <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                          {lotto.lot.split("|")[0]}
+                          {lotto.lot.split("|")[i]}
                         </h5>
                       </div>
 
                       <div class="flex  justify-between my-2">
                         <h5 class="pl-2 p-2">งวดที่</h5>
                         <h5 class="pl-2 p-2 bg-[#FFF8E6] w-[30px] rounded-md text-center">
-                          {lotto.draw.split("|")[0]}
+                          {lotto.draw.split("|")[i]}
                         </h5>
                       </div>
                     </div>
                   ))}
                 </div>
-
+                
                 <button
                   onClick={() => handleDelete(lotto.id)}
                   class="font-prompt text-sm rounded-md p-2 border border-[#ee6657] text-[#ee6657] hover:bg-[#ff2020] hover:text-white"

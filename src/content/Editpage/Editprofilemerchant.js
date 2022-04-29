@@ -16,7 +16,7 @@ function Editprofile(props) {
   const [account,setAccount] = useState(props.bank.Bank_Account);
   const [accountNum,setAccountNum] = useState(props.bank.Bank_Account_Number);
   const [accountName,setAccountName] = useState(props.bank.Bank_Account_Name);
-
+  const [store, setStorename] = useState(props.store);
 
 
 
@@ -44,6 +44,7 @@ function Editprofile(props) {
             Province: provinceE,
             ZipCode: zipcodeE,
           },
+          Storename:store
       
         }
       )
@@ -55,7 +56,24 @@ function Editprofile(props) {
       .catch(function (error) {
         console.log(error);
       });
+    // console.log( {
+     
+    //   Lastname: lastNameE,
+    //   Email: mailE,
+    //   Tel: numberE,
+    //   Address: {
+    //     HomeNo: homenoE,
+    //     Soi: soiE,
+    //     Road: roadE,
+    //     Subdistrict: subdistrictE,
+    //     District: districtE,
+    //     Province: provinceE,
+    //     ZipCode: zipcodeE,
+    //   },
+  
+    // })
   }
+  // console.log(store)
 
   function putEdit_ma() {
     axios

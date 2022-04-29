@@ -3,7 +3,7 @@ import AcceptDel from './component/AcceptDel';
 import axios from 'axios';
 
 function ProductStore({token}) {
-    const [dataProduct,setDataProduct] = useState([]);
+    const [dataProduct,setDataProduct] = useState([{}]);
     const[dialog,setDialog]=useState({
         msg:"",
         isShow:false,
@@ -19,47 +19,26 @@ function ProductStore({token}) {
         return list[Math.floor((Math.random()*list.length))];
       }
 
-      function getlottery_m() {
-        axios
-          .get(
-            "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/getLotteryForSeller/" +token
+    function getlottery_m() {
+        axios.get(
+            "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/getLotteryForSeller/" +"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA"
           )
     
           .then(function (response) {
+            console.log(response)
 
             setDataProduct(response.data.lottery)
-            // console.log(response.data.customerAccount.Address.Road);
-            // setFirstName(response.data.customerAccount.Firstname);
-            // setlastName(response.data.customerAccount.Lastname);
-            // setnumber(response.data.customerAccount.Tel);
-            // setBirthday(response.data.customerAccount.Birthday);
-            // setmail(response.data.customerAccount.Email);
-            // setHomeno(response.data.customerAccount.Address.HomeNo);
-            // setSoi(response.data.customerAccount.Address.Soi);
-            // setRoad(response.data.customerAccount.Address.Road);
-            // setsubDistrict(response.data.customerAccount.Address.Subdistrict);
-            // setDistrict(response.data.customerAccount.Address.District);
-            // setProvince(response.data.customerAccount.Address.Province);
-            // setZipcode(response.data.customerAccount.Address.ZipCode);
-            // setStorename(response.data.customerAccount.Storename);
+           
           })
           .catch(function (error) {
-            console.log(error);
+              console.log(error);
           });
       }
 
-    useEffect(()=>{
-            // const data =[];
-            // for(let index=0;index<7;index++){
-            //     data.push({
-            //         id:`${index}`,
-            //         num:`11111${index}`,
-            //         type:`${get_random(randomArray)}`,
-            //         other:{d:`${index}`,l:`ชุด${index}`},
-            //     })
-
-            // }
-            // setDataProduct(data);
+    
+      useEffect(()=>{
+         
+            getlottery_m()
 
     },[])
 
@@ -117,21 +96,38 @@ function ProductStore({token}) {
      
      </tr>
    </thead>
+   {/* {dataProduct.map((data,i)=>(i))} */}
    {dataProduct.map((data)=>(
 
        <tbody class="divide-y border-b border-t border-[#E54E3D]">
        <tr class=' border-b  border-[#E54E3D]'>
-         <td class='p-3 text-sm font-light whitespace-nowrap text-center'>{data.num} </td>
+         <td class='p-3 text-sm font-light whitespace-nowrap text-center'>{data.Number} </td>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center' >
-           <span class={`p-1.5 text-xs ${data.type =="Y" ?"bg-[#D4FAAF] ":"bg-[#D3FAFA]"} rounded-full`}>{data.type =="Y" ?"สลากชุด":"สลากเดี่ยว"}</span>
+           <span class={`p-1.5 text-xs ${data.pack =="Y" ?"bg-[#D4FAAF] ":"bg-[#D3FAFA]"} rounded-full`}>{data.pack =="Y" ?"สลากชุด":"สลากเดี่ยว"}</span>
            </td>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center'>
-           <p>งวดที่ : {data.other.d}</p>
-           <p>ชุดที่ : {data.other.l}</p>
+         {data.pack =="Y" ?
+         <div class="">
+         <p class="flex">งวดที่ : 
+         {[...Array(Number(data.Draw.length))].map((_, i) => (
+           <p >{data.Draw[i].replace("|",",")} </p> 
+          ))}
+          </p> 
+          <p class="flex">งวดที่ : 
+         {[...Array(Number(data.Draw.length))].map((_, i) => (
+           <p >{data.Lot[i].replace("|",",")} </p> 
+          ))}
+          </p> 
+          
+          </div>:
+          <div class="flex flex-col">
+           <p >งวดที่ : {data.Draw}</p>
+           <p >ชุดที่ : {data.Lot}</p>
+           </div>}
            
          </td>
          <td class='p-3 text-sm font-light whitespace-nowrap text-center'>
-         <button class=' bg-[#E54E3D] text-white font-light p-2 text-center' onClick={()=>handleDelete(data.num)}> ลบ </button>
+         <button class=' bg-[#E54E3D] text-white font-light p-2 text-center' onClick={()=>handleDelete(data.Number)}> ลบ </button>
          
          </td>
          

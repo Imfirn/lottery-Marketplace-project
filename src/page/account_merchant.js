@@ -179,6 +179,7 @@ function Account_merchant() {
                       changeTofalse={changeTofalse}
                       token={merchant_token}
                       bank={bankInfo}
+                      store={store}
                     />
                   ) : (
                     <Profile_m 
@@ -195,6 +196,7 @@ function Account_merchant() {
                       zipcode={zipcode}
                       road={road}
                       bank={bankInfo}
+                      store={store}
                      
                     />
                   )}
