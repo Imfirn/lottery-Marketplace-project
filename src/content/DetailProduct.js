@@ -1,46 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 
-function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setState}) {
-  // const [lot, setText] = useState(null);
+function DetailProduct({
+  setModalOn,
+  data,
+  setApprove,
+  approve,
+  lot,
+  Id,
+  num,
+  setState,
+}) {
+  const [confirm, setConfirm] = useState(null);
   // const [text, setText] = useState(null);
   // const [text, setText] = useState(null);
-  
-  const checkPipe=(a)=>{
+  const toggleState = 0
+
+  const checkPipe = (a) => {
     const myArray = a.split("|");
-    return myArray
-
-  }
-
-
-  
+    return myArray;
+  };
 
   const handleOKClick = () => {
     setModalOn(false);
-    
-    setApprove([
-      ...approve,
-      { "orderID":Id,
-        "Number": num,
-        "Lot": lot,
-        "Draw": "20",
-        "approve": "Yes"
-      },
-    ]);
-  };
-  const handleCancelClick = () => {
-    setModalOn(false);
-    setApprove([
-      ...approve,
-      { "orderID":Id,
-        "Number": num,
-        "Lot": lot,
-        "Draw": "20",
-        "approve": "No"
-      },
-    ]);
   };
 
-  
+  const handleCancelClick = () => {
+    setModalOn(false);
+    // setApprove([
+    //   ...approve,
+    //   { "orderID":Id,
+    //     "Number": num,
+    //     "Lot": lot,
+    //     "Draw": "20",
+    //     "approve": "No"
+    //   },
+    // ]);
+  };
+
+  const toggleButton = (index) => {
+    // console.log(index);
+    toggleState=index
+    
+  };
 
   return (
     <div class="    fixed inset-0 z-50   ">
@@ -54,7 +55,7 @@ function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setSt
             <button
               type="button"
               class="text-gray-400 bg-transparent  hover:text-[#E54E3D] rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-              onClick={()=>setModalOn(false)}
+              onClick={() => setModalOn(false)}
             >
               <svg
                 class="w-5 h-5"
@@ -87,60 +88,98 @@ function DetailProduct({ setModalOn, data, setApprove, approve ,lot,Id,num,setSt
                     เพิ่มเติม
                   </th>
                   <th class=" text-sm tracking-wider font-medium text-center">
-                    จำนวน
+                    ยืนยันสถานะ
                   </th>
-                 
                 </tr>
               </thead>
-              {data.map((p)=>(
-
-              <tbody class="divide-y border-b border-t border-[#E54E3D]">
-                <tr class=" border-b  border-[#E54E3D]">
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    {p.Number}
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <span class={`p-1.5 text-xs ${checkPipe(lot).length>1 ?"bg-[#D4FAAF]":"bg-[#D3FAFA]"} rounded-full`}>
-                      {checkPipe(lot).length>1 ?"สลากชุด":"สลากเดียว"}
-                    </span>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">งวดที่ {p.Draw}</p>
-                  </td>
-                  <td class="p-3 text-sm font-light whitespace-nowrap text-center">
-                    <p class="">1</p>
-                  </td>
-
-                 
-                </tr>                          
-                
-              </tbody>
+              {data.map((p) => (
+                <tbody class="divide-y border-b border-t border-[#E54E3D]">
+                  <tr class=" border-b  border-[#E54E3D]">
+                    <td class="p-3 text-sm font-light whitespace-nowrap text-center">
+                      {p.Number}
+                    </td>
+                    <td class="p-3 text-sm font-light whitespace-nowrap text-center">
+                      <span
+                        class={`p-1.5 text-xs ${
+                          checkPipe(p.Lot).length > 1
+                            ? "bg-[#D4FAAF]"
+                            : "bg-[#D3FAFA]"
+                        } rounded-full`}
+                      >
+                        {checkPipe(p.Lot).length > 1 ? "สลากชุด" : "สลากเดียว"}
+                      </span>
+                    </td>
+                    <td class="p-3 text-sm font-light whitespace-nowrap text-center">
+                      <p class="">งวดที่ {p.Draw}</p>
+                      <p class="">ชุดที่ {p.Lot.replace("|", ",")}</p>
+                    </td>
+                    <td class="p-3 text-sm font-light whitespace-nowrap text-center flex justify-center">
+                      {/* <select
+                                        // value={confirm}
+                      onChange={(event) => p["approve"]=this.options[this.selectedIndex].value}
+                    >
+                    <option hidden>--สถานะ--</option>
+                      <option value="Yes">มี</option>
+                      <option value="No">ไม่มี</option>
+                    </select> */}
+                      {/* <button
+                        class=" cursor-pointer focus:bg-[rgb(229,78,61)] focus:text-white text-[#E54E3D] border border-[#E54E3D] hover:bg-red-100 p-1"
+                        onClick={() => {
+                          p["approve"] = "Yes";
+                          
+                        }}
+                      >
+                        ยืนยัน
+                      </button> */}
+                      {/* <div
+                        class={`cursor-pointer ${
+                          toggleState === 2
+                            ? "bg-[#E54E3D] text-white"
+                            : "text-[#E54E3D] border border-[#E54E3D]"
+                        } hover:bg-red-100 p-1`}
+                        onClick={() => {
+                          p["approve"] = "No";
+                          toggleButton(2);
+                        }}
+                      >
+                        ไม่ยืนยัน
+                      </div> */}
+                      <input type="checkbox"
+                      onChange={e=>{p["approve"] = "Yes"}}
+                      ></input>
+                    </td>
+                  </tr>
+                </tbody>
               ))}
-
-
             </table>
           </div>
           {/* <!-- Modal footer --> */}
-          <div class={` ${setState(Id,num)[0] == "1"? "hidden":setState(Id,num)[0] == "0"?"hidden":"p-6 space-x-2 rounded-b border-t border-[#E54E3D]"}`} first-lette>
-           
+          <div
+            class={` ${
+              setState(Id, num)[0] == "1"
+                ? "hidden"
+                : setState(Id, num)[0] == "0"
+                ? "hidden"
+                : "p-6 space-x-2 rounded-b border-t border-[#E54E3D]"
+            }`}
+            first-lette
+          >
             <button
-              
               type="submit"
               class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
               onClick={() => handleOKClick()}
             >
-              อนุมัติ
+              ยืนยัน
             </button>
 
             <button
-              
               type="submit"
               class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
               onClick={() => {
                 handleCancelClick();
               }}
             >
-              ไม่อนุมัติ
+              ยกเลิก
             </button>
           </div>
         </div>

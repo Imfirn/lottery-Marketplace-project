@@ -11,7 +11,7 @@ import Profile_m from "../content/Profile_m";
 import axios from "axios";
 
 function Account_merchant() {
-  const merchant_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA";
+  const merchant_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTMzNjY3OSwiZXhwIjoxNjUxMzcyNjc5fQ.J7TZ1x5ODync9ZXYR_feHn_wCu2VVXqhox3cnc33dT4";
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
@@ -28,6 +28,7 @@ function Account_merchant() {
   const [province, setProvince] = useState();
   const [store, setStorename] = useState();
   const [bankInfo,setBankinfo] = useState([]);
+  const [orderCheck,setOrderCheck] = useState([]);
   
 
   // const [tabState, setTabState] = useState(true);
@@ -79,6 +80,23 @@ function Account_merchant() {
         console.log(error);
       });
   }
+  function getOrder_m() {
+    axios
+      .get(
+        "http://78f7-2403-6200-88a4-4c62-e120-da6f-d695-867a.ngrok.io/getSellerCheckOrder/" + merchant_token
+      )
+
+      .then(function (response) {
+        console.log(response.data);
+        console.log("data",response.data.order);
+        // setBankinfo(response.data.sellerBank)
+        setOrderCheck(response.data.order);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
 
   console.log(editMode);
   const toggleTab = (index) => {
@@ -86,9 +104,12 @@ function Account_merchant() {
     setToggleState(index);
   };
 
+
+
   useEffect(() => {
     getProfile_m();
     getbank_m();
+    getOrder_m();
   }, []);
 
   return (
@@ -224,7 +245,7 @@ function Account_merchant() {
                 </div>
               </div>
               <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder_m />
+                <Checkorder_m data={orderCheck}/>
               </div>
 
               <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
