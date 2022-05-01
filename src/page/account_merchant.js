@@ -109,7 +109,7 @@ function Account_merchant() {
   useEffect(() => {
     getProfile_m();
     getbank_m();
-    getOrder_m();
+    // getOrder_m();
   }, []);
 
   return (

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function DetailProduct({
   setModalOn,
-  data,
-  setApprove,
-  approve,
-  lot,
-  Id,
+  data, 
+  orderID,
   num,
   setState,
+  setDataput,
+  dataPut
 }) {
-  const [confirm, setConfirm] = useState(null);
+  const [confirm, setConfirm] = useState(false);
   // const [text, setText] = useState(null);
   // const [text, setText] = useState(null);
-  const toggleState = 0
+  
 
   const checkPipe = (a) => {
     const myArray = a.split("|");
@@ -22,35 +22,34 @@ function DetailProduct({
 
   const handleOKClick = () => {
     setModalOn(false);
+    setDataput([
+      ...dataPut,
+      {
+        "orderID":orderID,
+        lotteryList:data
+      }
+    ])
   };
 
   const handleCancelClick = () => {
-    setModalOn(false);
-    // setApprove([
-    //   ...approve,
-    //   { "orderID":Id,
-    //     "Number": num,
-    //     "Lot": lot,
-    //     "Draw": "20",
-    //     "approve": "No"
-    //   },
-    // ]);
+    setModalOn(false);  
   };
 
-  const toggleButton = (index) => {
-    // console.log(index);
-    toggleState=index
+  // const toggleButton = (index) => {
+  //   // console.log(index);
+  //   toggleState=index
     
-  };
+  // };
 
   return (
-    <div class="    fixed inset-0 z-50   ">
+    <div class=" fixed inset-0 z-50  bg-black  bg-opacity-50">  
+    {/* <div class="bg-sky-500/80  inset-0 z-50">    */}
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-white w-[500px] border">
           {/* Modal header */}
           <div class="flex justify-between items-start p-5 rounded-t border-b border-[#E54E3D]">
             <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl ">
-              รายละเอียด {lot}
+              รายละเอียด {orderID}
             </h3>
             <button
               type="button"
@@ -144,9 +143,9 @@ function DetailProduct({
                       >
                         ไม่ยืนยัน
                       </div> */}
-                      <input type="checkbox"
-                      onChange={e=>{p["approve"] = "Yes"}}
-                      ></input>
+                      {setState(orderID)==false?<input type="checkbox"                      
+                      onChange={e=>{p["approve"] = "Yes";}}
+                      ></input>:<>ยืนยันแล้ว</>}
                     </td>
                   </tr>
                 </tbody>
@@ -155,15 +154,8 @@ function DetailProduct({
           </div>
           {/* <!-- Modal footer --> */}
           <div
-            class={` ${
-              setState(Id, num)[0] == "1"
-                ? "hidden"
-                : setState(Id, num)[0] == "0"
-                ? "hidden"
-                : "p-6 space-x-2 rounded-b border-t border-[#E54E3D]"
-            }`}
-            first-lette
-          >
+            class="p-6 space-x-2 rounded-b border-t border-[#E54E3D]">
+              <div class={`${setState(orderID) === true?"hidden":""}`}>
             <button
               type="submit"
               class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
@@ -181,9 +173,11 @@ function DetailProduct({
             >
               ยกเลิก
             </button>
+            </div>
           </div>
         </div>
       </div>
+      {/* </div>  */}
     </div>
   );
 }

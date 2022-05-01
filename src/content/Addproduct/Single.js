@@ -56,9 +56,9 @@ function Single({tab}) {
 
   function putSinglelottory() {
     axios
-      .post("http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/addSingleLottery", {
+      .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addSingleLottery", {
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ",
         lotteryList: [
           {
             Number:  number.trim(),
@@ -110,7 +110,7 @@ function Single({tab}) {
     setLottery(removeItem);
   }
 
-  console.log(lottery);
+  console.log("lotto",lottery);
   return (
     <div>
       {/* <h1>{drawDate}</h1> */}
@@ -194,7 +194,7 @@ function Single({tab}) {
         )}
 
         <div class="overflow-x-auto xl:h-[380px] sm:h-[300px]">
-          {lottery.map((lotto) => (
+        {lottery.map((lotto) => (
             <div
               class="bg-white flex justify-center  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[530px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"
               key={lotto.id}

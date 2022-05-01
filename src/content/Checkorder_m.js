@@ -5,48 +5,12 @@ import axios from "axios";
 export default function Checkorder_m({ data }) {
   const [modalOn, setModalOn] = useState(false);
   const [checkEdit, setcheckEdit] = useState(false);
-  const [approve, setApprove] = useState(() => {
-    const saveStatus = localStorage.getItem("CheckOrderSeller");
-
-    if (saveStatus) {
-      return JSON.parse(saveStatus);
-    } else {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem("CheckOrderSeller", JSON.stringify(approve));
-  }, [approve]);
-
-  // function putUpdateorder() {
-  //   axios
-  //     .post("http://78f7-2403-6200-88a4-4c62-e120-da6f-d695-867a.ngrok.io//updateSellerCheckOrder", {
-  //       token:
-  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTMzNjY3OSwiZXhwIjoxNjUxMzcyNjc5fQ.J7TZ1x5ODync9ZXYR_feHn_wCu2VVXqhox3cnc33dT4",
-  //       lotteryList: [
-  //         {
-  //           Number:  number.trim(),
-  //           Lot: pack.trim(),
-  //           Draw:  draw.trim(),
-  //           DrawDate: drawDate,
-  //         },
-  //       ],
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //       // console.log(data)
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
 
   const [detail, setDetail] = useState([]);
   const [number, setNum] = useState(null);
   const [lot, setLot] = useState("");
   const [orderid, setOrderid] = useState("");
-  const [dataMap, setDataamp] = useState([]);
+  const [dataPut, setDataput] = useState([]);
 
   const changeLot = (d) => {
     setLot(d);
@@ -107,27 +71,18 @@ export default function Checkorder_m({ data }) {
     },
   ];
 
-  const setState = (a, d) => {
-    let tus = [];
-    if (approve !== null) {
-      for (let i = 0; i < approve.length; i++) {
-        if (approve[i].orderID === a && approve[i].Number === d) {
-          tus.push(1);
-        }
+  
+
+  const setState = (a) => {
+    let tus = false;
+    for (let i = 0; i < dataPut.length; i++) {
+      if (dataPut[i].orderID === a) {
+        tus=true;
       }
-      return tus;
-    } else {
-      return tus;
     }
+    return tus;
   };
 
-  function handleDelete(id) {
-    const removeItem = approve.filter((a) => {
-      return a.orderID == id;
-    });
-
-    setApprove(removeItem);
-  }
 
   const mapOrder = (list_) => {
     let orderMap = new Map();
@@ -160,17 +115,14 @@ export default function Checkorder_m({ data }) {
     return orderMap;
   };
 
-  // console.log("outside",mapOrder(approve));
-  // console.log("outside",mapOrder(Testdata));
-  // console.log("outside2");
-  // console.log("outside+>",data);
   const test = [];
   for (const [key, value] of mapOrder(Testdata).entries()) {
     test.push({ key, value });
   }
 
-  console.log("outside2", test[0].value);
   console.log("Detail", detail);
+  console.log("Data to Put", dataPut);
+  console.log("TEST", setState(test[0].key));
   // console.log("TEST")
   return (
     <>
@@ -187,13 +139,12 @@ export default function Checkorder_m({ data }) {
       {modalOn && (
         <DetailProduct
           setModalOn={setModalOn}
-          setApprove={setApprove}
-          approve={approve}
+          setDataput={setDataput}
+          dataPut={dataPut}
           data={detail}
           setState={setState}
-          lot={lot}
-          Id={orderid}
-          num={number}
+          orderID={orderid}
+          
         />
       )}
       <div class=" flex justify-center items-center bg-white  font-prompt">
@@ -216,23 +167,34 @@ export default function Checkorder_m({ data }) {
               </tr>
             </thead>
             <tbody>
-             
-                {/* <>{test[0].value[0].Number}</> */}
-                {[...Array(test.length)].map((_, i) => (
-                  <tr class="border-b  border-[#E54E3D] text-center">
-                        <td>{test[i].key}</td>
-                        <td>
-                        <a
-                    href="#"
-                    class="font-bold text-[#E54E3D] hover:underline"
-                    onClick={()=>{clickDetail();changeContent(test[i].value);}}
+              {/* <>{test[0].value[0].Number}</> */}
+              {[...Array(test.length)].map((_, i) => (
+                <tr class="border-b  border-[#E54E3D] text-center">
+                  <td>{test[i].key}</td>
+                  <td>
+                    <a
+                      href="#"
+                      class="font-bold text-[#E54E3D] hover:underline"
+                      onClick={() => {
+                        clickDetail();
+                        changeContent(test[i].value);
+                        changeOrder(test[i].key);
+                      }}
+                    >
+                      ดูรายละเอียด
+                    </a>
+                  </td>
+                  <td
+                    class={`p-3 text-sm font-light whitespace-nowrap text-center ${
+                      setState(test[i].key) === true
+                        ? "text-green-500"
+                        : "text-gray-500"
+                    }`}
                   >
-                    ดูรายละเอียด
-                  </a>
-                          </td>
-                  </tr>
-                ))}
-              
+                    {setState(test[i].key) === true ? "สำเร็จ" : "ยังไม่ตรวจสอบ"}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
