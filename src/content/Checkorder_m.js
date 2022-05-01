@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DetailProduct from "./DetailProduct";
 import axios from "axios";
 
-export default function Checkorder_m({ data }) {
+export default function Checkorder_m({dataOrder}) {
   const [modalOn, setModalOn] = useState(false);
   const [checkEdit, setcheckEdit] = useState(false);
 
@@ -31,45 +31,47 @@ export default function Checkorder_m({ data }) {
   const changeOrder = (d) => {
     setOrderid(d);
   };
+  
+  
 
-  const Testdata = [
-    {
-      orderID: "29",
-      customerID: "1",
-      nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-      Number: "444445",
-      Lot: "01",
-      Draw: "20",
-      OrderDate: "20220417232222+0700",
-    },
-    {
-      orderID: "29",
-      customerID: "1",
-      nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-      Number: "123459",
-      Lot: "95",
-      Draw: "20",
-      OrderDate: "20220417232222+0700",
-    },
-    {
-      orderID: "86",
-      customerID: "1",
-      nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-      Number: "950159",
-      Lot: "45",
-      Draw: "20",
-      OrderDate: "20220426235103+0700",
-    },
-    {
-      orderID: "86",
-      customerID: "1",
-      nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-      Number: "121231",
-      Lot: "04|07",
-      Draw: "20",
-      OrderDate: "20220426235103+0700",
-    },
-  ];
+  // const Testdata = [
+  //   {
+  //     orderID: "29",
+  //     customerID: "1",
+  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
+  //     Number: "444445",
+  //     Lot: "01",
+  //     Draw: "20",
+  //     OrderDate: "20220417232222+0700",
+  //   },
+  //   {
+  //     orderID: "29",
+  //     customerID: "1",
+  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
+  //     Number: "123459",
+  //     Lot: "95",
+  //     Draw: "20",
+  //     OrderDate: "20220417232222+0700",
+  //   },
+  //   {
+  //     orderID: "86",
+  //     customerID: "1",
+  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
+  //     Number: "950159",
+  //     Lot: "45",
+  //     Draw: "20",
+  //     OrderDate: "20220426235103+0700",
+  //   },
+  //   {
+  //     orderID: "86",
+  //     customerID: "1",
+  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
+  //     Number: "121231",
+  //     Lot: "04|07",
+  //     Draw: "20",
+  //     OrderDate: "20220426235103+0700",
+  //   },
+  // ];
 
   
 
@@ -116,25 +118,19 @@ export default function Checkorder_m({ data }) {
   };
 
   const test = [];
-  for (const [key, value] of mapOrder(Testdata).entries()) {
+  for (const [key, value] of mapOrder(dataOrder).entries()) {
     test.push({ key, value });
   }
 
   console.log("Detail", detail);
   console.log("Data to Put", dataPut);
-  console.log("TEST", setState(test[0].key));
+  // console.log("TEST", setState(test[0].key));
   // console.log("TEST")
   return (
     <>
       <div class="grid grid-cols-2">
         <h1 class="mb-5  text-2xl font-semibold	 ">ตรวจสอบคำสั่งซื้อ</h1>
-        {/* {checkEdit ?
-      <button onClick={()=>{console.log("กดเเล้ว");mapOrder(approve);setcheckEdit(false);}} 
-      class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border 
-      border-gray-200 text-sm font-medium px-5 py-2.5 ">บันทึก</button>:  
-      <button onClick={()=>{console.log("กดเเล้ว");setcheckEdit(true);}} 
-      class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border 
-      border-gray-200 text-sm font-medium px-5 py-2.5 ">แก้ไข</button>} */}
+      
       </div>
       {modalOn && (
         <DetailProduct

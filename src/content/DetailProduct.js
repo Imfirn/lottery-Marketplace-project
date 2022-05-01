@@ -3,47 +3,70 @@ import axios from "axios";
 
 function DetailProduct({
   setModalOn,
-  data, 
+  data,
   orderID,
   num,
   setState,
   setDataput,
-  dataPut
+  dataPut,
 }) {
   const [confirm, setConfirm] = useState(false);
   // const [text, setText] = useState(null);
   // const [text, setText] = useState(null);
-  
 
   const checkPipe = (a) => {
     const myArray = a.split("|");
     return myArray;
   };
 
-  const handleOKClick = () => {
+  function putUpdateSellerOrder() {
+    axios
+      .put(
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/updateSellerCheckOrder",
+        {
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ",
+          orderID: orderID,
+          lotteryList: data
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+        console.log( {orderID: orderID,
+        lotteryList: data});
+        // console.log(data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  const handleOKClick = (e) => {
+    // e.preventDefault();
     setModalOn(false);
+    putUpdateSellerOrder();
     setDataput([
       ...dataPut,
       {
-        "orderID":orderID,
-        lotteryList:data
-      }
-    ])
+        orderID: orderID,
+        lotteryList: data,
+      },
+    ]);
   };
 
   const handleCancelClick = () => {
-    setModalOn(false);  
+    setModalOn(false);
   };
 
   // const toggleButton = (index) => {
   //   // console.log(index);
   //   toggleState=index
-    
+
   // };
 
   return (
-    <div class=" fixed inset-0 z-50  bg-black  bg-opacity-50">  
-    {/* <div class="bg-sky-500/80  inset-0 z-50">    */}
+    <div class=" fixed inset-0 z-50  bg-black  bg-opacity-50">
+      {/* <div class="bg-sky-500/80  inset-0 z-50">    */}
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-white w-[500px] border">
           {/* Modal header */}
@@ -113,39 +136,17 @@ function DetailProduct({
                       <p class="">ชุดที่ {p.Lot.replace("|", ",")}</p>
                     </td>
                     <td class="p-3 text-sm font-light whitespace-nowrap text-center flex justify-center">
-                      {/* <select
-                                        // value={confirm}
-                      onChange={(event) => p["approve"]=this.options[this.selectedIndex].value}
-                    >
-                    <option hidden>--สถานะ--</option>
-                      <option value="Yes">มี</option>
-                      <option value="No">ไม่มี</option>
-                    </select> */}
-                      {/* <button
-                        class=" cursor-pointer focus:bg-[rgb(229,78,61)] focus:text-white text-[#E54E3D] border border-[#E54E3D] hover:bg-red-100 p-1"
-                        onClick={() => {
-                          p["approve"] = "Yes";
-                          
-                        }}
-                      >
-                        ยืนยัน
-                      </button> */}
-                      {/* <div
-                        class={`cursor-pointer ${
-                          toggleState === 2
-                            ? "bg-[#E54E3D] text-white"
-                            : "text-[#E54E3D] border border-[#E54E3D]"
-                        } hover:bg-red-100 p-1`}
-                        onClick={() => {
-                          p["approve"] = "No";
-                          toggleButton(2);
-                        }}
-                      >
-                        ไม่ยืนยัน
-                      </div> */}
-                      {setState(orderID)==false?<input type="checkbox"                      
-                      onChange={e=>{p["approve"] = "Yes";}}
-                      ></input>:<>ยืนยันแล้ว</>}
+                    
+                      {/* {setState(orderID) == false ? ( */}
+                        <input
+                          type="checkbox"
+                          onChange={(e) => {
+                            p["approve"] = "Yes";
+                          }}
+                        ></input>
+                      {/* // ) : (
+                      //   <>ยืนยันแล้ว</>
+                      // )} */}
                     </td>
                   </tr>
                 </tbody>
@@ -153,26 +154,26 @@ function DetailProduct({
             </table>
           </div>
           {/* <!-- Modal footer --> */}
-          <div
-            class="p-6 space-x-2 rounded-b border-t border-[#E54E3D]">
-              <div class={`${setState(orderID) === true?"hidden":""}`}>
-            <button
-              type="submit"
-              class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-              onClick={() => handleOKClick()}
-            >
-              ยืนยัน
-            </button>
+          <div class="p-6 space-x-2 rounded-b border-t border-[#E54E3D]">
+            {/* <div class={`${setState(orderID) === true ? "hidden" : ""}`}> */}
+            <div >
+              <button
+                type="submit"
+                class="text-white bg-[#E54E3D] hover:bg-[#f93019]  font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                onClick={() => handleOKClick()}
+              >
+                ยืนยัน
+              </button>
 
-            <button
-              type="submit"
-              class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
-              onClick={() => {
-                handleCancelClick();
-              }}
-            >
-              ยกเลิก
-            </button>
+              <button
+                type="submit"
+                class="text-[#E54E3D] bg-white hover:bg-gray-100  rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  "
+                onClick={() => {
+                  handleCancelClick();
+                }}
+              >
+                ยกเลิก
+              </button>
             </div>
           </div>
         </div>

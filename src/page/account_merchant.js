@@ -11,7 +11,7 @@ import Profile_m from "../content/Profile_m";
 import axios from "axios";
 
 function Account_merchant() {
-  const merchant_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTMzNjY3OSwiZXhwIjoxNjUxMzcyNjc5fQ.J7TZ1x5ODync9ZXYR_feHn_wCu2VVXqhox3cnc33dT4";
+  const merchant_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ";
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
@@ -83,7 +83,7 @@ function Account_merchant() {
   function getOrder_m() {
     axios
       .get(
-        "http://78f7-2403-6200-88a4-4c62-e120-da6f-d695-867a.ngrok.io/getSellerCheckOrder/" + merchant_token
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerCheckOrder/" + merchant_token
       )
 
       .then(function (response) {
@@ -109,7 +109,7 @@ function Account_merchant() {
   useEffect(() => {
     getProfile_m();
     getbank_m();
-    // getOrder_m();
+    getOrder_m();
   }, []);
 
   return (
@@ -245,7 +245,7 @@ function Account_merchant() {
                 </div>
               </div>
               <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder_m data={orderCheck}/>
+                <Checkorder_m dataOrder={orderCheck}/>
               </div>
 
               <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
