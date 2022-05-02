@@ -1,6 +1,6 @@
 import React from "react";
 
-function Checkorder() {
+function Checkorder({checkTran}) {
   const Testdata = [
     {
       OID: "27",
@@ -82,7 +82,7 @@ function Checkorder() {
                 </th>
               </tr>
             </thead>
-            {Testdata.map((p) => (
+            {checkTran.map((p) => (
               <tbody class="divide-y border-b border-t border-[#E54E3D]">
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="p-3 text-sm font-light whitespace-nowrap text-center">

@@ -10,7 +10,7 @@ function Header({picture,name,undername}) {
 
           </div>
           <div class="mt-10 ml-2">
-              <p class=" font-semibold">ร้าน {name}</p>
+              <p class=" font-semibold">{name}</p>
               <p class=" font-light">{undername}</p>
           </div>
 

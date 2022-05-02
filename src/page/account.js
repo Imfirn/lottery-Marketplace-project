@@ -9,9 +9,8 @@ import axios from "axios";
 
 function Account() {
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDU3MTUyLCJleHAiOjE2NTEwNjc5NTJ9.yh8l-YbdGp2gThPSkVBtzhQpKgCZIBVyVkgNdq0YX0A";
-  const [toggleState, setToggleState] = useState(1);
-  const [dataProfile, setDataprofile] = useState();
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxNDcwOTE1LCJleHAiOjE2NTE1MDY5MTV9.H8FTmEk82RZYuJlLymTzBBmGKT5ysnEkE8642qT50UE";
+  const [toggleState, setToggleState] = useState(1);  
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
   const [birthday, setBirthday] = useState();
@@ -25,6 +24,7 @@ function Account() {
   const [road, setRoad] = useState();
   const [zipcode, setZipcode] = useState();
   const [province, setProvince] = useState();
+  const [dataTran, setdataTran] = useState([]);
   
   const changeTofalse = () => {
     setEditMode(false);
@@ -41,12 +41,12 @@ function Account() {
 
     axios
       .get(
-        "http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/getCustomerAccount/" + token
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getCustomerAccount/" + token
       )
 
       .then(function (response) {
         
-        console.log(response.data.customerAccount.Address.Road);
+        console.log(response.data);
         setFirstName(response.data.customerAccount.Firstname)
         setlastName(response.data.customerAccount.Lastname)
         setnumber(response.data.customerAccount.Tel)
@@ -67,10 +67,32 @@ function Account() {
       });
   }
 
+  function getOrder() {
+
+    axios
+      .get(
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getTransaction/" + token
+      )
+
+      .then(function (response) {
+        
+        console.log(response.data);
+        setdataTran(response.data.orderTransaction);
+       
+         
+       
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
  
 
   useEffect(() => {
     getProfile();
+    getOrder();
   }, []);
 
   return (
@@ -78,8 +100,7 @@ function Account() {
     
       <div class=" flex justify-center  bg-[#FFE5A3] font-prompt">
         <div
-          class="flex flex-col p-8 m-8 bg-white  w-5/12
-     h-5/12   shadow-xl "
+          class="flex flex-col p-8 m-8 bg-white  min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[800px]  shadow-xl "
         >
          
           <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
@@ -177,7 +198,7 @@ function Account() {
                 </div>
               </div>
               <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder />
+                <Checkorder checkTran={dataTran}/>
               </div>
             </div>
           </div>
