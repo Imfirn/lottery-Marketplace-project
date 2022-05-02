@@ -99,7 +99,7 @@ function Account() {
 
   return (
     <>
-    
+    <div class="h-16">
       <div class=" flex justify-center  bg-[#FFE5A3] font-prompt">
         <div
           class="flex flex-col p-8 m-8 bg-white  min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[800px]  shadow-xl "
@@ -205,6 +205,7 @@ function Account() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

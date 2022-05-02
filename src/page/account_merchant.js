@@ -120,6 +120,7 @@ function Account_merchant() {
 
   return (
     <>
+    <div class="h-16">
       <div class="flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
         <div
           class="flex flex-col p-8 m-8 bg-white 
@@ -263,6 +264,7 @@ function Account_merchant() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
