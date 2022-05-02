@@ -4,10 +4,10 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
   
   function putSeller(e) {
-    axios.put("http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io/updateSellerIdentity",
+    axios.put("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/updateSellerIdentity",
         {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTI4MTIyLCJleHAiOjE2NTExNjQxMjJ9.ulslsq63kACm7Ke3BMnG9q4YWcta-brSkl_7uCdDcdw",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNDcwOTk4LCJleHAiOjE2NTE1MDY5OTh9.a-N7lJMOtwBAQyULIcJdlXM5RGCZaiq3ID5HWD0WXJ8",
           approve: e,
           sellerID: id
         }
@@ -22,12 +22,12 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
 
   const handleOKClick = () => {
     // e.preventDefault();
-    putSeller("yes")
+    putSeller("Yes")
     setModalOn(false);
     setApprove([
       ...approve,
       {
-        approve: "yes",
+        approve: "Yes",
         comment: `${text}`,
         sellerID: id,
       },
@@ -40,7 +40,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
     setApprove([
       ...approve,
       {
-        approve: "no",
+        approve: "No",
         comment: `${text}`,
         sellerID: id,
       },
@@ -48,7 +48,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   };
 
   return (
-    <div class="    fixed inset-0 z-50   ">
+    <div class="    fixed inset-0 z-50  bg-black  bg-opacity-50 ">
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[550px] border">
           {/* Modal header */}

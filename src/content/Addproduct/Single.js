@@ -58,7 +58,7 @@ function Single({tab}) {
     axios
       .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addSingleLottery", {
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI",
         lotteryList: [
           {
             Number:  number.trim(),

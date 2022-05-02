@@ -45,7 +45,7 @@ function Checkrigis({data}) {
    let tus =[]
             for(let i=0;i<approve.length;i++){
                 if(approve[i].sellerID ===a){
-                    if(approve[i].approve==="yes")
+                    if(approve[i].approve==="Yes")
                     {tus.push(1)}else{tus.push(0) }
                 }
             }

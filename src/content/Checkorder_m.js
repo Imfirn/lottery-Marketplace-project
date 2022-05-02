@@ -5,7 +5,6 @@ import axios from "axios";
 export default function Checkorder_m({dataOrder}) {
   const [modalOn, setModalOn] = useState(false);
   const [checkEdit, setcheckEdit] = useState(false);
-
   const [detail, setDetail] = useState([]);
   const [number, setNum] = useState(null);
   const [lot, setLot] = useState("");
@@ -34,44 +33,9 @@ export default function Checkorder_m({dataOrder}) {
   
   
 
-  // const Testdata = [
-  //   {
-  //     orderID: "29",
-  //     customerID: "1",
-  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-  //     Number: "444445",
-  //     Lot: "01",
-  //     Draw: "20",
-  //     OrderDate: "20220417232222+0700",
-  //   },
-  //   {
-  //     orderID: "29",
-  //     customerID: "1",
-  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-  //     Number: "123459",
-  //     Lot: "95",
-  //     Draw: "20",
-  //     OrderDate: "20220417232222+0700",
-  //   },
-  //   {
-  //     orderID: "86",
-  //     customerID: "1",
-  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-  //     Number: "950159",
-  //     Lot: "45",
-  //     Draw: "20",
-  //     OrderDate: "20220426235103+0700",
-  //   },
-  //   {
-  //     orderID: "86",
-  //     customerID: "1",
-  //     nameCustomer: "เป็ดย่างเจ้าเก่า เยาวราช",
-  //     Number: "121231",
-  //     Lot: "04|07",
-  //     Draw: "20",
-  //     OrderDate: "20220426235103+0700",
-  //   },
-  // ];
+  const Testdata = [
+  
+  ];
 
   
 
@@ -99,8 +63,7 @@ export default function Checkorder_m({dataOrder}) {
           approve: "No",
         });
         orderMap.set(element.orderID, lottery);
-        // console.log(orderMap);
-        // console.log("map",orderMap);
+        
       } else {
         lottery.push({
           Number: element.Number,
@@ -109,23 +72,24 @@ export default function Checkorder_m({dataOrder}) {
           approve: "No",
         });
         orderMap.set(element.orderID, lottery);
-        // console.log(orderMap);
-        // console.log("map",orderMap);
+        
       }
-    }
-    // setDataamp(orderMap)
+    }    
     return orderMap;
   };
 
   const test = [];
+  
+  console.log("data",dataOrder)  
+  
+  // if(dataOrder)
   for (const [key, value] of mapOrder(dataOrder).entries()) {
     test.push({ key, value });
   }
 
   console.log("Detail", detail);
   console.log("Data to Put", dataPut);
-  // console.log("TEST", setState(test[0].key));
-  // console.log("TEST")
+ 
   return (
     <>
       <div class="grid grid-cols-2">
@@ -150,10 +114,7 @@ export default function Checkorder_m({dataOrder}) {
               <tr>
                 <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">
                   คำสั่งซื้อที่
-                </th>
-                {/* <th class=" p-2 text-sm tracking-wider font-medium text-center">
-                  วันที่
-                </th> */}
+                </th>              
                 <th class=" p-2 text-sm tracking-wider font-medium text-center">
                   รายละเอียด
                 </th>
@@ -163,7 +124,7 @@ export default function Checkorder_m({dataOrder}) {
               </tr>
             </thead>
             <tbody>
-              {/* <>{test[0].value[0].Number}</> */}
+             
               {[...Array(test.length)].map((_, i) => (
                 <tr class="border-b  border-[#E54E3D] text-center">
                   <td>{test[i].key}</td>

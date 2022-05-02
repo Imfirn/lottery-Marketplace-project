@@ -61,7 +61,7 @@ function DetailPaymaent({ setModalOn, data, setApprove, approve, id,setState ,mo
     };
   
     return (
-      <div class="    fixed inset-0 z-50   ">
+      <div class=" fixed inset-0 z-50 bg-black  bg-opacity-50">
         <div class="flex h-screen justify-center items-center ">
           <div class="relative rounded-lg shadow bg-[#FFF8E6] w-[550px] border">
             {/* Modal header */}

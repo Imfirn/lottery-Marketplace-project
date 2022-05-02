@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DetailPaymaent from "./DetailPaymaent";
 // import Editcheckpay from './Editcheckpay';
 
-function CheckPayment({ data }) {
+function CheckPayment({ data,checkData }) {
   // const[approvePay,setApprove]
   const [modalOn, setModalOn] = useState(false);
   
@@ -108,8 +108,9 @@ function CheckPayment({ data }) {
                 </th> */}
               </tr>
             </thead>
-
+          
             <tbody class="divide-y border-b border-t border-[#E54E3D]">
+             
               {data.map((data) => (
                 <tr class=" border-b  border-[#E54E3D]">
                   <td class="w-30 p-3 text-sm font-light whitespace-nowrap text-center">
@@ -158,6 +159,10 @@ function CheckPayment({ data }) {
               ))}
             </tbody>
           </table>
+
+         {checkData==false&& <div class="w-full flex justify-center  p-5">
+            <h1 class="text-center">ไม่มีรายการต้องตรวจสอบ</h1>
+            </div>}
 
           {modalOn && (
             <DetailPaymaent

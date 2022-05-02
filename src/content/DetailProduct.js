@@ -10,9 +10,7 @@ function DetailProduct({
   setDataput,
   dataPut,
 }) {
-  const [confirm, setConfirm] = useState(false);
-  // const [text, setText] = useState(null);
-  // const [text, setText] = useState(null);
+  const [confirm, setConfirm] = useState(false);  
 
   const checkPipe = (a) => {
     const myArray = a.split("|");
@@ -58,15 +56,10 @@ function DetailProduct({
     setModalOn(false);
   };
 
-  // const toggleButton = (index) => {
-  //   // console.log(index);
-  //   toggleState=index
-
-  // };
+  
 
   return (
-    <div class=" fixed inset-0 z-50  bg-black  bg-opacity-50">
-      {/* <div class="bg-sky-500/80  inset-0 z-50">    */}
+    <div class=" fixed inset-0 z-50  bg-black  bg-opacity-50">   
       <div class="flex h-screen justify-center items-center ">
         <div class="relative rounded-lg shadow bg-white w-[500px] border">
           {/* Modal header */}
@@ -177,8 +170,7 @@ function DetailProduct({
             </div>
           </div>
         </div>
-      </div>
-      {/* </div>  */}
+      </div>    
     </div>
   );
 }

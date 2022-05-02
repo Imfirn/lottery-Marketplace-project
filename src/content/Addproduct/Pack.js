@@ -155,9 +155,9 @@ function Pack() {
   console.log(lot);
   function putPayment() {
     axios
-      .post("http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/addPackLottery", {
+      .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addPackLottery", {
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI",
         lotteryList: [
           {
             Number: number.trim(),

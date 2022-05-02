@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Addproduct from "../content/Addproduct";
 import Checkorder_m from "../content/Checkorder_m";
 import Editprofilemerchant from "../content/Editpage/Editprofilemerchant";
@@ -11,7 +11,8 @@ import Profile_m from "../content/Profile_m";
 import axios from "axios";
 
 function Account_merchant() {
-  const merchant_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ";
+  const merchant_token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI";
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
@@ -27,9 +28,8 @@ function Account_merchant() {
   const [zipcode, setZipcode] = useState();
   const [province, setProvince] = useState();
   const [store, setStorename] = useState();
-  const [bankInfo,setBankinfo] = useState([]);
-  const [orderCheck,setOrderCheck] = useState([]);
-  
+  const [bankInfo, setBankinfo] = useState([]);
+  const [orderCheck, setOrderCheck] = useState([]);
 
   // const [tabState, setTabState] = useState(true);
   // const Tab =false;
@@ -40,7 +40,7 @@ function Account_merchant() {
   function getProfile_m() {
     axios
       .get(
-        "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/getSellerAccount/" +
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerAccount/" +
           merchant_token
       )
 
@@ -68,35 +68,37 @@ function Account_merchant() {
   function getbank_m() {
     axios
       .get(
-        "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/getSellerBank/" +merchant_token
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerBank/" +
+          merchant_token
       )
 
       .then(function (response) {
         console.log(response.data);
-        console.log("data",response.data.sellerBank);
-        setBankinfo(response.data.sellerBank)
+        console.log("data", response.data.sellerBank);
+        setBankinfo(response.data.sellerBank);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
   function getOrder_m() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerCheckOrder/" + merchant_token
+        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerCheckOrder/" +
+          merchant_token
       )
 
       .then(function (response) {
         console.log(response.data);
-        console.log("data",response.data.order);
-        // setBankinfo(response.data.sellerBank)
-        setOrderCheck(response.data.order);
+        if (response.status == "200OK") {
+          setOrderCheck(response.data.order);
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-  
 
   console.log(editMode);
   const toggleTab = (index) => {
@@ -104,13 +106,13 @@ function Account_merchant() {
     setToggleState(index);
   };
 
-
-
   useEffect(() => {
     getProfile_m();
     getbank_m();
     getOrder_m();
   }, []);
+
+  console.log("order", orderCheck);
 
   return (
     <>
@@ -121,8 +123,8 @@ function Account_merchant() {
         >
           <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
           <Header
-            name={"ร้านสำรีขายหวย"}
-            undername={"กรุงเทพมหานคร"}
+            name={store}
+            undername={province}
             picture={Pic}
           />
           <div class="flex">
@@ -203,7 +205,7 @@ function Account_merchant() {
                       store={store}
                     />
                   ) : (
-                    <Profile_m 
+                    <Profile_m
                       firstName={firstName}
                       lastName={lastName}
                       number={number}
@@ -218,7 +220,6 @@ function Account_merchant() {
                       road={road}
                       bank={bankInfo}
                       store={store}
-                     
                     />
                   )}
                 </div>
@@ -245,7 +246,7 @@ function Account_merchant() {
                 </div>
               </div>
               <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder_m dataOrder={orderCheck}/>
+                <Checkorder_m dataOrder={orderCheck} />
               </div>
 
               <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
@@ -253,7 +254,7 @@ function Account_merchant() {
               </div>
 
               <div class={toggleState === 4 ? "" : "hidden"}>
-                <ProductStore token={merchant_token}/>
+                <ProductStore token={merchant_token} />
               </div>
             </div>
           </div>
