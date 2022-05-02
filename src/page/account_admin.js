@@ -13,16 +13,18 @@ function Account_admin() {
   const [dataSeller, setDataseller] = useState([]);
   const [dataTracking, setDataTracking] = useState([]);
   const [haveData,setHavedata] =useState(true);
+  const [haveTrac,setHaveTrac] =useState(true);
+  const [haveRegis,setHaveRegis] =useState(true);
   const [editMode, setEditMode] = useState(false);
   const changeTofalse = () => {
     setEditMode(false);
   };
   const admin_token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNDcwOTk4LCJleHAiOjE2NTE1MDY5OTh9.a-N7lJMOtwBAQyULIcJdlXM5RGCZaiq3ID5HWD0WXJ8";
-  const URl ="http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTAxNDY3LCJleHAiOjE2NTE1Mzc0Njd9.6Ou10H-59b17VIR4w2qLtRjGCSsH0-NCmYc79n2Gp7Q";
+  const URl ="http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/";
   // console.log(editMode);
 
-  function getProfileAdmin() {
+  function getPayment() {
     axios
       .get(
        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getOrderPayment/"+admin_token
@@ -38,7 +40,7 @@ function Account_admin() {
           //not found in order status Audit Payment
           setHavedata(false);
         }
-        console.log(response);
+        console.log("Payment",response);
       })
       .catch(function (error) {
         // handle error
@@ -56,11 +58,13 @@ function Account_admin() {
         if (response.data.status == "200OK") {
           setDataseller(response.data.sellerAccount);
 
-          console.log(dataSeller);
+          // console.log(dataSeller);
         } else if (response.data.status == "200NF") {
           //not found in order status Audit Payment
+          setHaveRegis(false);
         }
-        console.log(response);
+        console.log("Regis",response);
+
       })
       .catch(function (error) {
         // handle error
@@ -79,8 +83,10 @@ function Account_admin() {
           // console.log(dataSeller)
         } else if (response.data.status == "200NF") {
           //not found in order status Audit Payment
+          setHaveTrac(false);
         }
-        console.log(response);
+        console.log("Tracking",response);
+
       })
       .catch(function (error) {
         // handle error
@@ -89,7 +95,7 @@ function Account_admin() {
   }
 
   useEffect(() => {
-    getProfileAdmin();
+    getPayment();
     getSellerinfo();
     getTrackinginfo();
   }, []);
@@ -152,7 +158,7 @@ function Account_admin() {
             </div>
             <div class="p-7 ">
               <div class={toggleState === 1 ? "" : "hidden"}>
-                <Checkrigis data={dataSeller} />
+                <Checkrigis data={dataSeller} checkData={haveRegis} />
               </div>
 
               <div class={toggleState === 2 ? "flex-initial	" : "hidden"}>
@@ -160,7 +166,7 @@ function Account_admin() {
               </div>
 
               <div class={toggleState === 3 ? "" : "hidden"}>
-                <Tracking data={dataTracking} />
+                <Tracking data={dataTracking} checkData={haveTrac} />
               </div>
             </div>
           </div>

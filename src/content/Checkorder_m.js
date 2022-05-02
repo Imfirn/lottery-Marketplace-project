@@ -33,9 +33,6 @@ export default function Checkorder_m({dataOrder}) {
   
   
 
-  const Testdata = [
-  
-  ];
 
   
 
@@ -92,9 +89,12 @@ export default function Checkorder_m({dataOrder}) {
  
   return (
     <>
-      <div class="grid grid-cols-2">
-        <h1 class="mb-5  text-2xl font-semibold	 ">ตรวจสอบคำสั่งซื้อ</h1>
+       <div class="grid grid-cols-2  ">
+      <h1 class="mb-5  text-2xl font-semibold	 ">
+         ตรวจสอบคำสั่งซื้อ
+      </h1>
       
+      <h2 class="m-1 ml-5  text-xl justify-self-end">ทั้งหมด {test.length} รายการ  </h2>
       </div>
       {modalOn && (
         <DetailProduct

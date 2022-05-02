@@ -12,7 +12,7 @@ import axios from "axios";
 
 function Account_merchant() {
   const merchant_token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTUwMTQ0MiwiZXhwIjoxNjUxNTM3NDQyfQ.EtC6GIvCNJ1eBuHxIZhbQxf84hmUADDjSN8kst1scCo";
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();

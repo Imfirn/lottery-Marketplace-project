@@ -141,12 +141,15 @@ function ProductStore({ token }) {
   return (
     <>
       {/* bg-[#D4FAAF]  */}
+      <div class="grid grid-cols-2  ">
       <h1 class="mb-5  text-2xl font-semibold	 ">
-        สินค้าภายในร้าน {dataProduct.length}
+        สินค้าภายในร้าน  
       </h1>
-
+      
+      <h2 class="m-1 ml-5  text-xl justify-self-end">ทั้งหมด {dataProduct.length} รายการ  </h2>
+      </div>
       <div class=" flex justify-center items-center bg-white  font-prompt">
-        <div class="overflow-x-auto  xl:w-[560px] md:w-[450px] sm:w-[400px] h-[420px]">
+        <div class="overflow-x-auto  2xl:w-[560px] xl:w-[450px] sm:w-[400px] h-[420px]">
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>

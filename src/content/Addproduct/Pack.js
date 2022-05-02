@@ -30,8 +30,7 @@ function Pack() {
   const dDate = day + " " + m + " " + y;
 
   const [lottery, setLottery] = useState(() => {
-    const saveLotto = localStorage.getItem("lotteryPack");
-
+    const saveLotto = localStorage.getItem("lotterypack");
     if (saveLotto) {
       return JSON.parse(saveLotto);
     } else {
@@ -135,7 +134,7 @@ function Pack() {
   ];
 
   useEffect(() => {
-    localStorage.setItem("lotteryPacK", JSON.stringify(lottery));
+    localStorage.setItem("lotterypack", JSON.stringify(lottery));
   }, [lottery]);
 
   function handleInput(e) {
@@ -157,7 +156,7 @@ function Pack() {
     axios
       .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addPackLottery", {
         token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTUwMTQ0MiwiZXhwIjoxNjUxNTM3NDQyfQ.EtC6GIvCNJ1eBuHxIZhbQxf84hmUADDjSN8kst1scCo",
         lotteryList: [
           {
             Number: number.trim(),
@@ -224,7 +223,7 @@ function Pack() {
     setLottery(removeItem);
   }
 
-  console.log(lottery);
+  // console.log(lottery);
 
   return (
     <div>
@@ -300,35 +299,6 @@ function Pack() {
                   ))}
                 </div>
 
-                {/* { [...Array(a)].map((e, i) => 
-                 <div class="flex justify-between my-3" id={`${i}`}>
-                 <h5 class="pl-2 p-2">งวดที่</h5>
-                 <input
-                   placeholder="12"
-                   maxLength={2}
-                   type="text"
-                   pattern="[0-9]{2}"                    
-                   value={draw}                    
-                   onChange={(event) => setDraw(event.target.value)}
-                   class="pl-2 p-2 rounded-md w-[30px] text-center"
-                   required
-                 />
-                 {i}
-                 <h5 class="pl-2 p-2">ชุดที่</h5>
-                 <input
-                   placeholder="12"
-                   maxLength={2}
-                   type="text"
-                   pattern="[0-9]{2}"
-                   value={pack}                    
-                   onChange={(event) => setPack(event.target.value)}
-                   class="pl-2 p-2 rounded-md w-[30px] text-center"
-                   required
-                 />
-               </div>
-            
-                                 
-                  )}  */}
               </div>
 
               <button
@@ -393,12 +363,12 @@ function Pack() {
                   ))}
                 </div>
                 
-                <button
+                {/* <button
                   onClick={() => handleDelete(lotto.id)}
                   class="font-prompt text-sm rounded-md p-2 border border-[#ee6657] text-[#ee6657] hover:bg-[#ff2020] hover:text-white"
                 >
                   ลบ
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

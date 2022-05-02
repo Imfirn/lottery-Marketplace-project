@@ -110,7 +110,7 @@ function Single({tab}) {
     setLottery(removeItem);
   }
 
-  console.log("lotto",lottery);
+  // console.log("lotto",lottery);
   return (
     <div>
       {/* <h1>{drawDate}</h1> */}
@@ -234,12 +234,12 @@ function Single({tab}) {
                   </div>
                 </div>
 
-                <button
+                {/* <button
                   onClick={() => handleDelete(lotto.id)}
                   class="font-prompt text-sm rounded-md p-2 border border-[#ee6657] text-[#ee6657] hover:bg-[#ff2020] hover:text-white"
                 >
                   ลบ
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

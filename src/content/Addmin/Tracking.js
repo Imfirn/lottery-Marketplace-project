@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Detailtracking from "./Detailtracking";
 import axios from "axios";
 
-function Tracking({ data }) {
+function Tracking({ data,checkData }) {
   
   const [show, setShow] = useState(null);
   const [modalOn, setModalOn] = useState(false);
@@ -87,7 +87,7 @@ function Tracking({ data }) {
         "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateTracking/",
         {
           token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxMTA1MDc0LCJleHAiOjE2NTExNDEwNzR9.Jqzo0DwN1452zZkmEaF4KwbN9-L1ek7om5M1ThAxhPo",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTAxNDY3LCJleHAiOjE2NTE1Mzc0Njd9.6Ou10H-59b17VIR4w2qLtRjGCSsH0-NCmYc79n2Gp7Q",
           orderID: orderID,
           customerID: customerID,
           tracking: tracking,
@@ -105,7 +105,13 @@ function Tracking({ data }) {
 
   return (
     <>
-      <h1 class="mb-5  text-2xl font-semibold	 ">แจ้งเลขพัสดุ</h1>
+       <div class="grid grid-cols-2  ">
+      <h1 class="mb-5  text-2xl font-semibold	 ">
+         แจ้งเลขพัสดุ
+      </h1>
+      
+      <h2 class="m-1 ml-5  text-xl justify-self-end">ทั้งหมด {data.length} รายการ  </h2>
+      </div>
       {/* {setComment(3)} */}
       <div class=" flex justify-center items-center bg-white  font-prompt">
         <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">
@@ -222,7 +228,10 @@ function Tracking({ data }) {
               ))}
             </tbody>
           </table>
-
+          
+          {checkData==false&& <div class="w-full flex justify-center  p-5">
+            <h1 class="text-center">ไม่มีรายการต้องตรวจสอบ</h1>
+            </div>}
           {modalOn && <Detailtracking data={detail} setModalOn={setModalOn} />}
         </div>
       </div>
