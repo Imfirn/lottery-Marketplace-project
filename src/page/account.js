@@ -9,11 +9,11 @@ import axios from "axios";
 
 function Account() {
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxNDcwOTE1LCJleHAiOjE2NTE1MDY5MTV9.H8FTmEk82RZYuJlLymTzBBmGKT5ysnEkE8642qT50UE";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxNTAwMzYxLCJleHAiOjE2NTE1MzYzNjF9.PnEI0MXfHSHyUZaDLlZmIM2tU76AqkcTV0a-jG47xWk";
   const [toggleState, setToggleState] = useState(1);  
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
-  const [birthday, setBirthday] = useState();
+  const [birthday, setBirthday] = useState("");
   const [lastName, setlastName] = useState();
   const [number, setnumber] = useState();
   const [mail, setmail] = useState();
@@ -47,6 +47,7 @@ function Account() {
       .then(function (response) {
         
         console.log(response.data);
+        if(response.data.status =="200OK"){
         setFirstName(response.data.customerAccount.Firstname)
         setlastName(response.data.customerAccount.Lastname)
         setnumber(response.data.customerAccount.Tel)
@@ -59,7 +60,7 @@ function Account() {
         setDistrict(response.data.customerAccount.Address.District)
         setProvince(response.data.customerAccount.Address.Province)
         setZipcode(response.data.customerAccount.Address.ZipCode)
-         
+        }
        
       })
       .catch(function (error) {
@@ -77,8 +78,9 @@ function Account() {
       .then(function (response) {
         
         console.log(response.data);
+        if(response.data.status =="200OK"){
         setdataTran(response.data.orderTransaction);
-       
+       }
          
        
       })

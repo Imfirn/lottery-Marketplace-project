@@ -112,7 +112,7 @@ export default function Checkorder_m({dataOrder}) {
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>
-                <th class="w-30 p-2 text-sm tracking-wider font-medium text-center">
+                <th class="p-2 text-sm tracking-wider font-medium text-center">
                   คำสั่งซื้อที่
                 </th>              
                 <th class=" p-2 text-sm tracking-wider font-medium text-center">

@@ -9,6 +9,7 @@ import ProductStore from "../content/ProductStore";
 import Profile_m from "../content/Profile_m";
 // import Tabadd from "../content/Tabadd";
 import axios from "axios";
+import { data } from "autoprefixer";
 
 function Account_merchant() {
   const merchant_token =
@@ -16,7 +17,7 @@ function Account_merchant() {
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
-  const [birthday, setBirthday] = useState();
+  const [birthday, setBirthday] = useState("");
   const [lastName, setlastName] = useState();
   const [number, setnumber] = useState();
   const [mail, setmail] = useState();
@@ -46,6 +47,7 @@ function Account_merchant() {
 
       .then(function (response) {
         // console.log(response.data.customerAccount.Address.Road);
+        if(response.data.status=="200OK"){
         setFirstName(response.data.sellerAccount.Firstname);
         setlastName(response.data.sellerAccount.Lastname);
         setnumber(response.data.sellerAccount.Tel);
@@ -59,6 +61,7 @@ function Account_merchant() {
         setProvince(response.data.sellerAccount.Address.Province);
         setZipcode(response.data.sellerAccount.Address.ZipCode);
         setStorename(response.data.sellerAccount.Storename);
+      }
       })
       .catch(function (error) {
         console.log(error);
@@ -75,7 +78,8 @@ function Account_merchant() {
       .then(function (response) {
         console.log(response.data);
         console.log("data", response.data.sellerBank);
-        setBankinfo(response.data.sellerBank);
+        if(response.data.status=="200OK"){
+        setBankinfo(response.data.sellerBank);}
       })
       .catch(function (error) {
         console.log(error);

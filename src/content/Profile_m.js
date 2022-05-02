@@ -82,7 +82,7 @@ function Profile(props) {
                 <h5>วัน/เดือน/ปีเกิด</h5>
             </div>
             <div class=''>
-                <h5>{props.birthday}</h5>
+                <h5>{props.birthday.slice(6,8)+"/"+props.birthday.slice(4,6)+"/"+props.birthday.slice(0,4)}</h5>
             </div>
         </div>
         <div class='grid grid-cols-2 gap-7 mt-2'>
