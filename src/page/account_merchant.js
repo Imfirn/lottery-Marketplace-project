@@ -10,10 +10,9 @@ import Profile_m from "../content/Profile_m";
 // import Tabadd from "../content/Tabadd";
 import axios from "axios";
 import { data } from "autoprefixer";
+import { global_url_token } from "./global_url_token";
 
 function Account_merchant() {
-  const merchant_token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTUwMTQ0MiwiZXhwIjoxNjUxNTM3NDQyfQ.EtC6GIvCNJ1eBuHxIZhbQxf84hmUADDjSN8kst1scCo";
   const [toggleState, setToggleState] = useState(1);
   const [editMode, setEditMode] = useState(false);
   const [firstName, setFirstName] = useState();
@@ -41,12 +40,12 @@ function Account_merchant() {
   function getProfile_m() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerAccount/" +
-          merchant_token
+        global_url_token.url + "/getSellerAccount/" +
+          localStorage.getItem("token")
       )
-
+      
       .then(function (response) {
-        // console.log(response.data.customerAccount.Address.Road);
+        // console.log("response.data.customerAccount.Storename",response);
         if(response.data.status=="200OK"){
         setFirstName(response.data.sellerAccount.Firstname);
         setlastName(response.data.sellerAccount.Lastname);
@@ -60,8 +59,9 @@ function Account_merchant() {
         setDistrict(response.data.sellerAccount.Address.District);
         setProvince(response.data.sellerAccount.Address.Province);
         setZipcode(response.data.sellerAccount.Address.ZipCode);
-        setStorename(response.data.sellerAccount.Storename);
+        setStorename(response.data.sellerAccount.Firstname);
       }
+
       })
       .catch(function (error) {
         console.log(error);
@@ -71,8 +71,8 @@ function Account_merchant() {
   function getbank_m() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerBank/" +
-          merchant_token
+        global_url_token.url+"/getSellerBank/" +
+          localStorage.getItem("token")
       )
 
       .then(function (response) {
@@ -89,13 +89,13 @@ function Account_merchant() {
   function getOrder_m() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerCheckOrder/" +
-          merchant_token
+        global_url_token.url+"/getSellerCheckOrder/" +
+          localStorage.getItem("token")
       )
 
       .then(function (response) {
         console.log(response.data);
-        if (response.status == "200OK") {
+        if (response.data.status == "200OK") {
           setOrderCheck(response.data.order);
         }
       })
@@ -119,154 +119,154 @@ function Account_merchant() {
   console.log("order", orderCheck);
 
   return (
-    <>
-    <div class="h-16">
-      <div class="flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
-        <div
-          class="flex flex-col p-8 m-8 bg-white 
-          min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[800px]"
-        >
-          <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
-          <Header
-            name={store}
-            undername={province}
-            picture={Pic}
-          />
-          <div class="flex">
-            <div class=" min-w-[160px] h-[590px] border-r">
-              <div
-                class={`mt-4  cursor-pointer ${
-                  toggleState === 1
-                    ? "bg-red-100 border-l-4 border-[#E54E3D]"
-                    : ""
-                } hover:bg-red-100 h-[40px]`}
-                onClick={() => toggleTab(1)}
-              >
-                <p class="pt-2 pl-4">ข้อมูลส่วนตัว</p>
-              </div>
-
-              <div
-                class={`cursor-pointer ${
-                  toggleState === 2
-                    ? "bg-red-100 border-l-4 border-[#E54E3D]"
-                    : ""
-                } hover:bg-red-100 h-[40px]`}
-                onClick={() => {
-                  toggleTab(2);
-                  changeTofalse();
-                }}
-              >
-                <p class="pt-2 pl-4">ตรวจสอบคำสั่งซื้อ</p>
-              </div>
-
-              <div
-                class={`cursor-pointer ${
-                  toggleState === 3
-                    ? "bg-red-100 border-l-4 border-[#E54E3D]"
-                    : ""
-                } hover:bg-red-100 h-[40px]`}
-                onClick={() => {
-                  toggleTab(3);
-                  changeTofalse();
-                }}
-              >
-                <p class="pt-2 pl-4">เพิ่มสินค้า</p>
-              </div>
-
-              <div
-                class={`cursor-pointer ${
-                  toggleState === 4
-                    ? "bg-red-100 border-l-4 border-[#E54E3D]"
-                    : ""
-                } hover:bg-red-100 h-[40px]`}
-                onClick={() => {
-                  toggleTab(4);
-                  changeTofalse();
-                }}
-              >
-                <p class="pt-2 pl-4">สินค้าภายในร้าน</p>
-              </div>
-            </div>
-            <div class="p-7 ">
-              <div class={toggleState === 1 ? "flex" : "hidden"}>
-                <div>
-                  {editMode ? (
-                    <Editprofilemerchant
-                      firstName={firstName}
-                      lastName={lastName}
-                      number={number}
-                      birthday={birthday}
-                      mail={mail}
-                      homeno={homeno}
-                      soi={soi}
-                      subdistrict={subdistrict}
-                      district={district}
-                      province={province}
-                      zipcode={zipcode}
-                      road={road}
-                      changeTofalse={changeTofalse}
-                      token={merchant_token}
-                      bank={bankInfo}
-                      store={store}
-                    />
-                  ) : (
-                    <Profile_m
-                      firstName={firstName}
-                      lastName={lastName}
-                      number={number}
-                      birthday={birthday}
-                      mail={mail}
-                      homeno={homeno}
-                      soi={soi}
-                      subdistrict={subdistrict}
-                      district={district}
-                      province={province}
-                      zipcode={zipcode}
-                      road={road}
-                      bank={bankInfo}
-                      store={store}
-                    />
-                  )}
+    <div className="h-screen bg-[#FFE5A3]">
+      <div>
+      <div class="h-16"/>
+        <div class="flex justify-center font-prompt h-max">
+          <div
+            class="flex flex-col p-8 m-8 bg-white min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[100%] shadow-xl rounded-xl"
+          >
+            <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
+            <Header
+              name={store}
+              undername={province}
+              picture={Pic}
+            />
+            <div class="flex">
+              <div class=" min-w-[160px] h-[590px] border-r">
+                <div
+                  class={`mt-4  cursor-pointer ${
+                    toggleState === 1
+                      ? "bg-red-100 border-l-4 border-[#E54E3D]"
+                      : ""
+                  } hover:bg-red-100 h-[40px]`}
+                  onClick={() => toggleTab(1)}
+                >
+                  <p class="pt-2 pl-4">ข้อมูลส่วนตัว</p>
                 </div>
 
                 <div
-                  class={editMode === false ? "" : "hidden"}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setEditMode(true)}
+                  class={`cursor-pointer ${
+                    toggleState === 2
+                      ? "bg-red-100 border-l-4 border-[#E54E3D]"
+                      : ""
+                  } hover:bg-red-100 h-[40px]`}
+                  onClick={() => {
+                    toggleTab(2);
+                    changeTofalse();
+                  }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
+                  <p class="pt-2 pl-4">ตรวจสอบคำสั่งซื้อ</p>
+                </div>
+
+                <div
+                  class={`cursor-pointer ${
+                    toggleState === 3
+                      ? "bg-red-100 border-l-4 border-[#E54E3D]"
+                      : ""
+                  } hover:bg-red-100 h-[40px]`}
+                  onClick={() => {
+                    toggleTab(3);
+                    changeTofalse();
+                  }}
+                >
+                  <p class="pt-2 pl-4">เพิ่มสินค้า</p>
+                </div>
+
+                <div
+                  class={`cursor-pointer ${
+                    toggleState === 4
+                      ? "bg-red-100 border-l-4 border-[#E54E3D]"
+                      : ""
+                  } hover:bg-red-100 h-[40px]`}
+                  onClick={() => {
+                    toggleTab(4);
+                    changeTofalse();
+                  }}
+                >
+                  <p class="pt-2 pl-4">สินค้าภายในร้าน</p>
                 </div>
               </div>
-              <div class={toggleState === 2 ? "" : "hidden"}>
-                <Checkorder_m dataOrder={orderCheck} />
-              </div>
+              <div class="p-7" style={{width:"100%"}}>
+                <div class={toggleState === 1 ? "flex" : "hidden"}>
+                  <div className="" style={{width:"100%"}}>
+                    {editMode ? (
+                      <Editprofilemerchant
+                        firstName={firstName}
+                        lastName={lastName}
+                        number={number}
+                        birthday={birthday}
+                        mail={mail}
+                        homeno={homeno}
+                        soi={soi}
+                        subdistrict={subdistrict}
+                        district={district}
+                        province={province}
+                        zipcode={zipcode}
+                        road={road}
+                        changeTofalse={changeTofalse}
+                        token={localStorage.getItem("token")}
+                        bank={bankInfo}
+                        store={store}
+                      />
+                    ) : (
+                      <Profile_m
+                        firstName={firstName}
+                        lastName={lastName}
+                        number={number}
+                        birthday={birthday}
+                        mail={mail}
+                        homeno={homeno}
+                        soi={soi}
+                        subdistrict={subdistrict}
+                        district={district}
+                        province={province}
+                        zipcode={zipcode}
+                        road={road}
+                        bank={bankInfo}
+                        store={store}
+                      />
+                    )}
+                  </div>
 
-              <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
-                <Addproduct />
-              </div>
+                  <div
+                    class={editMode === false ? "" : "hidden"}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setEditMode(true)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class={toggleState === 2 ? "" : "hidden"}>
+                  <Checkorder_m dataOrder={orderCheck} />
+                </div>
 
-              <div class={toggleState === 4 ? "" : "hidden"}>
-                <ProductStore token={merchant_token} />
+                <div class={toggleState === 3 ? "flex-initial	" : "hidden"}>
+                  <Addproduct />
+                </div>
+
+                <div class={toggleState === 4 ? "" : "hidden"}>
+                  <ProductStore token={localStorage.getItem("token")} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 }
 

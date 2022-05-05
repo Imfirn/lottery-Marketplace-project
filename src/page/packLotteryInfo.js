@@ -3,8 +3,7 @@ import axios from "axios";
 import PackedCardTemplateInfo from "./components/packedCardInfo";
 import { useLocation, Link, Routes, Route } from "react-router-dom";
 import './packLotteryInfo.css'
-const url_ = 'http://a1f7-2403-6200-88a4-54b-eda0-294a-e446-b93.ngrok.io'
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvbGVlIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjUxMDcwMTYxLCJleHAiOjE2NTEwODA5NjF9.KmKrjDS012ivBmVFJ2_Bohs2SkcedVaXKq-V_kMJm-A'
+import { global_url_token } from "./global_url_token";
 
 function PackLotteryInfo(props) {
   const cardInfo = useLocation()
@@ -16,6 +15,7 @@ function PackLotteryInfo(props) {
   const [selectSet_3, setSelectSet_3] = useState(false)
   const [selectSet_5, setSelectSet_5] = useState(false)
   const [hasSomethingSelected, sethasSomethingSelected] = useState(false)
+  const [amountLeft,setAmountLeft] = useState(cardInfoState.cardInfo.Stock)
 
   console.log("selectSet_2, selectSet_3, selectSet_5 : ",selectSet_2, selectSet_3, selectSet_5)
 
@@ -43,21 +43,25 @@ function PackLotteryInfo(props) {
 
   const sendSelectItemToCart =(event)=>{
     event.preventDefault()
+    setAmountLeft(amountLeft-1)
     const item = cardInfoState.cardInfo
-    axios.post(url_+'/cart', 
-    {token: token,
+    axios.post(global_url_token.url+'/cart', 
+    {token: localStorage.getItem("token"),
      Number_lottery: item.Number,
-     Amount:item.Stock,
+     Amount:1,
      Storename: item.Storename,
      Pack_Flag:item.pack,
-     PackAmount:item.Amount})
+     PackAmount:item.Amount,
+     DrawDate: item.DrawDate
+    })
     .then(function (response) {
       console.log("check Singleaddtocart",{
         Number_lottery: item.Number,
         Amount:item.Stock,
         Storename: item.Storename,
         Pack_Flag:item.pack,
-        PackAmount:item.Amount
+        PackAmount:item.Amount,
+        DrawDate: item.DrawDate
       })
     })
     .catch(function (error) {
@@ -71,10 +75,11 @@ function PackLotteryInfo(props) {
 
   return (
     <div className = "h-screen bg-white viewInfo font-prompt" style={{display: "flex"}}>
-      <div className = "" style={{width:"57%",height:"100%" , backgroundColor:"#FFE5A3"}}>
+      {/* <div className="h-16"/> */}
+      <div className = "" style={{width:"57%",height:"100%", paddingTop:"3vw" , backgroundColor:"#FFE5A3"}}>
         <PackedCardTemplateInfo cardInfoData={cardInfoState}/>
       </div>
-      <div className = "justify-items-center" style={{width: "43%", height:"100%"}}>
+      <div className = "justify-items-center" style={{width: "43%", height:"100%", paddingTop:"1.5"}}>
         <div style={{marginTop: "10.5VW", marginLeft: "5VW", height: "3.5VW", width: "12VW",borderRadius: "5VW", backgroundColor:"#D4FAAF"}}>
           <h1 className="text-center font-semibold" style={{fontSize: "2.2VW"}}>สลากชุด</h1>
         </div>
@@ -96,11 +101,12 @@ function PackLotteryInfo(props) {
                     <p>5 ใบ</p>
                 </button>
               </div>
-              <div className = "justify-items-center flex" style={{marginLeft: "0VW",marginTop: "0VW"}}>
-                  <button disabled={!hasSomethingSelected} className="flex sendSetNumber" style={{marginTop: "2.5VW"}} onClick={sendSelectItemToCart}>
-                      <p>เพิ่มลงตะกร้า</p>
-                  </button>
+              <div style={{width:"91%",marginLeft: "0VW",marginTop: "2VW"}}>
+                <p className="font-light" id={amountLeft===0?"isred":""} style={{textAlign:"right", fontSize:"1vw"}}>จำนวนสินค้าคงเหลือในร้าน: {amountLeft}</p>
               </div>
+              <button disabled={(!hasSomethingSelected) || amountLeft<1} className="sendSetNumber" onClick={sendSelectItemToCart}>
+                  <p>เพิ่มลงตะกร้า</p>
+              </button>
             </form>
           </div>
       </div>

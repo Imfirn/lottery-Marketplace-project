@@ -108,7 +108,7 @@ export default function Checkorder_m({dataOrder}) {
         />
       )}
       <div class=" flex justify-center items-center bg-white  font-prompt">
-        <div class="overflow-x-auto  xl:w-[560px]  xl:h-[450px] md:w-[450px] sm:w-[400px]">
+        <div class="overflow-x-auto  w-full">
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>

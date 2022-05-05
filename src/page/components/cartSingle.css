@@ -1,0 +1,16 @@
+.remove-button{
+    color: #aaaaaa;
+    font-size:1.2rem;
+}
+.remove-button[disabled]{
+    color: rgba(0,0,0,0);
+    font-size:1.2rem;
+}
+.have-stock{
+    color: #ff0000;
+    font-size:1.2rem;
+}
+.no-stock{
+    visibility: hidden;
+    content: "";
+}

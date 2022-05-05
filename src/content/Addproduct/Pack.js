@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Inputpack from "../component/Inputpack";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Pack() {
   const d = new Date();
@@ -154,9 +155,8 @@ function Pack() {
   console.log(lot);
   function putPayment() {
     axios
-      .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addPackLottery", {
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTUwMTQ0MiwiZXhwIjoxNjUxNTM3NDQyfQ.EtC6GIvCNJ1eBuHxIZhbQxf84hmUADDjSN8kst1scCo",
+      .post(global_url_token.url+"/addPackLottery", {
+        token: localStorage.getItem("token"),
         lotteryList: [
           {
             Number: number.trim(),

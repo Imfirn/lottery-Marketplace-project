@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Editprofile(props) {
   const [firstNameE, setFirstNameE] = useState(props.firstName);
@@ -27,10 +28,10 @@ function Editprofile(props) {
   function putEdit_m() {
     axios
       .put(
-        "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/updateSellerAccount/seller/ChangeAccountInfo/",
+        global_url_token.url + "/updateSellerAccount/seller/ChangeAccountInfo/",
         {
           // data: {
-          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
+          token: localStorage.getItem("token"),
           Firstname: firstNameE,
           Lastname: lastNameE,
           Email: mailE,
@@ -78,13 +79,12 @@ function Editprofile(props) {
   function putEdit_ma() {
     axios
       .put(
-        "http://265f-2403-6200-88a4-4c62-c81f-324d-a5c2-fa5d.ngrok.io/updateSellerAccount/seller/ChangeBankInfo",
+        global_url_token.url + "/updateSellerAccount/seller/ChangeBankInfo",
         {
-          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTI0OTQyMywiZXhwIjoxNjUxMjg1NDIzfQ.AM9tOsI7b1iIs-g3MoJV3LUlImr5JW3zFfysLx_GzwA",
+          token: localStorage.getItem("token"),
           Bank_Account: account,
           Bank_Account_Number: accountNum,
           Bank_Account_Name: accountName,
-          
         }
       )
 

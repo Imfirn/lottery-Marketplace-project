@@ -1,66 +1,35 @@
 import React from "react";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Checkorder({checkTran}) {
-  const Testdata = [
-    {
-      OID: "27",
-      Status: "Completed",
-      LotteryList: [
-        {
-          Number: "444445",
-          Lot: "01",
-          Draw: "20",
-          DrawDate: "16 เมษายน 2565",
-          PackFlag: "N",
-          PackAmount: "-",
-        },
-        {
-          Number: "123459",
-          Lot: "95",
-          Draw: "20",
-          DrawDate: "16 เมษายน 2565",
-          PackFlag: "N",
-          PackAmount: "-",
-        },
-      ],
-    },
-    {
-      OID: "28",
-      Status: "Seller Check Order",
-      LotteryList: [
-        {
-          Number: "112211",
-          Lot: "12",
-          Draw: "20",
-          DrawDate: "16 เมษายน 2565",
-          PackFlag: "N",
-          PackAmount: "-",
-        },
-      ],
-    },
-    {
-      OID: "29",
-      Status: "Seller Check Order",
-      LotteryList: [
-        {
-          Number: "951159",
-          Lot: "13",
-          Draw: "20",
-          DrawDate: "16 เมษายน 2565",
-          PackFlag: "Y",
-          PackAmount: "-",
-        },
-      ],
-    },
-  ];
+function Checkorder({ checkTran, Order_ID }) {
+  const navigate = useNavigate();
+  const toPaymentMethod = useCallback(
+    () => navigate("/paymentmethod", { replace: true }),
+    [navigate]
+  );
+
+  const goRepending = (item) => {
+    let sum = 0;
+    for (let i = 0; i < item.LotteryList.length; i++) {
+      if (item.LotteryList[i].PackFlag === "N") {
+        sum += 80;
+      } else if (item.LotteryList[i].PackFlag === "Y") {
+        sum += 80 * Number(item.LotteryList[i].PackAmount);
+      }
+    }
+    Order_ID([item.OID, sum + 40]);
+    toPaymentMethod();
+  };
+
   return (
     <>
       {/* bg-[#D3FAFA],bg-[#D4FAAF]*/}
 
-      <h1 class="mb-5  text-2xl font-semibold	 ">ประวัติการสั่งซื้อ</h1>
+      <h1 class="mb-5  text-2xl font-semibold	">ประวัติการสั่งซื้อ</h1>
 
       <div class=" flex justify-center items-center bg-white  font-prompt">
-        <div class="overflow-x-auto w-11/12">
+        <div class="overflow-y-auto w-full h-[50vh]">
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>
@@ -116,10 +85,26 @@ function Checkorder({checkTran}) {
                     </tr>
                   ))}
 
-                  <td class={`p-3 text-sm font-light whitespace-nowrap text-center ${p.Status=="Completed" ? "text-green-500" : "text-gray-500"}`}>
-                    
-                    {p.Status}
-                  </td>
+                  {p.Status == "RePending Payment" ? (
+                    <td class="p-3 text-sm font-light whitespace-nowrap text-center">
+                      <button
+                        class=" bg-[#E54E3D] text-white font-light p-2 text-center"
+                        onClick={() => goRepending(p)}
+                      >
+                        ชำระอีกครั้ง
+                      </button>
+                    </td>
+                  ) : (
+                    <td
+                      class={`p-3 text-sm font-light whitespace-nowrap text-center ${
+                        p.Status == "Completed"
+                          ? "text-green-500"
+                          : "text-gray-500"
+                      }`}
+                    >
+                     {p.Status=="Completed" ? "เสร็จสิ้น" : p.Status=="Seller Check Order" ? "รอแม่ค้าตรวจสอบ" : p.Status=="Order Packing" ? "รอจัดส่ง" : p.Status=="RePending Payment" ? "ชำระอีกครั้ง" : p.Status=="Audit Payment" ? "ตรวจสอบการชำระ":"ยกเลิกแล้ว"}
+                    </td>
+                  )}
                 </tr>
               </tbody>
             ))}

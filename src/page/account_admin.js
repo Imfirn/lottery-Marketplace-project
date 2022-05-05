@@ -6,6 +6,7 @@ import Checkrigis from "../content/Addmin/Checkregis";
 import CheckPayment from "../content/Addmin/CheckPayment";
 import Tracking from "../content/Addmin/Tracking";
 import axios from "axios";
+import { global_url_token } from "./global_url_token";
 
 function Account_admin() {
   const [toggleState, setToggleState] = useState(1);
@@ -19,15 +20,11 @@ function Account_admin() {
   const changeTofalse = () => {
     setEditMode(false);
   };
-  const admin_token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTAxNDY3LCJleHAiOjE2NTE1Mzc0Njd9.6Ou10H-59b17VIR4w2qLtRjGCSsH0-NCmYc79n2Gp7Q";
-  const URl ="http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/";
-  // console.log(editMode);
 
   function getPayment() {
     axios
       .get(
-       "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getOrderPayment/"+admin_token
+        global_url_token.url+"/getOrderPayment/"+localStorage.getItem("token")
       )
       .then(function (response) {
         // handle success
@@ -51,7 +48,7 @@ function Account_admin() {
   function getSellerinfo() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getSellerIdentity/" +admin_token
+        global_url_token.url+"/getSellerIdentity/" + localStorage.getItem("token")
       )
       .then(function (response) {
         // handle success
@@ -74,7 +71,7 @@ function Account_admin() {
 
   function getTrackinginfo() {
     axios
-      .get("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getCommon/" + admin_token)
+      .get(global_url_token.url+"/getCommon/" + localStorage.getItem("token"))
       .then(function (response) {
         // handle success
         if (response.data.status == "200OK") {
@@ -111,7 +108,7 @@ function Account_admin() {
     <div class="h-16">
       <div class="h-screen flex justify-center  bg-[#FFE5A3] overflow-hidden	 font-prompt ">
         <div
-          class="flex flex-col p-8 m-8 bg-white  min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[800px] shadow-xl "
+          class="flex flex-col p-8 m-8 bg-white min-w-[44.25%] w-[97%] 2xl:w-[44.25%] xl:w-[53.1%] lg:w-[66.375%] md:w-[88.5%] sm:w-[95%] xs:w-[97%] h-[800px] shadow-xl max-h-[85vh]"
         >
           <h1 class="text-xl text-[#E54E3D] font-black ml-6">บัญชีของคุณ</h1>
           <Header name={"แอดมิน123"} undername={"แอดมิน"} picture={Pic} />

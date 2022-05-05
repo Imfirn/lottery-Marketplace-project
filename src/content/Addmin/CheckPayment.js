@@ -16,8 +16,6 @@ function CheckPayment({ data,checkData }) {
     }
   });
 
-  
-
   useEffect(() => {
     localStorage.setItem("Paymenttus", JSON.stringify(approve));
   }, [approve]);
@@ -64,7 +62,7 @@ function CheckPayment({ data,checkData }) {
     let tus = [];
     for (let i = 0; i < approve.length; i++) {
       if (approve[i].orderID === a) {
-        if (approve[i].approve === "yes") {
+        if (approve[i].approve === "Yes") {
           tus.push(1);
         } else {
           tus.push(0);

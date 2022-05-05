@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { global_url_token } from "../page/global_url_token";
 
 function DetailProduct({
   setModalOn,
@@ -20,10 +21,9 @@ function DetailProduct({
   function putUpdateSellerOrder() {
     axios
       .put(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/updateSellerCheckOrder",
+        global_url_token.url + "/updateSellerCheckOrder",
         {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQxNDY4NSwiZXhwIjoxNjUxNDUwNjg1fQ.FIA4mhPPqTR0kVaSZoWY_h7DRx9QF12XkheoAX64AjQ",
+          token: localStorage.getItem("token"),
           orderID: orderID,
           lotteryList: data
         }

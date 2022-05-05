@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import validationadd from "./Validationadd";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Single({tab}) {
   const d = new Date();
@@ -56,9 +57,8 @@ function Single({tab}) {
 
   function putSinglelottory() {
     axios
-      .post("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/addSingleLottery", {
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhlbGxvIiwicm9sZSI6InNlbGxlciIsImlhdCI6MTY1MTQ3MDY0NywiZXhwIjoxNjUxNTA2NjQ3fQ.JjOr3M4nX__23j2BF-AciUZV5fUgnFv99RDVgYBsqPI",
+      .post(global_url_token.url + "/addSingleLottery", {
+        token: localStorage.getItem("token"),
         lotteryList: [
           {
             Number:  number.trim(),
@@ -114,11 +114,12 @@ function Single({tab}) {
   return (
     <div>
       {/* <h1>{drawDate}</h1> */}
-      <div class="grid justify-items-center ">
+      <div class="grid justify-items-center w-full">
        
-        <div class="flex justify-center bg-[#FFF8E6]  m-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]">
+        {/* <div class="flex justify-center bg-[#FFF8E6]  m-2 mt-2 p-3 w-2/6 shadow-md rounded-md xl:w-[535px] lg:w-[430px] sm:w-[400px]  min-w-[380px]"> */}
+        <div class="flex justify-center bg-[#FFF8E6]  m-2 mt-2 p-3 shadow-md rounded-md w-[90%]">
           <form onSubmit={handleFormSubmit}>
-            <div class="flex justify-between space-x-2 text-xs xl:flex-row  sm:flex-col ">
+            <div class="flex justify-between space-x-2 text-xs 2xl:flex-row flex-col">
               <div class="flex justify-between space-x-2 ">
                 <div>
                   <div class="flex justify-between">

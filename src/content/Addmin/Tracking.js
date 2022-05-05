@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Detailtracking from "./Detailtracking";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 
 function Tracking({ data,checkData }) {
   
@@ -84,10 +85,9 @@ function Tracking({ data,checkData }) {
   const putTracking=()=> {
     axios   
       .put(
-        "http://2561-2a09-bac0-411-00-81e-ea19.ngrok.io/updateTracking/",
+        global_url_token.url+"/updateTracking/",
         {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNTAxNDY3LCJleHAiOjE2NTE1Mzc0Njd9.6Ou10H-59b17VIR4w2qLtRjGCSsH0-NCmYc79n2Gp7Q",
+          token: localStorage.getItem("token"),
           orderID: orderID,
           customerID: customerID,
           tracking: tracking,

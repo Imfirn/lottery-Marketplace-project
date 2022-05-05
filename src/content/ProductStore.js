@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import AcceptDel from "./component/AcceptDel";
 import axios from "axios";
+import { global_url_token } from "../page/global_url_token";
 
-function ProductStore({ token }) {
+function ProductStore() {
   const [dataProduct, setDataProduct] = useState([]);
   const [dialog, setDialog] = useState({
     msg: "",
@@ -22,30 +23,11 @@ function ProductStore({ token }) {
     return list[Math.floor(Math.random() * list.length)];
   }
 
-  // function getlottery_m() {
-  //   axios
-  //     .get(
-  //       "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getLotteryForSeller/" +
-  //         token
-  //     )
-
-  //     .then(function (response) {
-  //       console.log(response);
-  //       console.log("dataproduct",response.data.lottery);
-  //       if (response.data.status == "200OK") {
-  //         setDataProduct(response.data.lottery);
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-
   function getlotto_m() {
     axios
       .get(
-        "http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/getLotteryForSeller/" +
-          token
+        global_url_token.url + "/getLotteryForSeller/" +
+          localStorage.getItem("token")
       )
 
       .then(function (response) {
@@ -61,9 +43,9 @@ function ProductStore({ token }) {
 
   function del_lottery() {
     axios
-      .delete("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/deleteLottery",
+      .delete(global_url_token.url + "/deleteLottery",
        {data:{
-        token: token,
+        token: localStorage.getItem("token"),
         Number_lottery: numProduct.current,
         SID: sellerID,
         Lot: lot,
@@ -74,7 +56,8 @@ function ProductStore({ token }) {
       }})
       .then(function (response) {
         console.log(response);
-        console.log("dataDel",{token: token,
+        console.log("dataDel",{token: 
+          localStorage.getItem("token"),
           Number_lottery: numProduct.current,
           SID: sellerID,
           Lot: lot,
@@ -149,7 +132,7 @@ function ProductStore({ token }) {
       <h2 class="m-1 ml-5  text-xl justify-self-end">ทั้งหมด {dataProduct.length} รายการ  </h2>
       </div>
       <div class=" flex justify-center items-center bg-white  font-prompt">
-        <div class="overflow-x-auto  2xl:w-[560px] xl:w-[450px] sm:w-[400px] h-[420px]">
+        <div class="overflow-x-auto w-full h-[59vh]">
           <table class="w-full ">
             <thead class=" border-b border-t border-[#E54E3D]">
               <tr>

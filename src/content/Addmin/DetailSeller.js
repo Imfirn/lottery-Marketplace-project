@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { global_url_token } from "../../page/global_url_token";
 function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
   const [text, setText] = useState(null);
   
   function putSeller(e) {
-    axios.put("http://b169-2403-6200-88a4-4c62-9496-55ba-1f0c-4d43.ngrok.io/updateSellerIdentity",
+    axios.put(global_url_token.url+"/updateSellerIdentity",
         {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluMTAxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUxNDcwOTk4LCJleHAiOjE2NTE1MDY5OTh9.a-N7lJMOtwBAQyULIcJdlXM5RGCZaiq3ID5HWD0WXJ8",
+          token: localStorage.getItem("token"),
           approve: e,
           sellerID: id
         }
@@ -171,7 +171,7 @@ function DetailSeller({ setModalOn, data, setApprove, approve, id, setState }) {
                   </div>
                   <div class="">
                     {/* <h1>{p.URLImage}</h1> */}
-                    <img src={`${p.URLImage}`} />
+                    <img src={`picsilp/${p.URLImage}`}/>
                   </div>
                 </div>
               </div>
